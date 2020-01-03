@@ -29,10 +29,10 @@ import javax.websocket.server.ServerEndpoint;
 public class ServerEndPoint implements StrategoServer {
     // All sessions
     private static final List<Session> connectedPlayers = new ArrayList<>();
-    private StrategoLogin strategoLogin = new StrategoLogin();
     private static List<IGame> games = new ArrayList<>();
     // Map each property to list of sessions that are subscribed to that property
     private static final Map<Integer, List<Session>> strategoGames = new HashMap<>();
+
     private int gameId = 0;
     private Gson gson = new Gson();
 

@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="" />
+    <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dto/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dto/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/controllers/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/interfaces/IUserLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/java/restclient/RestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/lock.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/register.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/gui/MainGameStratego.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/gui/MainGameStratego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/target/classes/gui/MainGameStratego.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/gui/MainGameStratego.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/dto/src/main/java/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/dto/src/main/java/dtos/LoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ResponseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/StrategoLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/StrategoLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/LoginDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/LoginResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/LoginResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ResponseHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ResponseHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/StrategoLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/StrategoLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,14 +66,14 @@
       <list>
         <option value="XSLT Stylesheet" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_COMMON_BRANCH" value="master" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/StrategoFinal" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MavenImportPreferences">
@@ -47,7 +96,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gui" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gui/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,11 +117,11 @@
       <recent name="server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\resources" />
       <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java" />
       <recent name="C:\Users\wesse\Downloads\strategogamewessel\server\src\test\java" />
       <recent name="C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java" />
       <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\strategogame" />
-      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\resources" />
@@ -134,7 +184,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.*" />
+          <option name="PATTERN" value="dtos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -198,7 +248,7 @@
       <workItem from="1577526902200" duration="2187000" />
       <workItem from="1577529096161" duration="9865000" />
       <workItem from="1577632944290" duration="27120000" />
-      <workItem from="1577879778274" duration="15899000" />
+      <workItem from="1577879778274" duration="25212000" />
     </task>
     <servers />
   </component>
@@ -243,13 +293,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
-          <line>164</line>
+          <line>165</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java</url>
           <line>113</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/LoginService.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

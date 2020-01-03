@@ -2,8 +2,8 @@ package server;
 
 import com.google.gson.Gson;
 
-import helpers.User;
-import server.LoginService;
+import dtos.LoginDTO;
+import user.User;
 
 
 import java.util.ArrayList;

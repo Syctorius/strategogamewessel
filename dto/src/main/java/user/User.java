@@ -1,8 +1,8 @@
-package helpers;
+package user;
 
-import server.LoginDTO;
+import dtos.LoginDTO;
 
-public class User {
+public class User  {
     public User()
     {
 
@@ -19,9 +19,13 @@ public class User {
 
     private int userId;
     private String username;
-    private Board board;
     private String password;
     private boolean ready;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public int getUserId() {
         return userId;
@@ -46,18 +50,6 @@ public class User {
         this.username = username;
     }
 
-    public Board getBoard() {
-        if(board!= null)
-        {  return board;
-        }
-        this.board = new Board(10,10);
-        return board;
-
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
     public LoginDTO createDTO () {
         return new LoginDTO(userId, username, password);
     }

@@ -1,6 +1,6 @@
 package server;
 
-import helpers.User;
+import user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class StrategoLogin {
     // The users are stored in a map with key userId and value User-object
-    private final Map<Integer, User> users;
+    private final Map<Integer,User> users;
 
     // Id for the next user to be added to the list
     private int nextUserId;
@@ -18,7 +18,7 @@ public class StrategoLogin {
     private static StrategoLogin instance;
 
     // Singleton pattern
-    StrategoLogin() {
+    private StrategoLogin() {
         // Initially, there are no users in the user list
         users = new HashMap<>();
         nextUserId = 0;
@@ -27,9 +27,9 @@ public class StrategoLogin {
     /**
      * Get singleton instance of user store.
      */
-    public static  StrategoLogin getInstance() {
+    public static StrategoLogin getInstance() {
         if (instance == null) {
-            instance = new  StrategoLogin();
+            instance = new StrategoLogin();
         }
         return instance;
     }
@@ -81,5 +81,6 @@ public class StrategoLogin {
         // User not found
         return false;
     }
+
 
 }

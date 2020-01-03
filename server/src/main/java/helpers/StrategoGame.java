@@ -6,6 +6,7 @@ import enums.GameStatus;
 import enums.Rank;
 import interfaces.IGame;
 import interfaces.StrategoServer;
+import user.User;
 
 import java.awt.*;
 
@@ -122,8 +123,8 @@ public class StrategoGame implements IGame {
     public void placePiecesAutomatically(int playerNr, Color color) {
         removeAllPieces(playerNr);
 
-        Board playerBoard = user.getBoard();
-        playerBoard.PlacePiecesAutomatically(color);
+       // Board playerBoard = user.getBoard();
+        this.board.PlacePiecesAutomatically(color);
     }
 
 
@@ -142,7 +143,7 @@ public class StrategoGame implements IGame {
     @Override
     public void removeAllPieces(int playerNr) {
         Board board;
-        switch (playerNr) {
+     /*   switch (playerNr) {
             case 0:
                 board = user.getBoard();
                 break;
@@ -151,9 +152,9 @@ public class StrategoGame implements IGame {
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + playerNr);
-        }
+        }*/
 
-        board.RemoveAllPieces();
+       // board.RemoveAllPieces();
 
 
     }

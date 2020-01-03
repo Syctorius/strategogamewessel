@@ -1,4 +1,4 @@
-package server;
+package dtos;
 
 public class LoginDTO {
 
@@ -20,8 +20,12 @@ public class LoginDTO {
         // Nothing
     }
 
-    public LoginDTO(int petId, String userName, String password) {
-        this.userId = petId;
+    public LoginDTO(int userId, String userName, String password) {
+        this.userId = userId;
+        this.userName = userName;
+        this.passWord = password;
+    }
+    public LoginDTO(String userName, String password) {
         this.userName = userName;
         this.passWord = password;
     }
@@ -34,19 +38,19 @@ public class LoginDTO {
         this.userId = userId;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.userName = userName;
     }
 
-    public String getPassWord() {
+    public String getPassword() {
         return passWord;
     }
 
-    public void setPassWord(String passWord) {
+    public void setPassword(String passWord) {
         this.passWord = passWord;
     }
 

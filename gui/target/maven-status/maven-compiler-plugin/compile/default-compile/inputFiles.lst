@@ -1,9 +1,12 @@
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\gui\MainGameStratego.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\restclient\RestClient.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\RegisterController.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\BattleOutcome.java
-C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\StrategoControllerWessel.java
-C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\GameStatus.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\WebSocketGui.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\Color.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\interfaces\IUserLogic.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\StrategoControllerWessel.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\GameStatus.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\module-info.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\ClientEndPoint.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\MoveStatus.java

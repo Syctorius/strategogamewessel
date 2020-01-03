@@ -1,5 +1,7 @@
 package server;
 
+import dtos.LoginDTO;
+
 import java.util.List;
 
 public class LoginResponse {

@@ -1,7 +1,7 @@
 package server;
 
-import helpers.User;
-
+import dtos.LoginDTO;
+import user.User;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,7 +30,7 @@ public class LoginService {
         boolean response = false;
 
 
-        List<User> allUsers =  StrategoLogin.getInstance().getAllUsers();
+        List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
         for (User user1 : allUsers) {
             if (user1.getUsername().equals(user.getUsername()) && user1.getPassword().equals(user.getPassword())) {
                 response = true;
@@ -50,7 +50,7 @@ public class LoginService {
     public Response getAllUsers() {
 
         // Get all users
-        List<User> allUsers =  StrategoLogin.getInstance().getAllUsers();
+        List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
 
         // Define response
         return Response.status(200).entity(ResponseHelper.getAllUsersResponse(ResponseHelper.getUserDTOList(allUsers))).build();
@@ -64,7 +64,7 @@ public class LoginService {
         boolean response = true;
 
 
-        List<User> allUsers =  StrategoLogin.getInstance().getAllUsers();
+        List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
         for (User user1 : allUsers) {
             if (user1.getUsername().equals(user.getUsername())) {
                 response = false;

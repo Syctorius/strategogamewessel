@@ -6,6 +6,7 @@ module GUI {
     requires gson;
     requires javax.websocket.api;
     requires messages;
+    requires dto;
     exports controllers;
     opens controllers;
     exports gui;

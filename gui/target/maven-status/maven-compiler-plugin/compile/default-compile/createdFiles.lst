@@ -2,9 +2,12 @@ websocketshared\ClientEndPoint$2.class
 frontendenums\GameStatus.class
 websocketshared\ClientEndPoint$5.class
 gui\MainGameStratego.class
+restclient\RestClient.class
+restclient\RestClient$1.class
 controllers\StrategoControllerWessel$1.class
 websocketshared\ClientEndPoint$6.class
 websocketshared\ClientEndPoint$3.class
+controllers\RegisterController.class
 websocketshared\ClientEndPoint$7.class
 controllers\StrategoControllerWessel$Square.class
 frontendenums\Color.class
@@ -12,6 +15,7 @@ websocketshared\ClientEndPoint$4.class
 module-info.class
 controllers\StrategoControllerWessel.class
 frontendenums\MoveStatus.class
+interfaces\IUserLogic.class
 websocketshared\ClientEndPoint$1.class
 frontendenums\BattleOutcome.class
 websocketshared\WebSocketGui.class

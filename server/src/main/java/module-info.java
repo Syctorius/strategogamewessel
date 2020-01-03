@@ -12,6 +12,7 @@ module server {
     requires java.datatransfer;
     requires java.desktop;
     requires messages;
+    requires dto;
 
     opens server;
     opens messages;
