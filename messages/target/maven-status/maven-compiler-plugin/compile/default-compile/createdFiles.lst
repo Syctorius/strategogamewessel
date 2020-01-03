@@ -1,0 +1,10 @@
+messages\Message.class
+messages\MatchFoundMessage.class
+messages\PlaceUnitMessage.class
+module-info.class
+messageenum\MessageType.class
+messages\UserReadyMessage.class
+messages\NotYourTurnMessage.class
+messages\DeleteMessage.class
+messages\EndGameMessage.class
+messages\MovementMessage.class

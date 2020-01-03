@@ -1,0 +1,30 @@
+
+U
+squid:S106/"9Replace this use of System.out or System.err by a logger.(‡θ#8α­ατ-
+Wsquid:S4973V"9Use the "equals" method if value comparison was intended.(ƒ±¤΅8τ•Ηατ-
+U
+squid:S106)"9Replace this use of System.out or System.err by a logger.(•ι«K8α­ατ-
+[
+squid:S1065"9Replace this use of System.out or System.err by a logger.(ΈΞ‰Υϋÿÿÿÿ8α­ατ-
+V
+squid:S106Z"9Replace this use of System.out or System.err by a logger.(§Ε™8α­ατ-
+W
+squid:S106’"9Replace this use of System.out or System.err by a logger.(¨η°­8α­ατ-
+csquid:HiddenFieldChecko":Rename "gameId" which hides the field declared at line 28.(‡ΚΕ΅8α­ατ-
+[
+squid:S106A"9Replace this use of System.out or System.err by a logger.(Η ‡ωÿÿÿÿ8α­ατ-
+V
+squid:S1066"9Replace this use of System.out or System.err by a logger.(Ε³ω8α­ατ-
+W
+squid:S106‘"9Replace this use of System.out or System.err by a logger.(¨η°­8α­ατ-
+asquid:HiddenFieldCheck;"8Rename "gson" which hides the field declared at line 29.(ώλ8α­ατ-
+Osquid:S1481"",Remove this unused "message" local variable.(ζª‚κόÿÿÿÿ8α­ατ-
+V
+squid:S106!"9Replace this use of System.out or System.err by a logger.(¥ÿΥ°8α­ατ-
+V
+squid:S106u"9Replace this use of System.out or System.err by a logger.(«΄”8α­ατ-
+wsquid:S1192)"ZDefine a constant instead of duplicating this literal "[WebSocket Session ID] : " 3 times.(•ι«K8α­ατ-
+^squid:S1854"";Remove this useless assignment to local variable "message".(ζª‚κόÿÿÿÿ8α­ατ-
+[
+squid:S106$"9Replace this use of System.out or System.err by a logger.(Ϋ—ΐμόÿÿÿÿ8α­ατ-
+gsquid:UselessImportCheck"7Remove this unused import 'messages.MatchFoundMessage'.(σ΄ΤΗόÿÿÿÿ8µ·Αβτ-

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="782.0" prefWidth="1249.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StrategoControllerWessel">
+   <children>
+      <GridPane fx:id="Gridplayingfield" gridLinesVisible="true" layoutX="290.0" layoutY="96.0" prefHeight="642.0" prefWidth="648.0" style="-fx-background-color: lime; -fx-border-color: black;">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Button fx:id="Readybtn" layoutX="120.0" layoutY="614.0" maxHeight="44.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="170.0" text="Ready">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="Removeunitbtn" layoutX="120.0" layoutY="554.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="128.0" text="Remove Unit">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="Placeunitbtn" layoutX="124.0" layoutY="490.0" maxHeight="66.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="98.0" text="Place Unit">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="Generalbtn" layoutX="122.0" layoutY="351.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place9" prefHeight="86.0" prefWidth="74.0" text="9">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Majorbtn" layoutX="122.0" layoutY="284.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place7" prefHeight="81.0" prefWidth="73.0" text="7">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Lieutenantbtn" layoutX="122.0" layoutY="220.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place5" prefHeight="81.0" prefWidth="73.0" text="5">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Minerbtn" layoutX="124.0" layoutY="156.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place3" prefHeight="82.0" prefWidth="72.0" text="3">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Spybtn" layoutX="124.0" layoutY="93.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#PlaceS" prefHeight="85.0" prefWidth="74.0" text="S">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Colonelbtn" layoutX="184.0" layoutY="284.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place8" prefHeight="81.0" prefWidth="73.0" text="8">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Captainbutton" layoutX="183.0" layoutY="220.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place6" prefHeight="81.0" prefWidth="73.0" text="6">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Sergeantbtn" layoutX="184.0" layoutY="156.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place4" prefHeight="82.0" prefWidth="72.0" text="4">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Scoutbtn" layoutX="184.0" layoutY="93.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place2" prefHeight="85.0" prefWidth="74.0" text="2">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="Marshalbtn" layoutX="182.0" layoutY="351.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#PlaceX" prefHeight="84.0" prefWidth="74.0" text="X">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="bombbtn" layoutX="120.0" layoutY="417.0" maxHeight="56.0" maxWidth="54.0" mnemonicParsing="false" onMouseClicked="#PlaceBomb" prefHeight="56.0" prefWidth="54.0" text="💣">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="flagbtn" layoutX="182.0" layoutY="417.0" maxHeight="56.0" maxWidth="54.0" mnemonicParsing="false" onMouseClicked="#PlaceFlag" prefHeight="56.0" prefWidth="54.0" text="🏁">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="Chatlog" layoutX="984.0" layoutY="93.0" prefHeight="466.0" prefWidth="189.0" />
+   </children>
+</AnchorPane>

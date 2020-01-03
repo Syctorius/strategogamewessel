@@ -1,0 +1,27 @@
+
+Vsquid:S4973B"9Use the "equals" method if value comparison was intended.(¡ÈÓE8öˆğšñ-
+isquid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(İéÄË8öˆğšñ-
+\squid:S1155$">Use isEmpty() to check whether the collection is empty or not.(í¾óÀ8€½É¿ô-
+ª%squid:RedundantThrowsDeclarationCheck6"rRemove the declaration of thrown exception 'java.lang.UnsupportedOperationException' which is a runtime exception.(­ƒÅ8öˆğšñ-
+_squid:S1126$"AReplace this if-then-else statement by a single return statement.(í¾óÀ8öˆğšñ-
+\squid:S4973>"9Use the "equals" method if value comparison was intended.(­¡€Ùÿÿÿÿÿ8öˆğšñ-
+vsquid:S00117—"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø’¡Úûÿÿÿÿ8öˆğšñ-
+|squid:S1450"_Remove the "singlePlayerMode" field and declare it as a local variable in the relevant methods.(îÄ"8öˆğšñ-
+Ssquid:S2209<"5Change this instance-reference to a static reference.(º€å8öˆğšñ-
+Qsquid:S1068"4Remove this unused "singlePlayerMode" private field.(îÄ"8öˆğšñ-
+usquid:S00117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŞ›¹úÿÿÿÿ8öˆğšñ-
+\squid:S1155$">Use isEmpty() to check whether the collection is empty or not.(í¾óÀ8€½É¿ô-
+Vsquid:S2589a"8Remove this expression which always evaluates to "false"(ËĞ8öˆğšñ-
+Vsquid:S2589V"8Remove this expression which always evaluates to "false"(„ÖÊŒ8öˆğšñ-
+nsquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(¿ì¡¢ûÿÿÿÿ8öˆğšñ-
+Usquid:S2589P"7Remove this expression which always evaluates to "true"(Ùìå÷8öˆğšñ-
+Xsquid:S2209["5Change this instance-reference to a static reference.(ÜšŞúÿÿÿÿ8öˆğšñ-
+nsquid:CommentedOutCodeLineC"<This block of commented-out lines of code should be removed.(öÔ¿Ñüÿÿÿÿ8öˆğšñ-
+Ysquid:S2696["6Make the enclosing method "static" or remove this set.(ÜšŞúÿÿÿÿ8öˆğšñ-
+Tsquid:S2696<"6Make the enclosing method "static" or remove this set.(º€å8öˆğšñ-
+usquid:S00117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŞ›¹úÿÿÿÿ8öˆğšñ-
+Wsquid:S4973L"9Use the "equals" method if value comparison was intended.(†¯é8€½É¿ô-
+nsquid:CommentedOutCodeLine~"<This block of commented-out lines of code should be removed.(Å¨å¿øÿÿÿÿ8öˆğšñ-
+nsquid:CommentedOutCodeLineQ"<This block of commented-out lines of code should be removed.(÷İ¹¿ûÿÿÿÿ8öˆğšñ-
+vsquid:S00117—"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø’¡Úûÿÿÿÿ8öˆğšñ-
+hsquid:HiddenFieldCheck…"9Rename "board" which hides the field declared at line 14.(¢ÀñÃøÿÿÿÿ8öˆğšñ-

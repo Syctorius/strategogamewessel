@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="782.0" prefWidth="1249.0" style="-fx-background-color: linear-gradient(#ff5400, #be1d00);; -fx-background-radius: 3, 30;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StrategoControllerWessel">
+   <children>
+      <GridPane fx:id="Gridplayingfield" depthTest="DISABLE" gridLinesVisible="true" layoutX="290.0" layoutY="96.0" prefHeight="635.0" prefWidth="650.0" style="-fx-border-style: solid inside; -fx-border-width: 2; -fx-border-radius: 5; -fx-border-color: black; -fx-background-color: green;">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Button fx:id="Readybtn" layoutX="73.0" layoutY="730.0" maxHeight="44.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#readyUp" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Ready">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="Removeunitbtn" layoutX="73.0" layoutY="670.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Remove Unit">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="Placeunitbtn" layoutX="77.0" layoutY="606.0" maxHeight="66.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Place Unit">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="Generalbtn" layoutX="94.0" layoutY="428.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place9" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@GENERAL.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Majorbtn" layoutX="94.0" layoutY="339.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place7" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@MAJOR.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Lieutenantbtn" layoutX="94.0" layoutY="246.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place5" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="40.0">
+               <image>
+                  <Image url="@LIEUTENANT.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Minerbtn" layoutX="94.0" layoutY="156.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place3" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="40.0">
+               <image>
+                  <Image url="@MINER.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Spybtn" layoutX="94.0" layoutY="63.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#PlaceS" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;" stylesheets="@Untitled-1.css">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="40.0" preserveRatio="true">
+               <image>
+                  <Image url="@SPY.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Colonelbtn" layoutX="184.0" layoutY="339.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place8" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@COLONEL.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Captainbutton" layoutX="183.0" layoutY="246.0" maxHeight="30.0" maxWidth="30.0" mnemonicParsing="false" onMouseClicked="#Place6" prefHeight="81.0" prefWidth="73.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@CAPTAIN.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Sergeantbtn" layoutX="184.0" layoutY="156.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place4" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="40.0">
+               <image>
+                  <Image url="@SERGEANT.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Scoutbtn" layoutX="184.0" layoutY="63.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#Place2" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="40.0" preserveRatio="true">
+               <image>
+                  <Image url="@SCOUT.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Marshalbtn" layoutX="185.0" layoutY="428.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#PlaceX" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="26.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@MARSHAL.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="bombbtn" layoutX="94.0" layoutY="519.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#PlaceBomb" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="21.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@BOMB.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="flagbtn" layoutX="182.0" layoutY="519.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onMouseClicked="#PlaceFlag" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;;">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="41.0">
+               <image>
+                  <Image url="@FLAG.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextArea fx:id="Chatlog" layoutX="984.0" layoutY="93.0" prefHeight="466.0" prefWidth="189.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" />
+      <ImageView fitHeight="104.0" fitWidth="200.0" layoutX="536.0" layoutY="-8.0">
+         <image>
+            <Image url="@stratego_trim.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

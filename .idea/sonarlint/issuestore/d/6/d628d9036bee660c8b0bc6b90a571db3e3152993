@@ -1,0 +1,99 @@
+
+tsquid:S00116+"URename this field "Generalbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÁ‹¿8¾Ü«ùî-
+Œ"squid:ClassVariableVisibilityCheck/"RMake Spybtn a static final constant or non-public and provide accessors if needed.(ë®€ûþÿÿÿÿ8¾Ü«ùî-
+wsquid:S00116."SRename this field "Minerbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÏø´ùÿÿÿÿ8¾Ü«ùî-
+usquid:S00116*"WRename this field "Placeunitbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒÈçJ8¾Ü«ùî-
+zsquid:S00116d"VRename this field "LIEUTENANT2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ùŽ§úýÿÿÿÿ8ÊœŒ‹õ-
+osquid:CommentedOutCodeLine˜"<This block of commented-out lines of code should be removed.(üÓñ«øÿÿÿÿ8ú¼É¿ô-
+‹"squid:ClassVariableVisibilityCheck4"VMake Marshalbtn a static final constant or non-public and provide accessors if needed.(¨‘Œ¨8¾Ü«ùî-
+“"squid:ClassVariableVisibilityCheck-"YMake Lieutenantbtn a static final constant or non-public and provide accessors if needed.(ÔæÞ•ÿÿÿÿÿ8¾Ü«ùî-
+xsquid:S00116^"TRename this field "SERGEANT2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôðäÝûÿÿÿÿ8ÊœŒ‹õ-
+nsquid:S00100Ó"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈóÁ8¾Ü«ùî-
+Fsquid:S1125°"(Remove the literal "true" boolean value.(èŒ«8¾Ü«ùî-
+psquid:S00116W"QRename this field "MAJOR1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈûÆ¥8ÊœŒ‹õ-
+ssquid:S00100Ý"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÁÈ–ÿÿÿÿÿ8¾Ü«ùî-
+ssquid:S00116R"TRename this field "SERGEANT1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð•¶Ã8ÊœŒ‹õ-
+ssquid:S00116Z"ORename this field "SPY2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü¸Ã÷ýÿÿÿÿ8ÊœŒ‹õ-
+vsquid:S001167"RRename this field "Chatlog" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µÒ€îþÿÿÿÿ8¾Ü«ùî-
+zsquid:S001162"VRename this field "Sergeantbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éÑ¿Òÿÿÿÿÿ8¾Ü«ùî-
+nsquid:S00116["PRename this field "BOMB2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ì:8ÊœŒ‹õ-
+nsquid:S00100Ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ®¥ë8¾Ü«ùî-
+Ž"squid:ClassVariableVisibilityCheck,"TMake Majorbtn a static final constant or non-public and provide accessors if needed.(Ïþäùùÿÿÿÿ8¾Ü«ùî-
+hsquid:UselessImportCheck "8Remove this unused import 'java.net.URISyntaxException'.(Ä®íÿÿÿÿÿ8ÓŒÍÁô-
+lsquid:UselessImportCheck"<Remove this unused import 'javafx.animation.FadeTransition'.(ÞŽõ›ÿÿÿÿÿ8ì×é¿ô-
+Ssquid:S2209š"5Change this instance-reference to a static reference.(âÁ¿D8ô±Õˆõ-
+wsquid:S00116,"SRename this field "Majorbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïþäùùÿÿÿÿ8¾Ü«ùî-
+jsquid:CommentedOutCodeLine–"<This block of commented-out lines of code should be removed.(‹—°Ê8ú¼É¿ô-
+fsquid:UselessImportCheck"6Remove this unused import 'messages.UserReadyMessage'.(„ú£¿øÿÿÿÿ8 âô-
+vsquid:S00116H"RRename this field "MARSHAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê˜ìáøÿÿÿÿ8ú¼É¿ô-
+wsquid:S00116b"SRename this field "COLONEL2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Ò»¯ùÿÿÿÿ8ÊœŒ‹õ-
+ssquid:S00100â"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ÷Œ…üÿÿÿÿ8¾Ü«ùî-
+rsquid:S00116U"SRename this field "GENERAL1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùí—ÿ8ÊœŒ‹õ-
+“"squid:ClassVariableVisibilityCheck)"YMake Removeunitbtn a static final constant or non-public and provide accessors if needed.(¦‘‹•þÿÿÿÿ8¾Ü«ùî-
+squid:S001169"[Rename this field "Gridplayingfield" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿë½Ñøÿÿÿÿ8¾Ü«ùî-
+usquid:S00116e"QRename this field "SCOUT2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š©ˆùûÿÿÿÿ8ÊœŒ‹õ-
+nsquid:S00100Î"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±Ûž±8¾Ü«ùî-
+ssquid:S00100ç"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê³Š›ùÿÿÿÿ8¾Ü«ùî-
+_squid:UnusedPrivateMethodý"2Remove this unused private "animationPlay" method.(ÕÏÌª8ô±Õˆõ-
+usquid:S00116Q"QRename this field "MINER1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÏï”ûÿÿÿÿ8ÊœŒ‹õ-
+osquid:S00116E"PRename this field "MINER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑùÜó8ú¼É¿ô-
+usquid:S00116Y"QRename this field "SCOUT1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è¾é‚þÿÿÿÿ8ÊœŒ‹õ-
+‹"squid:ClassVariableVisibilityCheck+"VMake Generalbtn a static final constant or non-public and provide accessors if needed.(ÿÁ‹¿8¾Ü«ùî-
+wsquid:S001161"XRename this field "Captainbutton" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïß¤ž8¾Ü«ùî-
+osquid:S00116\"PRename this field "FLAG2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ûèæ8ÊœŒ‹õ-
+ssquid:S00100ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú­•Àþÿÿÿÿ8¾Ü«ùî-
+usquid:S00116X"VRename this field "LIEUTENANT1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹éÙ8ÊœŒ‹õ-
+"squid:ClassVariableVisibilityCheck7"SMake Chatlog a static final constant or non-public and provide accessors if needed.(µÒ€îþÿÿÿÿ8¾Ü«ùî-
+qsquid:S00116G"RRename this field "CAPTAIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¢¯Ð8ú¼É¿ô-
+qsquid:S00116a"SRename this field "GENERAL2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ýâH8ÊœŒ‹õ-
+ssquid:S00100º"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÚ¾ûûÿÿÿÿ8¾Ü«ùî-
+"squid:ClassVariableVisibilityCheckÁ"UMake ImageView a static final constant or non-public and provide accessors if needed.(Ö÷“ÿüÿÿÿÿ8ú¼É¿ô-
+ysquid:S00116L"URename this field "LIEUTENANT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æµ”êøÿÿÿÿ8ú¼É¿ô-
+ssquid:S00100À"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«°Íèøÿÿÿÿ8¾Ü«ùî-
+msquid:S00100Å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôµä@8¾Ü«ùî-
+tsquid:S00116M"PRename this field "SCOUT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»œ±Áþÿÿÿÿ8ú¼É¿ô-
+usquid:S00116/"QRename this field "Spybtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë®€ûþÿÿÿÿ8¾Ü«ùî-
+Ž"squid:ClassVariableVisibilityCheck("TMake Readybtn a static final constant or non-public and provide accessors if needed.(‚«šÖýÿÿÿÿ8¾Ü«ùî-
+rsquid:S00116`"SRename this field "MARSHAL2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ïýõ8ÊœŒ‹õ-
+osquid:S00116P"PRename this field "FLAG1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èýÖ®8ÊœŒ‹õ-
+qsquid:S00116V"SRename this field "COLONEL1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š´ø!8ÊœŒ‹õ-
+Tsquid:UselessImportCheck")Remove this unused import 'java.net.URI'.(Ö¦¨°8·ÓÊÁô-
+ysquid:S001160"URename this field "Colonelbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö”« øÿÿÿÿ8¾Ü«ùî-
+wsquid:S00116F"SRename this field "SERGEANT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒíßŒúÿÿÿÿ8ú¼É¿ô-
+nsquid:S00116C"ORename this field "BOMB" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éËÙ8ú¼É¿ô-
+ysquid:S00116Á"TRename this field "ImageView" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö÷“ÿüÿÿÿÿ8ú¼É¿ô-
+"squid:ClassVariableVisibilityCheck0"VMake Colonelbtn a static final constant or non-public and provide accessors if needed.(ö”« øÿÿÿÿ8¾Ü«ùî-
+"squid:ClassVariableVisibilityCheck5"SMake bombbtn a static final constant or non-public and provide accessors if needed.(¨½ä‡úÿÿÿÿ8¾Ü«ùî-
+qsquid:S00116I"RRename this field "GENERAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä÷ÍÚ8ú¼É¿ô-
+rsquid:S00116B"NRename this field "SPY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š²¸…ýÿÿÿÿ8ú¼É¿ô-
+Gsquid:S1172º"(Remove this unused method parameter "s".(ððê€8ú¼É¿ô-
+Ž"squid:ClassVariableVisibilityCheck."TMake Minerbtn a static final constant or non-public and provide accessors if needed.(ˆÏø´ùÿÿÿÿ8¾Ü«ùî-
+tsquid:S001164"URename this field "Marshalbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨‘Œ¨8¾Ü«ùî-
+|squid:S00116)"XRename this field "Removeunitbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦‘‹•þÿÿÿÿ8¾Ü«ùî-
+wsquid:S00116T"SRename this field "MARSHAL1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸Æ‘´øÿÿÿÿ8ÊœŒ‹õ-
+psquid:S00116]"QRename this field "MINER2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë‡¤8ÊœŒ‹õ-
+Hsquid:S00108•")Either remove or fill this block of code.(Í´ˆ#8ú¼É¿ô-
+Ysquid:S2209—"5Change this instance-reference to a static reference.(‚¿ßçýÿÿÿÿ8ô±Õˆõ-
+ssquid:S00100Ø"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ˜¸æùÿÿÿÿ8¾Ü«ùî-
+‘"squid:ClassVariableVisibilityCheck2"WMake Sergeantbtn a static final constant or non-public and provide accessors if needed.(éÑ¿Òÿÿÿÿÿ8¾Ü«ùî-
+Ž"squid:ClassVariableVisibilityCheck1"YMake Captainbutton a static final constant or non-public and provide accessors if needed.(ïß¤ž8¾Ü«ùî-
+rsquid:S00116_"SRename this field "CAPTAIN2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ­‹ã8ÊœŒ‹õ-
+qsquid:S001163"SRename this field "Scoutbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øã+8¾Ü«ùî-
+wsquid:S00116S"SRename this field "CAPTAIN1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð±’åùÿÿÿÿ8ÊœŒ‹õ-
+vsquid:S00116J"RRename this field "COLONEL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êï¬÷ûÿÿÿÿ8ú¼É¿ô-
+nsquid:S00116O"PRename this field "BOMB1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢×Ëk8ÊœŒ‹õ-
+‡"squid:ClassVariableVisibilityCheck6"SMake flagbtn a static final constant or non-public and provide accessors if needed.(í°8¾Ü«ùî-
+nsquid:S00100÷"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¢Öè8¾Ü«ùî-
+|squid:S00116-"XRename this field "Lieutenantbtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔæÞ•ÿÿÿÿÿ8¾Ü«ùî-
+ssquid:S00116N"ORename this field "SPY1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö×¯€ùÿÿÿÿ8ÊœŒ‹õ-
+Tsquid:S2209”"5Change this instance-reference to a static reference.(ŸÉ¦Ô8ô±Õˆõ-
+ˆ"squid:ClassVariableVisibilityCheck3"TMake Scoutbtn a static final constant or non-public and provide accessors if needed.(øã+8¾Ü«ùî-
+Œ"squid:ClassVariableVisibilityCheck*"XMake Placeunitbtn a static final constant or non-public and provide accessors if needed.(ÒÈçJ8¾Ü«ùî-
+rsquid:MaximumInheritanceDepth¿"<This class has 6 parents which is greater than 5 authorized.(üÁÞøùÿÿÿÿ8¾Ü«ùî-
+usquid:S00116c"QRename this field "MAJOR2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÒØÕ”ùÿÿÿÿ8ÊœŒ‹õ-
+wsquid:S00116("SRename this field "Readybtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚«šÖýÿÿÿÿ8¾Ü«ùî-
+nsquid:S00116D"ORename this field "FLAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¸øð8ú¼É¿ô-
+Psquid:S1172Î"1Remove this unused method parameter "mouseEvent".(±Ûž±8¾Ü«ùî-
+_squid:S1126°"AReplace this if-then-else statement by a single return statement.(èŒ«8¾Ü«ùî-
+tsquid:S00116K"PRename this field "MAJOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸŽš»øÿÿÿÿ8ú¼É¿ô-
+Nsquid:S1066ª"/Merge this if statement with the enclosing one.(¬„À‡8¾Ü«ùî-

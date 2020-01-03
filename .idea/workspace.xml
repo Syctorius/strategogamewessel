@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XSLT Stylesheet" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_COMMON_BRANCH" value="master" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/StrategoFinal" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="delegateBuildToMaven" value="true" />
+  </component>
+  <component name="ProjectId" id="1UmmZaNBC0XlTh7w4W7oLfmLHJS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gui" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.19967794" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="interfaces" />
+      <recent name="helpers" />
+      <recent name="server" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\server\src\test\java" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\strategogame" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\resources" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\resourcess" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel\gui" />
+      <recent name="C:\Users\wesse\Downloads\strategogamewessel" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install\" />
+      <command value="mvn validate" />
+      <command value="mvn compiler:compile" />
+      <command value="mvn compile" />
+      <command value="mvn dependency:tree" />
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MainGameStratego">
+    <configuration name="MainGameStratego (1)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.MainGameStratego" />
+      <module name="strategogamewessel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainGameStratego" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.MainGameStratego" />
+      <module name="gui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Service" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Service" />
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Boardtests.placeSuccessfulTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Boardtests" />
+      <option name="METHOD_NAME" value="placeSuccessfulTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MainGameStratego" />
+      <item itemvalue="Application.MainGameStratego (1)" />
+      <item itemvalue="Application.Service" />
+      <item itemvalue="JUnit.All in server" />
+      <item itemvalue="JUnit.Boardtests.placeSuccessfulTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in server" />
+        <item itemvalue="Application.Service" />
+        <item itemvalue="Application.MainGameStratego" />
+        <item itemvalue="Application.MainGameStratego (1)" />
+        <item itemvalue="JUnit.Boardtests.placeSuccessfulTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="" />
+      <created>1575970200242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575970200242</updated>
+      <workItem from="1575970203659" duration="17261000" />
+      <workItem from="1576066824453" duration="1776000" />
+      <workItem from="1576139802394" duration="575000" />
+      <workItem from="1576149525847" duration="22000" />
+      <workItem from="1576264988770" duration="172000" />
+      <workItem from="1576570130736" duration="15368000" />
+      <workItem from="1577100344313" duration="32662000" />
+      <workItem from="1577460058547" duration="9974000" />
+      <workItem from="1577526902200" duration="2187000" />
+      <workItem from="1577529096161" duration="9865000" />
+      <workItem from="1577632944290" duration="27120000" />
+      <workItem from="1577879778274" duration="15899000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/test/java/Boardtests.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/Service.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/Board.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

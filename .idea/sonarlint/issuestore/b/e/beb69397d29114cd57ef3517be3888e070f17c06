@@ -1,0 +1,17 @@
+
+]squid:UselessImportCheck"4Remove this unused import 'messageenum.MessageType'.(È¨êøÿÿÿÿ
+Zsquid:UselessImportCheck"7Remove this unused import 'javafx.scene.control.Alert'.(ÊÇê:
+?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148N"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+asquid:UselessImportCheck"8Remove this unused import 'javafx.application.Platform'.(§“óùÿÿÿÿ
+bsquid:S2147""DCombine this catch with the one at line 30, which has the same body.(óûìœ8³ÖÉÁô-
+Psquid:S1135"2Complete the task associated to this TODO comment.(ˆêÅØ8æšÉÁô-
+Tsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ˆêÅØ8æšÉÁô-
+gsquid:UselessImportCheck">Remove this unused import 'com.google.gson.reflect.TypeToken'.(İªıñøÿÿÿÿ
+?squid:S1148!"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Fsquid:S1148#"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³ÖÉÁô-
+:squid:S1148E"#Use a logger to log this exception.(Óùóÿ
+_squid:S1075"ARefactor your code to get this URI from a customizable parameter.(ˆêÅØ8ş¶ÉÁô-
+†"squid:SwitchLastCaseIsDefaultCheck,"YComplete cases by adding the missing enum constants or add a default case to this switch.(‚‚Òr
+[squid:S2147 "DCombine this catch with the one at line 30, which has the same body.(ï­£Ä

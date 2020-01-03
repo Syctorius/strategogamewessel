@@ -1,0 +1,16 @@
+
+dsquid:S11260"AReplace this if-then-else statement by a single return statement.(­¾Ù†ýÿÿÿÿ8ŸÚªŸñ-
+nsquid:CommentedOutCodeLineS"<This block of commented-out lines of code should be removed.(¢ô³©úÿÿÿÿ8ŸÚªŸñ-
+rsquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·Ÿæ”ýÿÿÿÿ8ŸÚªŸñ-
+Osquid:S1172[",Remove this unused method parameter "color".(úØÌ§øÿÿÿÿ8ŸÚªŸñ-
+“squid:S1319'"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(äº±Ôúÿÿÿÿ8ŸÚªŸñ-
+Žsquid:S1319o"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(óîÜå8ŸÚªŸñ-
+rsquid:S00100Q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø†ÈÖþÿÿÿÿ8ŸÚªŸñ-
+<squid:S2119]"Save and re-use this "Random".(¡Å”¦8ŸÚªŸñ-
+“squid:S1319+"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Õ§„’ýÿÿÿÿ8ŸÚªŸñ-
+Osquid:S1172Q",Remove this unused method parameter "color".(Ø†ÈÖþÿÿÿÿ8ŸÚªŸñ-
+usquid:S00117c"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î« ûÿÿÿÿ8ŸÚªŸñ-
+usquid:S00117b"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñã˜Éþÿÿÿÿ8ŸÚªŸñ-
+Psquid:S1135_"2Complete the task associated to this TODO comment.(óãèÂ8ŸÚªŸñ-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Åœ¿Œ8ŸÚªŸñ-
+rsquid:S00100["NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úØÌ§øÿÿÿÿ8ŸÚªŸñ-
