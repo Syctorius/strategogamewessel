@@ -40,12 +40,15 @@ public class Board {
         this.redWidth = 10;
 
     }
+
     public ArrayList<Piece> getToPlacePieces() {
         return toPlacePieces;
     }
+
     public ArrayList<Point> getToPlacePiecesCoords() {
         return toPlacePiecesCoords;
     }
+
     public ArrayList<Rank> getBluePieces() {
         return bluePieces;
     }
@@ -92,16 +95,20 @@ public class Board {
         if (checkIfPieceCanBePlaced(x, y, pieceToPlace)) {
             //  redPieces.remove(pieceToPlace);
             setPiece(pieceToPlace, new Point(x, y));
-            if (color == Color.RED) {
-                redPieces.add(pieceToPlace.getActualRank());
-
-            } else {
-                bluePieces.add(pieceToPlace.getActualRank());
-            }
+            addToPiecesList(pieceToPlace, color);
             return true;
         }
 
         return false;
+    }
+
+    private void addToPiecesList(Piece pieceToPlace, Color color) {
+        if (color == Color.RED) {
+            redPieces.add(pieceToPlace.getActualRank());
+
+        } else {
+            bluePieces.add(pieceToPlace.getActualRank());
+        }
     }
 
     public void removePiece(Point point) {
@@ -119,53 +126,56 @@ public class Board {
         fillListWithRankAndRankCount();
         switch (color) {
             case RED:
+                redPieces = new ArrayList<>();
                 fillBoard(color, r, 60, 100);
                 break;
             case BLUE:
-                fillBoard(color,r,0,40);
+                bluePieces = new ArrayList<>();
+                fillBoard(color, r, 0, 40);
                 break;
         }
 
     }
 
     private void fillListWithRankAndRankCount() {
-        addRankToList(Rank.MINER,5);
-        addRankToList(Rank.FLAG,1);
-        addRankToList(Rank.SPY,1);
-        addRankToList(Rank.BOMB,6);
-        addRankToList(Rank.SCOUT,8);
-        addRankToList(Rank.SERGEANT,4);
-        addRankToList(Rank.LIEUTENANT,4);
-        addRankToList(Rank.CAPTAIN,4);
-        addRankToList(Rank.MAJOR,3);
-        addRankToList(Rank.COLONEL,2);
-        addRankToList(Rank.GENERAL,1);
-        addRankToList(Rank.MARSHAL,1);
+        addRankToList(Rank.MINER, 5);
+        addRankToList(Rank.FLAG, 1);
+        addRankToList(Rank.SPY, 1);
+        addRankToList(Rank.BOMB, 6);
+        addRankToList(Rank.SCOUT, 8);
+        addRankToList(Rank.SERGEANT, 4);
+        addRankToList(Rank.LIEUTENANT, 4);
+        addRankToList(Rank.CAPTAIN, 4);
+        addRankToList(Rank.MAJOR, 3);
+        addRankToList(Rank.COLONEL, 2);
+        addRankToList(Rank.GENERAL, 1);
+        addRankToList(Rank.MARSHAL, 1);
     }
-    private void fillListWithPositions(int a, int b)
-    {
-        for(int i = a; i < b; i++)
-        {
+
+    private void fillListWithPositions(int a, int b) {
+        for (int i = a; i < b; i++) {
             positions.add(i);
         }
     }
 
     private synchronized void fillBoard(Color color, Random r, int a, int b) {
-        fillListWithPositions(a,b);
+        fillListWithPositions(a, b);
 
 
-            Collections.shuffle(positions);
-            while(!positions.isEmpty()) {
-                Piece pieceToPlace = new Piece(ranks.get(0), color);
-               int x = (positions.get(0)% 10);
-               int y = (positions.get(0) / 10);
-                if (checkIfPieceCanBePlaced(x, y, pieceToPlace)) {
-                    tilesInGame[y][x].setPiece(pieceToPlace);
-                    toPlacePieces.add(pieceToPlace);
-                    toPlacePiecesCoords.add(new Point(y,x));
-                }
-                ranks.remove(0);
-                positions.remove(0);
+
+        Collections.shuffle(positions);
+        while (!positions.isEmpty()) {
+            Piece pieceToPlace = new Piece(ranks.get(0), color);
+            int x = (positions.get(0) % 10);
+            int y = (positions.get(0) / 10);
+            if (checkIfPieceCanBePlaced(x, y, pieceToPlace)) {
+                tilesInGame[y][x].setPiece(pieceToPlace);
+                toPlacePieces.add(pieceToPlace);
+                addToPiecesList(pieceToPlace, color);
+                toPlacePiecesCoords.add(new Point(x, y));
+            }
+            ranks.remove(0);
+            positions.remove(0);
 
 
         }
@@ -198,12 +208,12 @@ public class Board {
 
                 break;
             case BLUE:
-                fillListWithPositions(0,40);
+                fillListWithPositions(0, 40);
         }
 
-        while(!positions.isEmpty()) {
+        while (!positions.isEmpty()) {
 
-            int x = (positions.get(0)% 10);
+            int x = (positions.get(0) % 10);
             int y = (positions.get(0) / 10);
             tilesInGame[y][x].setPiece(null);
             positions.remove(0);

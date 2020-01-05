@@ -1,6 +1,7 @@
 websocketshared\ClientEndPoint$2.class
 frontendenums\GameStatus.class
 websocketshared\ClientEndPoint$5.class
+websocketshared\ClientEndPoint$9.class
 gui\MainGameStratego.class
 restclient\RestClient.class
 restclient\RestClient$1.class
@@ -21,3 +22,4 @@ frontendenums\BattleOutcome.class
 websocketshared\WebSocketGui.class
 websocketshared\ClientEndPoint.class
 frontendenums\Rank.class
+websocketshared\ClientEndPoint$8.class

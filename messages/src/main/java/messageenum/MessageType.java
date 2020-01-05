@@ -11,5 +11,7 @@ public enum MessageType {
     ENDGAME,
     NOTYOURTURN,
     PLACEALL,
-    REMOVEALL;
+    REMOVEALL,
+    PLACEUNITFOROPPONENT,
+    RESETUI;
 }

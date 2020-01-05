@@ -112,8 +112,9 @@ public class ServerEndPoint implements StrategoServer {
 
 
                     if (games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE)) {
-                       sendOperationToBoth(session, wbMessage.getResult(),MessageType.PLACEUNIT);
+                       sendOperationToBoth(session, wbMessage.getResult(),MessageType.PLACEUNITFOROPPONENT);
                     }
+                    //TODO Make this fully serversided.
                 case MOVEMENT:
 
                     MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
@@ -125,7 +126,11 @@ public class ServerEndPoint implements StrategoServer {
                     games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()),placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
                     break;
                 case REMOVEALL:
-                 getKeyBasedOnSession(session);
+                    RemoveAllUnitsMessage removeall = gson.fromJson(wbMessage.getResult(), new TypeToken<RemoveAllUnitsMessage>() {}.getType());
+                    int tempgameid = getKeyBasedOnSession(session);
+                    games.get(tempgameid).removeAllPieces(Integer.parseInt(session.getId()),removeall.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
+                    sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(removeall.getTeamcolor()))), tempgameid);
+                   //TODO Make this fully server side
                     break;
 
                 default:
@@ -230,19 +235,19 @@ public class ServerEndPoint implements StrategoServer {
 
     @Override
     public void moveUnit(Point oldPos, Point newPos, int gameId){
-    sendMessageWithMessageType(new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(oldPos, newPos))), gameId);
+    sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(oldPos, newPos))), gameId);
 
     }
 
     @Override
     public void deleteUnit(Point Pos, int gameId) {
 
-        sendMessageWithMessageType(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(Pos))), gameId);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(Pos))), gameId);
 
 
     }
 
-    private void sendMessageWithMessageType(Message message, int gameId) {
+    private void sendMessageWithMessageTypeToBothUsersInGame(Message message, int gameId) {
         Gson gson = new Gson();
         for (Map.Entry<Integer, List<Session>> gameSession : strategoGames.entrySet()) {
             if (gameSession.getKey() - 1 == gameId) {
@@ -258,21 +263,25 @@ public class ServerEndPoint implements StrategoServer {
     public void endGame(Color teamcolor, int gameId) {
         int color = teamcolor == Color.RED ? 1 : 2;
        // unregisterFromGame();
-        sendMessageWithMessageType(new Message(MessageType.ENDGAME, gson.toJson(new EndGameMessage(color))), gameId);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.ENDGAME, gson.toJson(new EndGameMessage(color))), gameId);
     }
 
     @Override
     public void sendMessageNotYourTurn(String string, Color turnColor, int gameId) {
         int color = turnColor == Color.RED ? 2 : 1; // opposite because it goes to the requesting player, making him aware that it's not his turn.
-        sendMessageWithMessageType(new Message(MessageType.NOTYOURTURN, gson.toJson(new NotYourTurnMessage(color))), gameId);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.NOTYOURTURN, gson.toJson(new NotYourTurnMessage(color))), gameId);
 
     }
 
     @Override
     public void placeAllPieces(List<Piece> pieces, List<Point> points,Color color, int gameId) {
         int teamcolor = color == Color.RED ? 1 : 2;
+        if(!pieces.isEmpty())
+        {
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(teamcolor))), gameId);
+        }
        while(!pieces.isEmpty()){
-            sendMessageWithMessageType(new Message(MessageType.PLACEUNIT, gson.toJson(new PlaceUnitMessage(points.get(0),teamcolor,pieces.get(0).getActualRank().toString()))), gameId);
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(new PlaceUnitMessage(points.get(0),teamcolor,pieces.get(0).getActualRank().toString()))), gameId);
             pieces.remove(0);
             points.remove(0);
        }

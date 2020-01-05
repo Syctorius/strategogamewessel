@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import frontendenums.Color;
 import frontendenums.GameStatus;
 import frontendenums.MoveStatus;
 import frontendenums.Rank;
@@ -54,6 +55,7 @@ public class StrategoControllerWessel implements Initializable {
     public Circle circleTeamColor;
     public Label lblUsername;
     public Button PlaceAuto;
+    public Button removeAllbtn;
     @FXML
     GridPane Gridplayingfield = new GridPane();
     private Square toPlaceSquare = new Square();
@@ -126,21 +128,24 @@ public class StrategoControllerWessel implements Initializable {
 
     }
 
-    private void disableButtons(boolean enabled) {
-        Removeunitbtn.setDisable(enabled);
-        Placeunitbtn.setDisable(enabled);
-        Generalbtn.setDisable(enabled);
-        Majorbtn.setDisable(enabled);
-        Lieutenantbtn.setDisable(enabled);
-        Minerbtn.setDisable(enabled);
-        Spybtn.setDisable(enabled);
-        Colonelbtn.setDisable(enabled);
-        Captainbutton.setDisable(enabled);
-        Sergeantbtn.setDisable(enabled);
-        Scoutbtn.setDisable(enabled);
-        Marshalbtn.setDisable(enabled);
-        bombbtn.setDisable(enabled);
-        flagbtn.setDisable(enabled);
+    public void disableButtons(boolean enabled) {
+        Platform.runLater(() -> {
+            Removeunitbtn.setDisable(enabled);
+            Placeunitbtn.setDisable(enabled);
+            Generalbtn.setDisable(enabled);
+            Majorbtn.setDisable(enabled);
+            Lieutenantbtn.setDisable(enabled);
+            Minerbtn.setDisable(enabled);
+            Spybtn.setDisable(enabled);
+            Colonelbtn.setDisable(enabled);
+            Captainbutton.setDisable(enabled);
+            Sergeantbtn.setDisable(enabled);
+            Scoutbtn.setDisable(enabled);
+            Marshalbtn.setDisable(enabled);
+            bombbtn.setDisable(enabled);
+            flagbtn.setDisable(enabled);
+            PlaceAuto.setDisable(enabled);
+        });
     }
 
     private void initImages() {
@@ -205,8 +210,8 @@ public class StrategoControllerWessel implements Initializable {
         Platform.runLater(() -> {
                     this.teamColor = teamcolor;
                     circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
-                    disableButtons(false);
                 });
+        disableButtons(false);
 
         showMessage("A match has been found.");
     }
@@ -256,6 +261,11 @@ public class StrategoControllerWessel implements Initializable {
         clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(new PlaceAllUnitsMessage(this.teamColor))));
     }
 
+    public void removeAll(MouseEvent mouseEvent) {
+        Gson gson = new Gson();
+        clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(new RemoveAllUnitsMessage(this.teamColor))));
+    }
+
 
     private class Square extends StackPane {
 
@@ -290,7 +300,24 @@ public class StrategoControllerWessel implements Initializable {
             }
         }
     }
+public void resetUI(int color)
 
+{
+    Platform.runLater(() -> {
+
+        for (Node stackPane : Gridplayingfield.getChildrenUnmodifiable()) {
+            try {
+                if(((Square) stackPane).teamcolor == color) {
+                    stackPane.setStyle("-fx-background-color: lime; -fx-border-color: black");
+                    ((Square) stackPane).ImageView.setImage(null);
+                    ((Square) stackPane).unit = false;
+                }
+            } catch (ClassCastException e) {
+                //log
+            }
+        }
+    });
+}
     private void init(Square[][] grid, GridPane board, int y, int x, int i) {
         Square s = new Square();
         ImageView image = new ImageView();
@@ -511,6 +538,19 @@ public class StrategoControllerWessel implements Initializable {
         int opponentTeamColor = teamColor == 1 ? 2 : 1; // can remove
 
         if (canUnitBePlaced(x, y, opponentTeamColor)) {
+            Square placeLocation = (Square) getNodeByRowColumnIndex(x, y, Gridplayingfield);
+            placeLocation.ImageView.setImage(getImage("UNKNOWN" + opponentTeamColor));
+            setSquareImageForPlacing(placeLocation);
+        }
+    }
+    public void placeUnit(int x, int y,String rank) {
+        int opponentTeamColor = teamColor == 1 ? 2 : 1; // can remove
+        if (canUnitBePlaced(x, y, teamColor)) {
+            Square placeLocation = (Square) getNodeByRowColumnIndex(x, y, Gridplayingfield);
+            placeLocation.ImageView.setImage(getImage(rank + teamColor));
+            setSquareImageForPlacing(placeLocation);
+        }
+        else if (canUnitBePlaced(x, y, opponentTeamColor)) {
             Square placeLocation = (Square) getNodeByRowColumnIndex(x, y, Gridplayingfield);
             placeLocation.ImageView.setImage(getImage("UNKNOWN" + opponentTeamColor));
             setSquareImageForPlacing(placeLocation);

@@ -2,6 +2,7 @@ algorithm\AIPlayer.class
 helpers\StrategoGame.class
 server\ServerEndPoint$2.class
 enums\MovementType.class
+server\ServerEndPoint$5.class
 server\Service.class
 server\ServerEndPoint$4.class
 server\LoginResponse.class

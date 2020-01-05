@@ -90,6 +90,7 @@ return false;
     @Override
     public void startGamePlayingPhase() {
         this.status = GameStatus.PLAYING;
+
     }
 
     public void endGame() throws UnsupportedOperationException {
@@ -280,7 +281,7 @@ board.removeAllPieces(color);
     }
 
     private Piece checkForPiece(Point position) throws NullPointerException {
-        return board.tilesInGame[position.x][position.y].getPiece();
+        return board.tilesInGame[position.y][position.x].getPiece();
     }
 
 

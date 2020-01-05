@@ -58,10 +58,11 @@ public class ClientEndPoint {
                 break;
             case PLACEUNIT:
                PlaceUnitMessage unit = gson.fromJson(message.getResult(), new TypeToken<PlaceUnitMessage>(){}.getType());
-                WebSocketGui.getGameController().placeUnitForOpponent(unit.getCoordsToPlace().x,unit.getCoordsToPlace().y);
+                WebSocketGui.getGameController().placeUnit(unit.getCoordsToPlace().x,unit.getCoordsToPlace().y,unit.getRank());
                 break;
             case STARTPLAYINGPHASE:
                 WebSocketGui.getGameController().setGameStatus(GameStatus.PLAYING);
+                WebSocketGui.getGameController().disableButtons(false);
 
                 break;
             case ENDGAME:
@@ -72,6 +73,14 @@ public class ClientEndPoint {
                 NotYourTurnMessage notYourTurnMessage = gson.fromJson(message.getResult(), new TypeToken<NotYourTurnMessage>(){}.getType());
 
                 WebSocketGui.getGameController().notYourTurn(notYourTurnMessage.getTeamcolor());
+                break;
+            case PLACEUNITFOROPPONENT:
+                PlaceUnitMessage unitopponent = gson.fromJson(message.getResult(), new TypeToken<PlaceUnitMessage>(){}.getType());
+                WebSocketGui.getGameController().placeUnitForOpponent(unitopponent.getCoordsToPlace().x,unitopponent.getCoordsToPlace().y);
+                break;
+            case RESETUI:
+                ResetUiMessage resetui = gson.fromJson(message.getResult(), new TypeToken<ResetUiMessage>(){}.getType());
+                WebSocketGui.getGameController().resetUI(resetui.getTeamcolor());
                 break;
 
 
