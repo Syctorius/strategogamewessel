@@ -45,7 +45,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="Removeunitbtn" layoutX="73.0" layoutY="670.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Remove Unit">
+      <Button fx:id="Removeunitbtn" layoutX="73.0" layoutY="670.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#removeUnit" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Remove Unit">
          <font>
             <Font size="16.0" />
          </font>
@@ -200,7 +200,7 @@
          </graphic>
       </Button>
       <TextArea fx:id="Chatlog" layoutX="984.0" layoutY="93.0" prefHeight="466.0" prefWidth="189.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" />
-      <ImageView fitHeight="104.0" fitWidth="200.0" layoutX="503.0" layoutY="730.0">
+      <ImageView fitHeight="104.0" fitWidth="200.0" layoutX="504.0" layoutY="700.0">
          <image>
             <Image url="@stratego_trim.png" />
          </image>

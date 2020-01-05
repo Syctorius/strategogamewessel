@@ -16,6 +16,7 @@ enums\BattleOutcome.class
 helpers\MultiThreadingField.class
 helpers\Board.class
 server\ResponseHelper.class
+server\ServerEndPoint$6.class
 server\LoginService.class
 enums\GameStatus.class
 enums\Rank.class

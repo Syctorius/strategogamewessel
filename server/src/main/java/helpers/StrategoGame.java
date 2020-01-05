@@ -290,5 +290,10 @@ board.removeAllPieces(color);
         return areAllPiecesPlaced(board.getBluePieces()) &&  areAllPiecesPlaced(board.getRedPieces());
     }
 
+    @Override
+    public void removePiece(Point coords) {
+        board.removePiece(coords);
+    }
+
 
 }

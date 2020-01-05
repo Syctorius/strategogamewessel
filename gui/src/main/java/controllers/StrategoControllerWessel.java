@@ -145,6 +145,7 @@ public class StrategoControllerWessel implements Initializable {
             bombbtn.setDisable(enabled);
             flagbtn.setDisable(enabled);
             PlaceAuto.setDisable(enabled);
+            removeAllbtn.setDisable(enabled);
         });
     }
 
@@ -211,7 +212,7 @@ public class StrategoControllerWessel implements Initializable {
                     this.teamColor = teamcolor;
                     circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
                 });
-        disableButtons(false);
+        disableButtons(true);
 
         showMessage("A match has been found.");
     }
@@ -264,6 +265,11 @@ public class StrategoControllerWessel implements Initializable {
     public void removeAll(MouseEvent mouseEvent) {
         Gson gson = new Gson();
         clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(new RemoveAllUnitsMessage(this.teamColor))));
+    }
+
+    public void removeUnit(MouseEvent mouseEvent) {
+        Gson gson = new Gson();
+        clientEndPoint.sendMessage(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(new Point(GridPane.getColumnIndex(toPlaceSquare), GridPane.getRowIndex(toPlaceSquare))))));
     }
 
 

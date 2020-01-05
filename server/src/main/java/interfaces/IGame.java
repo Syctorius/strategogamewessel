@@ -95,4 +95,5 @@ public interface IGame {
 
     boolean haveBothPlayersPlacedAllUnits();
 
+    void removePiece(Point coords);
 }

@@ -104,7 +104,9 @@ public class ServerEndPoint implements StrategoServer {
                 case DELETE:
                     // Send game operation to client
                     if (wbMessage.getResult() == null || wbMessage.getResult() == "") break;
-                    sendOperationToOpponent(session, wbMessage.getResult(), MessageType.DELETE);
+                    DeleteMessage deleteMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<DeleteMessage>(){}.getType());
+                   games.get(getKeyBasedOnSession(session)).removePiece(deleteMessage.getCoords());
+                    sendOperationToBoth(session, wbMessage.getResult(), MessageType.DELETE);
                     break;
                 case PLACEUNIT:
                     PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceUnitMessage>() {
@@ -115,6 +117,7 @@ public class ServerEndPoint implements StrategoServer {
                        sendOperationToBoth(session, wbMessage.getResult(),MessageType.PLACEUNITFOROPPONENT);
                     }
                     //TODO Make this fully serversided.
+                    break;
                 case MOVEMENT:
 
                     MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
