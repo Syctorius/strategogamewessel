@@ -3,6 +3,7 @@ helpers\StrategoGame.class
 server\ServerEndPoint$2.class
 enums\MovementType.class
 server\Service.class
+server\ServerEndPoint$4.class
 server\LoginResponse.class
 helpers\StrategoGame$1.class
 module-info.class
@@ -19,6 +20,7 @@ enums\GameStatus.class
 enums\Rank.class
 interfaces\StrategoServer.class
 helpers\Piece.class
+helpers\Board$1.class
 enums\TileType.class
 interfaces\IGameUI.class
 server\StrategoLogin.class

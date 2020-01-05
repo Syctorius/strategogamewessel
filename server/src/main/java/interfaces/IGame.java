@@ -4,6 +4,7 @@ import enums.Color;
 import enums.Rank;
 
 import java.awt.*;
+import java.util.Collections;
 
 public interface IGame {
 
@@ -88,7 +89,7 @@ public interface IGame {
      *
      * @param playerNr
      */
-    public void removeAllPieces(int playerNr);
+    public void removeAllPieces(int playerNr, Color color);
 
     public void movePiece(Point oldPos, Point newPos);
 

@@ -9,5 +9,7 @@ public enum MessageType {
     PLACEUNIT,
     STARTPLAYINGPHASE,
     ENDGAME,
-    NOTYOURTURN;
+    NOTYOURTURN,
+    PLACEALL,
+    REMOVEALL;
 }

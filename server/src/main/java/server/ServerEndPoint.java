@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import enums.Color;
 import enums.Rank;
+import helpers.Piece;
 import helpers.StrategoGame;
 import interfaces.IGame;
 import interfaces.StrategoServer;
@@ -91,6 +92,9 @@ public class ServerEndPoint implements StrategoServer {
                             games.get(gameid).startGamePlayingPhase();
                             sendOperationToBoth(session, null, MessageType.STARTPLAYINGPHASE);
                         }
+                        else {
+                            //send message to session yo both players haven't placed everything down boii.
+                        }
                     }
                     break;
                 case UNREGISTERFROMGAME:
@@ -105,17 +109,24 @@ public class ServerEndPoint implements StrategoServer {
                 case PLACEUNIT:
                     PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceUnitMessage>() {
                     }.getType());
-                    Color color = placeunit.getColor() == 1 ? Color.RED : Color.BLUE;
-                    int gameid = getKeyBasedOnSession(session);
-                    if (games.get(gameid).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, color)) {
+
+
+                    if (games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE)) {
                        sendOperationToBoth(session, wbMessage.getResult(),MessageType.PLACEUNIT);
                     }
                 case MOVEMENT:
-                    int gameid2 = getKeyBasedOnSession(session);
+
                     MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
                     }.getType());
-                    games.get(gameid2).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
+                    games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
+                case PLACEALL:
+                    PlaceAllUnitsMessage placeAllUnitsMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceAllUnitsMessage>() {}.getType());
 
+                    games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()),placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
+                    break;
+                case REMOVEALL:
+                 getKeyBasedOnSession(session);
+                    break;
 
                 default:
                     System.out.println("[WebSocket ERROR: cannot process Json message " + jsonMessage);
@@ -255,5 +266,15 @@ public class ServerEndPoint implements StrategoServer {
         int color = turnColor == Color.RED ? 2 : 1; // opposite because it goes to the requesting player, making him aware that it's not his turn.
         sendMessageWithMessageType(new Message(MessageType.NOTYOURTURN, gson.toJson(new NotYourTurnMessage(color))), gameId);
 
+    }
+
+    @Override
+    public void placeAllPieces(List<Piece> pieces, List<Point> points,Color color, int gameId) {
+        int teamcolor = color == Color.RED ? 1 : 2;
+       while(!pieces.isEmpty()){
+            sendMessageWithMessageType(new Message(MessageType.PLACEUNIT, gson.toJson(new PlaceUnitMessage(points.get(0),teamcolor,pieces.get(0).getActualRank().toString()))), gameId);
+            pieces.remove(0);
+            points.remove(0);
+       }
     }
 }

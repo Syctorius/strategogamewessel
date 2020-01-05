@@ -9,6 +9,7 @@ import interfaces.StrategoServer;
 import user.User;
 
 import java.awt.*;
+import java.util.*;
 
 public class StrategoGame implements IGame {
     GameStatus status;
@@ -19,6 +20,7 @@ public class StrategoGame implements IGame {
     private static StrategoServer application;
     private static Boolean singlePlayerMode;
     private Integer key;
+    private ArrayList<Rank> allCheckableRanks = new ArrayList<Rank>(Arrays.asList(Rank.FLAG,Rank.BOMB,Rank.CAPTAIN,Rank.COLONEL,Rank.GENERAL,Rank.LIEUTENANT,Rank.MAJOR,Rank.MARSHAL,Rank.MINER,Rank.SCOUT,Rank.SERGEANT,Rank.SPY));
 
     public StrategoGame(User user, User opponent, StrategoServer serverEndPoint) {
         this.user = user;
@@ -43,12 +45,40 @@ public class StrategoGame implements IGame {
         return status;
     }
 
-    public boolean areAllPiecesPlaced() {
-        if (board.getBluePieces().size() == 0 && board.getRedPieces().size() == 0) {
-            return true;
-        }
-        return false;
+    public boolean areAllPiecesPlaced(ArrayList<Rank> list) {
+        return countFrequencies(list, allCheckableRanks.get(1)) && allCheckableRanks.stream().allMatch(r -> countFrequencies(list, r));
+        // if everything is true;
 
+    }
+
+    public static boolean countFrequencies(ArrayList<Rank> list, Rank r) {
+
+        // hash set is created and elements of
+        // arraylist are insertd into it
+
+        switch (r) {
+            case FLAG:
+            case SPY:
+            case GENERAL:
+            case MARSHAL:
+                return Collections.frequency(list, r) == 1;
+            case BOMB:
+                return Collections.frequency(list, r) == 6;
+            case MINER:
+                return Collections.frequency(list, r) == 5;
+            case COLONEL:
+                return Collections.frequency(list, r) == 2;
+            case SERGEANT:
+            case CAPTAIN:
+            case LIEUTENANT:
+                return Collections.frequency(list, r) == 4;
+            case SCOUT:
+                return Collections.frequency(list, r) == 8;
+            case MAJOR:
+                return Collections.frequency(list, r) == 3;
+
+        }
+return false;
     }
 
     @Override
@@ -121,10 +151,11 @@ public class StrategoGame implements IGame {
 
     @Override
     public void placePiecesAutomatically(int playerNr, Color color) {
-        removeAllPieces(playerNr);
+        removeAllPieces(playerNr,color);
 
-       // Board playerBoard = user.getBoard();
+        // Board playerBoard = user.getBoard();
         this.board.PlacePiecesAutomatically(color);
+        application.placeAllPieces(board.getToPlacePieces(),board.getToPlacePiecesCoords(),color,this.key);
     }
 
 
@@ -141,23 +172,11 @@ public class StrategoGame implements IGame {
     }
 
     @Override
-    public void removeAllPieces(int playerNr) {
-        Board board;
-     /*   switch (playerNr) {
-            case 0:
-                board = user.getBoard();
-                break;
-            case 1:
-                board = opponent.getBoard();
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + playerNr);
-        }*/
-
-       // board.RemoveAllPieces();
-
-
+    public void removeAllPieces(int playerNr, Color color) {
+board.removeAllPieces(color);
     }
+
+
 
     @Override
     public void movePiece(Point oldPos, Point newPos) {
@@ -170,9 +189,8 @@ public class StrategoGame implements IGame {
                         sortMovement(oldPos, newPos, myPiece, enemyPiece);
                         switchTurn();
                     }
-                }
-                else {
-                    application.sendMessageNotYourTurn("It's not your turn ",turnColor,this.key);
+                } else {
+                    application.sendMessageNotYourTurn("It's not your turn ", turnColor, this.key);
                 }
             }
         }
@@ -235,7 +253,7 @@ public class StrategoGame implements IGame {
             case GAMEDONE:
                 endGame();
                 //SEND MESSAGE to end game.
-                application.endGame(myPiece.getColor(),this.key);
+                application.endGame(myPiece.getColor(), this.key);
                 break;
             case WIN:
                 board.removePiece(newPos);
@@ -268,7 +286,7 @@ public class StrategoGame implements IGame {
 
     @Override
     public boolean haveBothPlayersPlacedAllUnits() {
-        return true;
+        return areAllPiecesPlaced(board.getBluePieces()) &&  areAllPiecesPlaced(board.getRedPieces());
     }
 
 

@@ -2,9 +2,11 @@ package interfaces;
 
 import enums.Color;
 import enums.Rank;
+import helpers.Piece;
 
 import javax.swing.text.Position;
 import java.awt.Point;
+import java.util.List;
 
 public interface StrategoServer {
     /**
@@ -37,4 +39,6 @@ public interface StrategoServer {
      */
 
     void sendMessageNotYourTurn(String messagestring, Color turnColor, int gameId);
+
+    void placeAllPieces(List<Piece> pieces,List<Point> points ,Color color, int gameId);
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="782.0" prefWidth="1249.0" style="-fx-background-color: linear-gradient(#ff5400, #be1d00);; -fx-background-radius: 3, 30;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StrategoControllerWessel">
@@ -203,5 +205,16 @@
             <Image url="@stratego_trim.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblUsername" layoutX="104.0" layoutY="14.0" text="Label" textFill="#323626">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Circle fx:id="circleTeamColor" fill="WHITE" layoutX="304.0" layoutY="33.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="PlaceAuto" layoutX="984.0" layoutY="599.0" maxHeight="66.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#placeAutomatically" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Auto Placer">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -56,13 +56,14 @@ public class StrategoGameTests {
 
         //Act
 
-        game.registerPlayer("Some Name", "Some Password", true);
+     //   game.registerPlayer("Some Name", "Some Password", true);
+        game.startGamePlanningPhase();
         game.placePiecesAutomatically(playerNr,color1);
         game.placePiecesAutomatically(playerNr + 1,color2);
 
         //Assert
 
-        assertEquals(true,game.areAllPiecesPlaced());
+     //   assertEquals(true,game.areAllPiecesPlaced(game));
 
     }
     @Test

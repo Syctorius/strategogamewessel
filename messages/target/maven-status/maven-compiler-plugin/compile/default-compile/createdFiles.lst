@@ -1,4 +1,5 @@
 messages\Message.class
+messages\PlaceAllUnitsMessage.class
 messages\MatchFoundMessage.class
 messages\PlaceUnitMessage.class
 module-info.class

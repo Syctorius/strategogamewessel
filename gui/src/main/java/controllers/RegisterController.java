@@ -93,7 +93,7 @@ public class RegisterController {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/strategoboard.fxml"));
                 fxmlLoader.setControllerFactory(c -> {
-                    return new StrategoControllerWessel();
+                    return new StrategoControllerWessel(tfRegisterUsername.getText());
                 });
                 Parent root = fxmlLoader.load();
                 Stage stage = new Stage();

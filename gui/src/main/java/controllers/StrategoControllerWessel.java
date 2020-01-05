@@ -12,17 +12,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import messageenum.MessageType;
-import messages.Message;
-import messages.MovementMessage;
-import messages.PlaceUnitMessage;
+import messages.*;
 import websocketshared.ClientEndPoint;
 import websocketshared.WebSocketGui;
 
@@ -51,6 +51,9 @@ public class StrategoControllerWessel implements Initializable {
     public Button bombbtn;
     public Button flagbtn;
     public TextArea Chatlog;
+    public Circle circleTeamColor;
+    public Label lblUsername;
+    public Button PlaceAuto;
     @FXML
     GridPane Gridplayingfield = new GridPane();
     private Square toPlaceSquare = new Square();
@@ -99,6 +102,17 @@ public class StrategoControllerWessel implements Initializable {
     Image SCOUT2;
     Image UNKNOWN1;
     Image UNKNOWN2;
+
+    private String username= "";
+
+    public StrategoControllerWessel(String text) {
+        Platform.runLater(() -> {
+            username = text;
+            lblUsername.setText(text);
+        });
+    }
+    public StrategoControllerWessel() {
+    }
 
 
     @Override
@@ -188,8 +202,11 @@ public class StrategoControllerWessel implements Initializable {
     }
 
     public void matchFound(Integer teamcolor) {
-        this.teamColor = teamcolor;
-        disableButtons(false);
+        Platform.runLater(() -> {
+                    this.teamColor = teamcolor;
+                    circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
+                    disableButtons(false);
+                });
 
         showMessage("A match has been found.");
     }
@@ -232,6 +249,11 @@ public class StrategoControllerWessel implements Initializable {
         showMessage(teamcolor2 == 1 ? "The red player has captured the blue flag, Game Over" : "The blue player has captured the red flag, Game Over");
         //Close application redirect or something
 
+    }
+
+    public void placeAutomatically(MouseEvent mouseEvent) {
+        Gson gson = new Gson();
+        clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(new PlaceAllUnitsMessage(this.teamColor))));
     }
 
 
@@ -441,6 +463,13 @@ public class StrategoControllerWessel implements Initializable {
         if (this.gameStatus == GameStatus.SETUP) {
             clientEndPoint.sendMessage(new Message(MessageType.USERREADY, gson.toJson(singleplayer)));
         }
+    /*    Gson gson = new Gson();
+        if (this.gameStatus == GameStatus.STOPPED) {
+            clientEndPoint.sendMessage(new Message(MessageType.USERREADY, gson.toJson(new UserReadyMessage(false,MessageType.USERREADY))));
+        }
+        if (this.gameStatus == GameStatus.SETUP) {
+            clientEndPoint.sendMessage(new Message(MessageType.USERREADY,gson.toJson(new UserReadyMessage(false,MessageType.USERREADY))));
+        }*/
         //add singleplayer
     }
 
