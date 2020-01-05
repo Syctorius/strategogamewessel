@@ -37,6 +37,7 @@ public class MultiThreadingField  implements Runnable {
                     if(x % 3 == 0) {
                         tile = TileType.WATER;
                     }
+                    //TODO else {  :))))
                     tile = TileType.NEUTRAL;
                     tilesInThread[y][x] = new Tile(tile);
                 }

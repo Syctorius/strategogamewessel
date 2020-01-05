@@ -120,7 +120,8 @@ public class ServerEndPoint implements StrategoServer {
                     MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
                     }.getType());
                     games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
-                case PLACEALL:
+                break;
+                    case PLACEALL:
                     PlaceAllUnitsMessage placeAllUnitsMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceAllUnitsMessage>() {}.getType());
 
                     games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()),placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);

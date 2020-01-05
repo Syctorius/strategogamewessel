@@ -2,40 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/messages/src/main/java/messages/PlaceUnitForOpponentMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messages/src/main/java/messages/RemoveAllUnitsMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messages/src/main/java/messages/ResetUiMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/resources/strategoboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/strategoboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$Square.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/target/classes/strategoboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/strategoboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/src/main/java/messageenum/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/messageenum/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/classes/messageenum/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/classes/messageenum/MessageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/messages-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/messages-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/MultiThreadingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/MultiThreadingField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -235,7 +212,7 @@
       <workItem from="1577526902200" duration="2187000" />
       <workItem from="1577529096161" duration="9865000" />
       <workItem from="1577632944290" duration="27120000" />
-      <workItem from="1577879778274" duration="50978000" />
+      <workItem from="1577879778274" duration="54648000" />
     </task>
     <servers />
   </component>
@@ -267,6 +244,57 @@
           <url>file://$PROJECT_DIR$/server/src/main/java/server/Service.java</url>
           <line>27</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/Board.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/Board.java</url>
+          <line>181</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java</url>
+          <line>259</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/Board.java</url>
+          <line>20</line>
+          <properties field="tilesInGame" class="helpers.Board" />
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

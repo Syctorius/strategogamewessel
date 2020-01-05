@@ -303,7 +303,7 @@ public class StrategoControllerWessel implements Initializable {
 public void resetUI(int color)
 
 {
-    Platform.runLater(() -> {
+
 
         for (Node stackPane : Gridplayingfield.getChildrenUnmodifiable()) {
             try {
@@ -316,7 +316,7 @@ public void resetUI(int color)
                 //log
             }
         }
-    });
+
 }
     private void init(Square[][] grid, GridPane board, int y, int x, int i) {
         Square s = new Square();
