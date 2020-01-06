@@ -62,7 +62,7 @@ public class ClientEndPoint {
                 break;
             case STARTPLAYINGPHASE:
                 WebSocketGui.getGameController().setGameStatus(GameStatus.PLAYING);
-                WebSocketGui.getGameController().disableButtons(false);
+                WebSocketGui.getGameController().disableButtons(true);
 
                 break;
             case ENDGAME:

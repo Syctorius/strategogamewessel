@@ -212,7 +212,7 @@ public class StrategoControllerWessel implements Initializable {
                     this.teamColor = teamcolor;
                     circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
                 });
-        disableButtons(true);
+        disableButtons(false);
 
         showMessage("A match has been found.");
     }

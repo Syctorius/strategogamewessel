@@ -23,7 +23,6 @@ public class RegisterController {
     public PasswordField tfRegisterPassword;
     public PasswordField tfRegisterConfirmPassword;
     public Button btnRegisterUser;
-    public Button btnRegisterBack;
 
 
     private IUserLogic userLogic;
