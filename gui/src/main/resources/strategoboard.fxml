@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,10 +9,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="834.0" prefWidth="1392.0" style="-fx-background-color: linear-gradient(#ff5400, #be1d00);; -fx-background-radius: 3, 30;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StrategoControllerWessel">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d55b0b" height="112.0" layoutX="954.0" layoutY="100.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="4.0" width="394.0" />
       <GridPane fx:id="Gridplayingfield" depthTest="DISABLE" gridLinesVisible="true" layoutX="290.0" layoutY="96.0" prefHeight="635.0" prefWidth="650.0" style="-fx-border-style: solid inside; -fx-border-width: 2; -fx-border-radius: 5; -fx-border-color: black; -fx-background-color: green;">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,17 +41,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Button fx:id="Readybtn" layoutX="73.0" layoutY="730.0" maxHeight="44.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#readyUp" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Ready">
+      <Button fx:id="Readybtn" layoutX="89.0" layoutY="667.0" maxHeight="44.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#readyUp" prefHeight="44.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Ready">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="Removeunitbtn" layoutX="73.0" layoutY="670.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#removeUnit" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Remove Unit">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="Placeunitbtn" layoutX="77.0" layoutY="606.0" maxHeight="66.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Place Unit">
+      <Button fx:id="Removeunitbtn" layoutX="89.0" layoutY="607.0" maxHeight="50.0" maxWidth="300.0" mnemonicParsing="false" onMouseClicked="#removeUnit" prefHeight="50.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" text="Remove Unit">
          <font>
             <Font size="16.0" />
          </font>
@@ -199,7 +195,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextArea fx:id="Chatlog" layoutX="984.0" layoutY="93.0" prefHeight="466.0" prefWidth="189.0" style="-fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );  -fx-background-radius: 8;    -fx-font-weight: bold;    -fx-font-size: 1.1em;;" />
       <ImageView fitHeight="104.0" fitWidth="200.0" layoutX="504.0" layoutY="700.0">
          <image>
             <Image url="@stratego_trim.png" />
@@ -271,7 +266,7 @@
             <Image url="@COLONEL.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="52.0" layoutX="1225.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="52.0" layoutX="1231.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@GENERAL.png" />
          </image>
@@ -281,5 +276,20 @@
             <Image url="@MARSHAL.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblFlagCount" layoutX="376.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblBombCount" layoutX="462.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblSpyCount" layoutX="548.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblScoutCount" layoutX="646.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblMinerCount" layoutX="743.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblSergeantCount" layoutX="832.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblLieutenantCount" layoutX="912.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblCaptainCount" layoutX="999.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblMajorCount" layoutX="1087.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblColonelCount" layoutX="1175.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblGeneralCount" layoutX="1266.0" layoutY="38.0" text="Label" />
+      <Label fx:id="lblMarshalCount" layoutX="1352.0" layoutY="38.0" text="Label" />
+      <ImageView fx:id="attackerImage" fitHeight="88.0" fitWidth="118.0" layoutX="968.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="defenderImage" fitHeight="88.0" fitWidth="118.0" layoutX="1221.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="swordImage" fitHeight="88.0" fitWidth="118.0" layoutX="1084.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -5,17 +5,13 @@ import com.google.gson.reflect.TypeToken;
 
 import frontendenums.GameStatus;
 import frontendenums.Rank;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import messageenum.MessageType;
 import messages.*;
 
-import javax.swing.*;
 import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
+import java.util.ArrayList;
 
 @ClientEndpoint
 public class ClientEndPoint {
@@ -70,9 +66,8 @@ public class ClientEndPoint {
                 WebSocketGui.getGameController().endGame(endGameMessage.getTeamcolor());
                 break;
             case NOTYOURTURN:
-                NotYourTurnMessage notYourTurnMessage = gson.fromJson(message.getResult(), new TypeToken<NotYourTurnMessage>(){}.getType());
 
-                WebSocketGui.getGameController().notYourTurn(notYourTurnMessage.getTeamcolor());
+                WebSocketGui.getGameController().showNotYourTurn();
                 break;
             case PLACEUNITFOROPPONENT:
                 PlaceUnitMessage unitopponent = gson.fromJson(message.getResult(), new TypeToken<PlaceUnitMessage>(){}.getType());
@@ -81,6 +76,20 @@ public class ClientEndPoint {
             case RESETUI:
                 ResetUiMessage resetui = gson.fromJson(message.getResult(), new TypeToken<ResetUiMessage>(){}.getType());
                 WebSocketGui.getGameController().resetUI(resetui.getTeamcolor());
+                break;
+            case UPDATEFREQUENCY:
+                UpdateFrequencyMessage updateFrequencyMessage  = gson.fromJson(message.getResult(), new TypeToken<UpdateFrequencyMessage>(){}.getType());
+                ArrayList<Rank> ranks = new ArrayList<>();
+                for (String s : updateFrequencyMessage.getRanks())
+                {
+                 ranks.add(Rank.valueOf(s));
+                }
+                WebSocketGui.getGameController().updateFrequencyUI(ranks,updateFrequencyMessage.getColor());
+                break;
+            case BATTLERESULT:
+                BattleResultMessage battleResultMessage  = gson.fromJson(message.getResult(), new TypeToken<BattleResultMessage>(){}.getType());
+
+                WebSocketGui.getGameController().logBattleResult(battleResultMessage.getAttackerRank(),battleResultMessage.getDefenderRank(),battleResultMessage.doesAttackerWin());
                 break;
 
 

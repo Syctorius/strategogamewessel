@@ -6,6 +6,7 @@ import enums.GameStatus;
 import enums.Rank;
 import interfaces.IGame;
 import interfaces.StrategoServer;
+import server.ServerEndPoint;
 import user.User;
 
 import java.awt.*;
@@ -21,7 +22,8 @@ public class StrategoGame implements IGame {
     private static Boolean singlePlayerMode;
     private Integer key;
     private ArrayList<Rank> allCheckableRanks = new ArrayList<Rank>(Arrays.asList(Rank.FLAG,Rank.BOMB,Rank.CAPTAIN,Rank.COLONEL,Rank.GENERAL,Rank.LIEUTENANT,Rank.MAJOR,Rank.MARSHAL,Rank.MINER,Rank.SCOUT,Rank.SERGEANT,Rank.SPY));
-
+    private int redPlayerId;
+    private int bluePlayerId;
     public StrategoGame(User user, User opponent, StrategoServer serverEndPoint) {
         this.user = user;
         this.opponent = opponent;
@@ -29,13 +31,20 @@ public class StrategoGame implements IGame {
     }
 
 
-    public StrategoGame() {
-
+    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId) {
+        this.key = key;
+        this.application = serverEndPoint;
+        this.redPlayerId = redPlayerId;
+        this.bluePlayerId = bluePlayerId;
     }
 
     public StrategoGame(Integer key, StrategoServer serverEndPoint) {
         this.key = key;
         this.application = serverEndPoint;
+    }
+
+    public StrategoGame() {
+
     }
 
     // Starts the game
@@ -156,7 +165,8 @@ return false;
 
         // Board playerBoard = user.getBoard();
         this.board.PlacePiecesAutomatically(color);
-        application.placeAllPieces(board.getToPlacePieces(),board.getToPlacePiecesCoords(),color,this.key);
+        application.placeAllPieces(board.getToPlacePieces(),board.getToPlacePiecesCoords(), color,this.key);
+        updateFrequencyUI();
     }
 
 
@@ -166,7 +176,9 @@ return false;
         Piece pieceToPlace = new Piece(rank, color);
 
         if (board.PlacePiece(pieceToPlace, X, Y, color)) {
+            updateFrequencyUI();
             return true;
+
         }
         return false;
 
@@ -175,6 +187,7 @@ return false;
     @Override
     public void removeAllPieces(int playerNr, Color color) {
 board.removeAllPieces(color);
+        updateFrequencyUI();
     }
 
 
@@ -188,12 +201,27 @@ board.removeAllPieces(color);
                 if (myPiece.getColor() == turnColor) {
                     if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
                         sortMovement(oldPos, newPos, myPiece, enemyPiece);
+                        updateFrequencyUI();
                         switchTurn();
                     }
                 } else {
-                    application.sendMessageNotYourTurn("It's not your turn ", turnColor, this.key);
+                    application.sendMessageNotYourTurn("It's not your turn ", turnColor == Color.BLUE ? bluePlayerId : redPlayerId, this.key);
                 }
             }
+        }
+    }
+
+    private void updateFrequencyUI() {
+        if(status == GameStatus.PLAYING) {
+            if (turnColor == Color.BLUE) {
+                application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
+            } else {
+                application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
+            }
+        }
+        else {
+            application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
+            application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
         }
     }
 
@@ -204,7 +232,7 @@ board.removeAllPieces(color);
     private void sortMovement(Point oldPos, Point newPos, Piece myPiece, Piece enemyPiece) {
         if (enemyPiece != null) {
             if (enemyPiece.getColor() != myPiece.getColor()) {
-                settleFightResult(myPiece.winFight(enemyPiece), myPiece, oldPos, newPos);
+                settleFightResult(myPiece.winFight(enemyPiece), myPiece, oldPos, newPos, enemyPiece);
             } else {
                 //do nothing or send message idk.
             }
@@ -249,12 +277,14 @@ board.removeAllPieces(color);
 
     }
 
-    private void settleFightResult(BattleOutcome winFight, Piece myPiece, Point oldPos, Point newPos) {
+    private void settleFightResult(BattleOutcome winFight, Piece myPiece, Point oldPos, Point newPos, Piece enemyPiece) {
         switch (winFight) {
             case GAMEDONE:
                 endGame();
                 //SEND MESSAGE to end game.
+                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),true,this.key);
                 application.endGame(myPiece.getColor(), this.key);
+
                 break;
             case WIN:
                 board.removePiece(newPos);
@@ -262,11 +292,15 @@ board.removeAllPieces(color);
 
                 movePiece(myPiece, oldPos, newPos);
                 application.moveUnit(oldPos, newPos, this.key);
+                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),true,this.key);
+                updateFrequencyUI();
 
                 break;
             case LOSE:
                 board.removePiece(oldPos);
                 application.deleteUnit(oldPos, this.key);
+                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),false,this.key);
+                updateFrequencyUI();
                 //GUI.REMOVEPIECE
                 break;
             case TIE:
@@ -274,8 +308,11 @@ board.removeAllPieces(color);
                 board.removePiece(newPos);
                 application.deleteUnit(oldPos, this.key);
                 application.deleteUnit(newPos, this.key);
+                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),false,this.key);
+                updateFrequencyUI();
                 //GUI.REMOVEPIECES
                 break;
+
 
         }
     }
@@ -293,7 +330,14 @@ board.removeAllPieces(color);
     @Override
     public void removePiece(Point coords) {
         board.removePiece(coords);
+        updateFrequencyUI();
+
     }
+
+
+
+
+
 
 
 }

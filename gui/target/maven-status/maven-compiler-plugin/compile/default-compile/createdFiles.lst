@@ -7,6 +7,7 @@ restclient\RestClient.class
 restclient\RestClient$1.class
 controllers\StrategoControllerWessel$1.class
 websocketshared\ClientEndPoint$6.class
+websocketshared\ClientEndPoint$10.class
 websocketshared\ClientEndPoint$3.class
 controllers\RegisterController.class
 websocketshared\ClientEndPoint$7.class

@@ -111,8 +111,21 @@ public class Board {
         }
     }
 
+    private void removeFromPiecesList(Piece pieceToPlace, Color color) {
+        if (color == Color.RED) {
+            redPieces.remove(pieceToPlace.getActualRank());
+
+        } else {
+            bluePieces.remove(pieceToPlace.getActualRank());
+        }
+    }
+
     public void removePiece(Point point) {
-        setPiece(null, point);
+        Piece piece = getPieceOnPosition(point.x, point.y);
+        if(piece!= null) {
+            removeFromPiecesList(piece, piece.getColor());
+            setPiece(null, point);
+        }
     }
 
     private void addRankToList(Rank r, int times) {
@@ -160,7 +173,6 @@ public class Board {
 
     private synchronized void fillBoard(Color color, Random r, int a, int b) {
         fillListWithPositions(a, b);
-
 
 
         Collections.shuffle(positions);

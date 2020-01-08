@@ -1,3 +1,4 @@
+messages\UpdateFrequencyMessage.class
 messageenum\MessageType.class
 messages\RemoveAllUnitsMessage.class
 messages\UserReadyMessage.class
@@ -10,5 +11,6 @@ messages\PlaceUnitForOpponentMessage.class
 messages\PlaceUnitMessage.class
 module-info.class
 messages\NotYourTurnMessage.class
+messages\BattleResultMessage.class
 messages\DeleteMessage.class
 messages\EndGameMessage.class

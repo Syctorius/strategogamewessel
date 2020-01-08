@@ -16,7 +16,7 @@ public class Boardtests {
     @BeforeAll
     public static void init() {
         board = new Board(10,10);
-        game = new StrategoGame();
+        game = new StrategoGame(gameSession.getKey() - 1, this, Integer.parseInt(gameSession.getValue().get(0).getId()), Integer.parseInt(gameSession.getValue().get(1).getId()));
     }
 
     @Test

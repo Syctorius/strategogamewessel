@@ -26,19 +26,44 @@ public interface StrategoServer {
 
     /**
      * Send a message to the user, in a specific game, stating that the current game has ended.
-     * @param teamColor
+     * @param color
      * @param gameId
      */
-    void endGame(Color teamColor, int gameId);
+    void endGame(Color color, int gameId);
 
     /**
      * Send an informational message to the user in a specific game.
      * @param messagestring
-     * @param turnColor
+     * @param playerId
      * @param gameId
      */
 
-    void sendMessageNotYourTurn(String messagestring, Color turnColor, int gameId);
+    void sendMessageNotYourTurn(String messagestring, int playerId, int gameId);
 
+    /**
+     *
+     * @param pieces
+     * @param points
+     * @param color
+     * @param gameId
+     */
     void placeAllPieces(List<Piece> pieces,List<Point> points ,Color color, int gameId);
+
+    /**
+     *
+     * @param ranks
+     * @param gameId
+     * @param playerId
+     */
+    void updateFrequencyUI(List<Rank> ranks, int gameId, int playerId);
+
+    /**
+     *
+     * @param attackRank
+     * @param defenderRank
+     * @param winsFight
+     * @param gameId
+     */
+    void logBattleResult(Rank attackRank, Rank defenderRank,boolean winsFight, int gameId );
+
 }

@@ -27,6 +27,5 @@ enums\TileType.class
 interfaces\IGameUI.class
 server\StrategoLogin.class
 enums\Color.class
-server\ServerEndPoint.class
 enums\Tile.class
 server\ServerEndPoint$3.class

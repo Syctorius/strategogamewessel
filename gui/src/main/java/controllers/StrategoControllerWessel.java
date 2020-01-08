@@ -1,7 +1,6 @@
 package controllers;
 
 import com.google.gson.Gson;
-import frontendenums.Color;
 import frontendenums.GameStatus;
 import frontendenums.MoveStatus;
 import frontendenums.Rank;
@@ -30,6 +29,8 @@ import websocketshared.WebSocketGui;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.GridPane.getColumnIndex;
@@ -38,7 +39,6 @@ import static javafx.scene.layout.GridPane.getRowIndex;
 public class StrategoControllerWessel implements Initializable {
     public Button Readybtn;
     public Button Removeunitbtn;
-    public Button Placeunitbtn;
     public Button Generalbtn;
     public Button Majorbtn;
     public Button Lieutenantbtn;
@@ -51,13 +51,30 @@ public class StrategoControllerWessel implements Initializable {
     public Button Marshalbtn;
     public Button bombbtn;
     public Button flagbtn;
-    public TextArea Chatlog;
+
     public Circle circleTeamColor;
     public Label lblUsername;
     public Button PlaceAuto;
     public Button removeAllbtn;
+    public Label lblFlagCount;
+    public Label lblBombCount;
+    public Label lblSpyCount;
+    public Label lblScoutCount;
+    public Label lblMinerCount;
+    public Label lblSergeantCount;
+    public Label lblLieutenantCount;
+    public Label lblCaptainCount;
+    public Label lblMajorCount;
+    public Label lblColonelCount;
+    public Label lblGeneralCount;
+    public Label lblMarshalCount;
+    public ImageView attackerImage;
+    public ImageView defenderImage;
+    public ImageView swordImage;
+
     @FXML
     GridPane Gridplayingfield = new GridPane();
+    private StringBuilder log = new StringBuilder();
     private Square toPlaceSquare = new Square();
     private Square[][] squareArray = new Square[10][10];
     private MoveStatus moveStatus = MoveStatus.NONE_SELECTED;
@@ -66,6 +83,19 @@ public class StrategoControllerWessel implements Initializable {
     private boolean singleplayer = false;
     Rank r = Rank.SPY;
     private int teamColor = 1;
+    int maxFlag = 1;
+    int maxSpy =  1;
+    int maxGeneral = 1;
+    int maxMarshal = 1;
+    int maxBomb = 6;
+    int maxMiner = 5;
+    int maxColonel = 2;
+    int maxSergeant = 4;
+    int maxCaptain = 4;
+    int maxLieutenant = 4;
+    int maxScout = 8;
+    int maxMajor = 3;
+
     Image SPY;
     Image BOMB;
     Image FLAG;
@@ -106,7 +136,7 @@ public class StrategoControllerWessel implements Initializable {
     Image UNKNOWN2;
 
     private String username= "";
-
+    private ArrayList<Rank> emptyranklist = new ArrayList<>();
     public StrategoControllerWessel(String text) {
         Platform.runLater(() -> {
             username = text;
@@ -116,13 +146,85 @@ public class StrategoControllerWessel implements Initializable {
     public StrategoControllerWessel() {
     }
 
+    private void setFrequencies(ArrayList<Rank> list, Rank r) {
 
+        switch (r)
+        {
+            case SCOUT:
+                Platform.runLater(() -> {
+                    lblScoutCount.setText("" + Collections.frequency(list, r) + " / " + maxScout);
+                });
+                break;
+            case MAJOR:
+                Platform.runLater(() -> {
+                    lblMajorCount.setText("" + Collections.frequency(list, r) + " / " + maxMajor);
+                });
+                break;
+            case LIEUTENANT:
+                Platform.runLater(() -> {
+                    lblLieutenantCount.setText("" + Collections.frequency(list, r) + " / " + maxLieutenant);
+                });
+                break;
+            case SERGEANT:
+                Platform.runLater(() -> {
+                    lblSergeantCount.setText("" + Collections.frequency(list, r) + " / " + maxSergeant);
+                });
+                break;
+            case CAPTAIN:
+                Platform.runLater(() -> {
+                    lblCaptainCount.setText("" + Collections.frequency(list, r) + " / " + maxCaptain);
+                });
+                break;
+            case COLONEL:
+                Platform.runLater(() -> {
+                    lblColonelCount.setText("" + Collections.frequency(list, r) + " / " + maxColonel);
+                });
+                break;
+            case MINER:
+                Platform.runLater(() -> {
+                    lblMinerCount.setText("" + Collections.frequency(list, r) + " / " + maxMiner);
+                });
+                break;
+            case MARSHAL:  Platform.runLater(() -> {
+                lblMarshalCount.setText("" + Collections.frequency(list, r) + " / " + maxMarshal);
+            });
+                break;
+            case GENERAL:
+                Platform.runLater(() -> {
+                    lblGeneralCount.setText("" + Collections.frequency(list, r) + " / " + maxGeneral);
+                });
+                break;
+            case SPY:
+                Platform.runLater(() -> {
+                    lblSpyCount.setText("" + Collections.frequency(list, r) + " / " + maxSpy);
+                });
+                break;
+            case BOMB:
+                Platform.runLater(() -> {
+                    lblBombCount.setText("" + Collections.frequency(list, r) + " / " + maxBomb);
+                });
+                break;
+            case FLAG:
+                Platform.runLater(() -> {
+                    lblFlagCount.setText("" + Collections.frequency(list, r) + " / " + maxFlag);
+                });
+                break;
+            default:
+                break;
+        }
+
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         initBoard(squareArray, Gridplayingfield);
         initImages();
         disableButtons(true);
+        for(Rank r : Rank.values())
+        {
+            setFrequencies(emptyranklist,r);
+        }
         WebSocketGui.setGameController(this);
         clientEndPoint = new ClientEndPoint();
 
@@ -131,7 +233,6 @@ public class StrategoControllerWessel implements Initializable {
     public void disableButtons(boolean enabled) {
         Platform.runLater(() -> {
             Removeunitbtn.setDisable(enabled);
-            Placeunitbtn.setDisable(enabled);
             Generalbtn.setDisable(enabled);
             Majorbtn.setDisable(enabled);
             Lieutenantbtn.setDisable(enabled);
@@ -207,6 +308,14 @@ public class StrategoControllerWessel implements Initializable {
         oldpos.ImageView.setImage(null);
     }
 
+    public void updateFrequencyUI(ArrayList<Rank> ranks, int teamColor)
+    {
+        if(this.teamColor == teamColor) {
+            for (Rank r : Rank.values()) {
+                setFrequencies(ranks, r);
+            }
+        }
+    }
     public void matchFound(Integer teamcolor) {
         Platform.runLater(() -> {
                     this.teamColor = teamcolor;
@@ -232,11 +341,10 @@ public class StrategoControllerWessel implements Initializable {
 
         });
     }
-    public void notYourTurn(Integer teamcolor3)
+    public void showNotYourTurn()
     {
-        if( teamColor == teamcolor3) {
             showMessage("It's not your turn");
-        }
+
     }
 
     public void deleteUnitAtPosition(Point oldCoords) {
@@ -270,6 +378,25 @@ public class StrategoControllerWessel implements Initializable {
     public void removeUnit(MouseEvent mouseEvent) {
         Gson gson = new Gson();
         clientEndPoint.sendMessage(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(new Point(GridPane.getColumnIndex(toPlaceSquare), GridPane.getRowIndex(toPlaceSquare))))));
+    }
+
+    public void logBattleResult(String attackerRank, String defenderRank, boolean doesAttackerWin) {
+        int width = 118;
+        int height = 88;
+        attackerImage.setImage(getImage(attackerRank));
+        attackerImage.setFitWidth(width);
+        attackerImage.setFitHeight(height);
+        attackerImage.setStyle("-fx-border-color: white");
+        defenderImage.setImage(getImage(defenderRank));
+        defenderImage.setFitWidth(width);
+        defenderImage.setFitHeight(height);
+        defenderImage.setStyle("-fx-border-color: white");
+        swordImage.setImage(doesAttackerWin ? new Image("attackerwins.png") : attackerRank == defenderRank ? new Image("battletie.png") : new Image("defenderwins.png"));
+        swordImage.setFitWidth(width);
+        swordImage.setFitHeight(height);
+        swordImage.setStyle("-fx-border-color: white");
+
+
     }
 
 

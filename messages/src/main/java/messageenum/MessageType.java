@@ -13,5 +13,7 @@ public enum MessageType {
     PLACEALL,
     REMOVEALL,
     PLACEUNITFOROPPONENT,
-    RESETUI;
+    RESETUI,
+    UPDATEFREQUENCY,
+    BATTLERESULT;
 }

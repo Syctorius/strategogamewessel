@@ -3,6 +3,8 @@ C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\Remo
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\MovementMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\NotYourTurnMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\PlaceUnitMessage.java
+C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\UpdateFrequencyMessage.java
+C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\BattleResultMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\PlaceAllUnitsMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\Message.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\ResetUiMessage.java
