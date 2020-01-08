@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -74,14 +74,13 @@ public class StrategoControllerWessel implements Initializable {
 
     @FXML
     GridPane Gridplayingfield = new GridPane();
-    private StringBuilder log = new StringBuilder();
+
     private Square toPlaceSquare = new Square();
     private Square[][] squareArray = new Square[10][10];
     private MoveStatus moveStatus = MoveStatus.NONE_SELECTED;
     private GameStatus gameStatus = GameStatus.STOPPED;
     private ClientEndPoint clientEndPoint;
     private boolean singleplayer = false;
-    Rank r = Rank.SPY;
     private int teamColor = 1;
     int maxFlag = 1;
     int maxSpy =  1;
@@ -95,6 +94,7 @@ public class StrategoControllerWessel implements Initializable {
     int maxLieutenant = 4;
     int maxScout = 8;
     int maxMajor = 3;
+    String fxbackgroundcolor = "-fx-background-color:";
 
     Image SPY;
     Image BOMB;
@@ -135,11 +135,10 @@ public class StrategoControllerWessel implements Initializable {
     Image UNKNOWN1;
     Image UNKNOWN2;
 
-    private String username= "";
+
     private ArrayList<Rank> emptyranklist = new ArrayList<>();
     public StrategoControllerWessel(String text) {
         Platform.runLater(() -> {
-            username = text;
             lblUsername.setText(text);
         });
     }
@@ -221,9 +220,9 @@ public class StrategoControllerWessel implements Initializable {
         initBoard(squareArray, Gridplayingfield);
         initImages();
         disableButtons(true);
-        for(Rank r : Rank.values())
+        for(Rank rank : Rank.values())
         {
-            setFrequencies(emptyranklist,r);
+            setFrequencies(emptyranklist,rank);
         }
         WebSocketGui.setGameController(this);
         clientEndPoint = new ClientEndPoint();
@@ -298,7 +297,7 @@ public class StrategoControllerWessel implements Initializable {
         oldpos.unit = false;
         Square newpos = (Square) getNodeByRowColumnIndex(newCoords.x, newCoords.y, Gridplayingfield);
         newpos.unit =true;
-        oldpos.setStyle("-fx-background-color:" + oldpos.color);
+        oldpos.setStyle(fxbackgroundcolor + oldpos.color);
         newpos.ImageView.setImage(oldpos.ImageView.getImage());
         newpos.ImageView.setFitWidth(65.6);
         newpos.ImageView.setFitHeight(64.0); // make constant
@@ -350,7 +349,7 @@ public class StrategoControllerWessel implements Initializable {
     public void deleteUnitAtPosition(Point oldCoords) {
         Square oldpos = (Square) getNodeByRowColumnIndex(oldCoords.x, oldCoords.y, Gridplayingfield);
         oldpos.unit = false;
-        oldpos.setStyle("-fx-background-color:" + oldpos.color);
+        oldpos.setStyle(fxbackgroundcolor + oldpos.color);
         oldpos.setStyle("-fx-border-color: black; -fx-background-color: lime");
         oldpos.ImageView.setImage(null);
     }
@@ -386,15 +385,16 @@ public class StrategoControllerWessel implements Initializable {
         attackerImage.setImage(getImage(attackerRank));
         attackerImage.setFitWidth(width);
         attackerImage.setFitHeight(height);
-        attackerImage.setStyle("-fx-border-color: white");
+        String whiteborder = "-fx-border-color: white";
+        attackerImage.setStyle(whiteborder);
         defenderImage.setImage(getImage(defenderRank));
         defenderImage.setFitWidth(width);
         defenderImage.setFitHeight(height);
-        defenderImage.setStyle("-fx-border-color: white");
+        defenderImage.setStyle(whiteborder);
         swordImage.setImage(doesAttackerWin ? new Image("attackerwins.png") : attackerRank == defenderRank ? new Image("battletie.png") : new Image("defenderwins.png"));
         swordImage.setFitWidth(width);
         swordImage.setFitHeight(height);
-        swordImage.setStyle("-fx-border-color: white");
+        swordImage.setStyle(whiteborder);
 
 
     }
@@ -708,7 +708,7 @@ public void resetUI(int color)
 
         if (toPlaceSquare.node != null) {
 
-            toPlaceSquare.setStyle("-fx-background-color:" + toPlaceSquare.color + "; -fx-border-color: black");
+            toPlaceSquare.setStyle(fxbackgroundcolor + toPlaceSquare.color + "; -fx-border-color: black");
 
             toPlaceSquare = new Square();
         }

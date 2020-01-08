@@ -91,7 +91,8 @@ public class ClientEndPoint {
 
                 WebSocketGui.getGameController().logBattleResult(battleResultMessage.getAttackerRank(),battleResultMessage.getDefenderRank(),battleResultMessage.doesAttackerWin());
                 break;
-
+            default:
+                break;
 
 
         }

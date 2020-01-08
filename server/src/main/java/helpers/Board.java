@@ -19,10 +19,7 @@ public class Board {
     private ArrayList<Point> toPlacePiecesCoords = new ArrayList<>();
     //ArrayList<Piece> trayOfPieces = new ArrayList<>();
     Tile[][] tilesInGame;
-    private int redWidth;
-    private int redLength;
-    private int blueWidth;
-    private int blueLength;
+
     private List<Integer> positions = new ArrayList<>();
     private List<Rank> ranks = new ArrayList<>();
 
@@ -34,10 +31,7 @@ public class Board {
         tilesInGame = bgmt.createField(width, length);
         this.length = length;
         this.width = width;
-        this.blueLength = 4;
-        this.blueWidth = 10;
-        this.redLength = 4;
-        this.redWidth = 10;
+
 
     }
 
@@ -58,10 +52,7 @@ public class Board {
     }
 
     public boolean checkIfPieceCanBePlaced(int x, int y, Piece pieceToPlace) {
-        if (isInBounds(x, y, pieceToPlace.getColor()) && getPieceOnPosition(x, y) == null) {
-            return true;
-        }
-        return false;
+        return isInBounds(x, y, pieceToPlace.getColor()) && getPieceOnPosition(x, y) == null;
     }
 
     public Piece getPieceOnPosition(int posX, int posY) {
@@ -81,15 +72,7 @@ public class Board {
     }
 
 
-    public void RemoveAllPieces() {
-        if (tilesInGame[0].length > 0) {
-            for (int x = 0; x < tilesInGame[0].length; x++) {
-                for (int y = 0; y < tilesInGame[1].length; y++) {
-                    setPiece(null, new Point(x, y));
-                }
-            }
-        }
-    }
+
 
     public boolean PlacePiece(Piece pieceToPlace, int x, int y, Color color) {
         if (checkIfPieceCanBePlaced(x, y, pieceToPlace)) {
@@ -137,15 +120,12 @@ public class Board {
     public synchronized void PlacePiecesAutomatically(Color color) {
         Random r = new Random();
         fillListWithRankAndRankCount();
-        switch (color) {
-            case RED:
-                redPieces = new ArrayList<>();
-                fillBoard(color, r, 60, 100);
-                break;
-            case BLUE:
-                bluePieces = new ArrayList<>();
-                fillBoard(color, r, 0, 40);
-                break;
+        if (color == Color.RED) {
+            redPieces = new ArrayList<>();
+            fillBoard(color, r, 60, 100);
+        } else if (color == Color.BLUE) {
+            bluePieces = new ArrayList<>();
+            fillBoard(color, r, 0, 40);
         }
 
     }

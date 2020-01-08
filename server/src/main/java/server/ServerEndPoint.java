@@ -41,7 +41,7 @@ public class ServerEndPoint implements StrategoServer {
     @OnOpen
     public void onConnect(Session session) {
         System.out.println("[WebSocket Connected] SessionID: " + session.getId());
-        String message = String.format("[New client with client side session ID]: %s", session.getId());
+
         connectedPlayers.add(session);
         System.out.println("[#sessions]: " + connectedPlayers.size());
     }
@@ -66,7 +66,7 @@ public class ServerEndPoint implements StrategoServer {
 
     // Handle incoming message from client
     private void handleMessageFromClient(String jsonMessage, Session session) {
-        Gson gson = new Gson();
+
         Message wbMessage = null;
         try {
             wbMessage = gson.fromJson(jsonMessage, Message.class);
@@ -85,17 +85,7 @@ public class ServerEndPoint implements StrategoServer {
                 case USERREADY:
                     // Find game
 
-                    if (!isUserInGame(session)) {
-                        findGameForUser(session);
-                    } else {
-                        int gameid = getKeyBasedOnSession(session);
-                        if (games.get(gameid).haveBothPlayersPlacedAllUnits()) {
-                            games.get(gameid).startGamePlayingPhase();
-                            sendOperationToBoth(session, null, MessageType.STARTPLAYINGPHASE);
-                        } else {
-                            //send message to session yo both players haven't placed everything down boii.
-                        }
-                    }
+                    handleReady(session);
                     break;
                 case UNREGISTERFROMGAME:
                     // Game done
@@ -103,46 +93,79 @@ public class ServerEndPoint implements StrategoServer {
                     break;
                 case DELETE:
                     // Send game operation to client
-                    if (wbMessage.getResult().equals("") || wbMessage.getResult().equals("")) break;
-                    DeleteMessage deleteMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<DeleteMessage>() {
-                    }.getType());
-                    games.get(getKeyBasedOnSession(session)).removePiece(deleteMessage.getCoords());
-                    sendOperationToBoth(session, wbMessage.getResult(), MessageType.DELETE);
+                    handleDelete(session, gson, wbMessage);
                     break;
+
                 case PLACEUNIT:
-                    PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceUnitMessage>() {
-                    }.getType());
-
-
-                    if (games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE)) {
-                        sendOperationToBoth(session, wbMessage.getResult(), MessageType.PLACEUNITFOROPPONENT);
-                    }
-                    //TODO Make this fully serversided.
+                    handlePlaceUnit(session, gson, wbMessage);
                     break;
                 case MOVEMENT:
 
-                    MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
-                    }.getType());
-                    games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
+                    handleMovement(session, gson, wbMessage);
                     break;
                 case PLACEALL:
-                    PlaceAllUnitsMessage placeAllUnitsMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceAllUnitsMessage>() {
-                    }.getType());
-
-                    games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()), placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
+                    handlePlaceAll(session, gson, wbMessage);
                     break;
                 case REMOVEALL:
-                    RemoveAllUnitsMessage removeall = gson.fromJson(wbMessage.getResult(), new TypeToken<RemoveAllUnitsMessage>() {
-                    }.getType());
-                    int tempgameid = getKeyBasedOnSession(session);
-                    games.get(tempgameid).removeAllPieces(Integer.parseInt(session.getId()), removeall.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
-                    sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(removeall.getTeamcolor()))), tempgameid);
-                    //TODO Make this fully server side
+                    handleRemoveAll(session, gson, wbMessage);
                     break;
 
                 default:
                     System.out.println("[WebSocket ERROR: cannot process Json message " + jsonMessage);
                     break;
+            }
+        }
+    }
+
+    private void handleRemoveAll(Session session, Gson gson, Message wbMessage) {
+        RemoveAllUnitsMessage removeall = gson.fromJson(wbMessage.getResult(), new TypeToken<RemoveAllUnitsMessage>() {
+        }.getType());
+        int tempgameid = getKeyBasedOnSession(session);
+        games.get(tempgameid).removeAllPieces(Integer.parseInt(session.getId()), removeall.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(removeall.getTeamcolor()))), tempgameid);
+        //TODO Make this fully server side
+    }
+
+    private void handlePlaceAll(Session session, Gson gson, Message wbMessage) {
+        PlaceAllUnitsMessage placeAllUnitsMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceAllUnitsMessage>() {
+        }.getType());
+
+        games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()), placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
+    }
+
+    private void handleMovement(Session session, Gson gson, Message wbMessage) {
+        MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
+        }.getType());
+        games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
+    }
+
+    private void handlePlaceUnit(Session session, Gson gson, Message wbMessage) {
+        PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceUnitMessage>() {
+        }.getType());
+        if (games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE)) {
+            sendOperationToBoth(session, wbMessage.getResult(), MessageType.PLACEUNITFOROPPONENT);
+        }
+        //TODO Make this fully serversided.
+    }
+
+    private void handleDelete(Session session, Gson gson, Message wbMessage) {
+        if (wbMessage.getResult().equals("") || wbMessage.getResult() == (null)) return;
+        DeleteMessage deleteMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<DeleteMessage>() {
+        }.getType());
+        games.get(getKeyBasedOnSession(session)).removePiece(deleteMessage.getCoords());
+        sendOperationToBoth(session, wbMessage.getResult(), MessageType.DELETE);
+    }
+
+    private void handleReady(Session session) {
+        if (!isUserInGame(session)) {
+            findGameForUser(session);
+        } else {
+            int gameid = getKeyBasedOnSession(session);
+            if (games.get(gameid).haveBothPlayersPlacedAllUnits()) {
+                games.get(gameid).startGamePlayingPhase();
+                sendOperationToBoth(session, null, MessageType.STARTPLAYINGPHASE);
+            } else {
+                //send message to session yo both players haven't placed everything down boii.
             }
         }
     }
@@ -156,7 +179,7 @@ public class ServerEndPoint implements StrategoServer {
         return -1;
     }
 
-    private void sendOperationToOpponent(Session session, String content, MessageType mt) {
+   /* private void sendOperationToOpponent(Session session, String content, MessageType mt) {
         for (Map.Entry<Integer, List<Session>> gameSession : strategoGames.entrySet()) {
             if (gameSession.getValue().contains(session)) {
                 for (Session s : gameSession.getValue()) {
@@ -167,7 +190,7 @@ public class ServerEndPoint implements StrategoServer {
                 }
             }
         }
-    }
+    }*/
 
     private void sendOperationToBoth(Session session, String content, MessageType mt) {
         for (Map.Entry<Integer, List<Session>> gameSession : strategoGames.entrySet()) {
@@ -184,11 +207,11 @@ public class ServerEndPoint implements StrategoServer {
 
     private void unregisterFromGame(Session session) {
         int toRemoveIndex = -1;
-        int gameIdentification = -1;
+
         for (Map.Entry<Integer, List<Session>> gameSession : strategoGames.entrySet()) {
             for (Session s : gameSession.getValue()) {
                 if (s == session) {
-                    gameIdentification = gameSession.getKey() - 1;
+
                     toRemoveIndex = gameSession.getValue().indexOf(s);
                     System.out.println("Removed session: " + session.getId() + " from gameId: " + (gameSession.getKey() - 1));
                     break;
@@ -234,7 +257,7 @@ public class ServerEndPoint implements StrategoServer {
 
     private void notifyGameFound(Map.Entry<Integer, List<Session>> gameSession) {
         int sessionvalue = 1;
-        Gson gson = new Gson();
+
         for (Session s : gameSession.getValue()) {
 
 
@@ -256,15 +279,15 @@ public class ServerEndPoint implements StrategoServer {
     }
 
     @Override
-    public void deleteUnit(Point Pos, int gameId) {
+    public void deleteUnit(Point pos, int gameId) {
 
-        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(Pos))), gameId);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(pos))), gameId);
 
 
     }
 
     private void sendMessageWithMessageTypeToBothUsersInGame(Message message, int gameId) {
-        Gson gson = new Gson();
+
 
         for (Session s : strategoGames.get(gameId+1)) {
             s.getAsyncRemote().sendText(gson.toJson(message));

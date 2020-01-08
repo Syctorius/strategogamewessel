@@ -74,12 +74,9 @@ public class StrategoLogin {
 
     public boolean removeUser(int userId) {
         User userRemoved = users.remove(userId);
-        if (userRemoved != null) {
-            // User successfully removed
-            return true;
-        }
+        // User successfully removed
+        return userRemoved != null;
         // User not found
-        return false;
     }
 
 

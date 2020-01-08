@@ -17,46 +17,33 @@ public class MultiThreadingField  implements Runnable {
 
     @Override
     public void run() {
-        if (tile == TileType.BLUELAND) {
+        if (this.tile == TileType.BLUELAND) {
 
-            for (int y = 0; y< 4; y++){
-                for(int x = 0; x < 10; x++){
-                    TileType tile = TileType.BLUELAND;
-
-                    tilesInThread[y][x] = new Tile(tile);
-
-                }
-            }
+            generateLand(0, 4, TileType.BLUELAND);
         }
 
 
-        if (tile == TileType.NEUTRAL) {
-            for (int y = 4; y< 6; y++){
-                for(int x = 0; x < 10; x++){
-                    TileType tile;
-                    if(x % 3 == 0) {
-                        tile = TileType.WATER;
-                    }
-                    //TODO else {  :))))
-                    tile = TileType.NEUTRAL;
-                    tilesInThread[y][x] = new Tile(tile);
-                }
-            }
+       generateLand(4,6,TileType.NEUTRAL);
+        //TODO else {  :))))if(x % 3 == 0) {
+        //                        tile = TileType.WATER;
+        //                    }
 
-        }
-
-
-        if (tile == TileType.REDLAND) {
-            for (int y = 6; y< 10; y++){
-                for(int x = 0; x < 10; x++){
-                    TileType tile = TileType.REDLAND;
-                    tilesInThread[y][x] = new Tile(tile);
-
-                }
-            }
+        if (this.tile == TileType.REDLAND) {
+            generateLand(6, 10, TileType.REDLAND);
 
         }
         bgmt.addTiles(tilesInThread);
+    }
+
+    private void generateLand(int i, int i2, TileType landType) {
+        for (int y = i; y < i2; y++) {
+            for (int x = 0; x < 10; x++) {
+                TileType tiletype = landType;
+
+                tilesInThread[y][x] = new Tile(tiletype);
+
+            }
+        }
     }
 
 

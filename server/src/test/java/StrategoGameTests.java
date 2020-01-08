@@ -1,6 +1,7 @@
 import enums.Color;
 import enums.GameStatus;
 import helpers.StrategoGame;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -62,14 +63,12 @@ public class StrategoGameTests {
         game.placePiecesAutomatically(playerNr + 1,color2);
 
         //Assert
+        Assertions.assertTrue(game.haveBothPlayersPlacedAllUnits());
 
      //   assertEquals(true,game.areAllPiecesPlaced(game));
 
     }
-    @Test
-    public void placetests() {
-       // game.placePiece();
-    }
+
 
 
 }

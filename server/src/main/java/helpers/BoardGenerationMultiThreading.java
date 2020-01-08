@@ -7,7 +7,7 @@ import interfaces.IGameUI;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class BoardGenerationMultiThreading {
     IGameUI game;
@@ -20,7 +20,7 @@ public class BoardGenerationMultiThreading {
     MultiThreadingField threadRed;
     MultiThreadingField threadNeutral;
     private ExecutorService pool = Executors.newFixedThreadPool(3);
-    public volatile AtomicInteger count = new AtomicInteger(0);
+
 
     public BoardGenerationMultiThreading() {
 
@@ -34,16 +34,16 @@ public class BoardGenerationMultiThreading {
         threadNeutral = new MultiThreadingField(TileType.NEUTRAL, width, length, this);
         threadRed = new MultiThreadingField(TileType.REDLAND, width, length, this);
 
-        var future1 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture.supplyAsync(() -> {
 
             threadBlue.run();
             return true;
         }, pool);
-        var future2 = CompletableFuture.supplyAsync(() -> {
+       CompletableFuture.supplyAsync(() -> {
             threadRed.run();
             return true;
         }, pool);
-        var future3 = CompletableFuture.supplyAsync(() -> {
+       CompletableFuture.supplyAsync(() -> {
             threadNeutral.run();
             return true;
         }, pool);

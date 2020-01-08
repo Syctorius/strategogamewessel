@@ -32,10 +32,10 @@ public class RestClient implements IUserLogic {
     }
 
     public  boolean login(String username, String password){
-        return PostQuery(username,password, "http://localhost:2222/rest/user/login");
+        return PostQuery(username,password, "http://localhost:2222/rest/users/login");
     }
     public boolean register(String username, String password){
-        return PostQuery(username,password,"http://localhost:2222/rest/user/register");
+        return PostQuery(username,password,"http://localhost:2222/rest/users/register");
     }
 
     private static boolean PostQuery(String username,String password, String address) {
@@ -72,7 +72,7 @@ public class RestClient implements IUserLogic {
     public static List<LoginDTO> getUsers() throws MalformedURLException {
 
         List<LoginDTO> users =new ArrayList<LoginDTO>();
-        URL url = new URL("http://localhost:2223/rest/user/all");
+        URL url = new URL("http://localhost:2223/rest/users/all");
         try {
 
             HttpURLConnection urlConnection = getHttpURLConnection(url);
@@ -106,7 +106,7 @@ public class RestClient implements IUserLogic {
 
         LoginDTO user =new LoginDTO();
         try {
-            URL url = new URL("http://localhost:2223/rest/user/" +username);
+            URL url = new URL("http://localhost:2223/rest/users/" +username);
             HttpURLConnection urlConnection = getHttpURLConnection(url);
 
 

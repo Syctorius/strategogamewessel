@@ -57,8 +57,6 @@ k
 .server/src/main/java/helpers/StrategoGame.java,0\6\067ec38f080c29680bc4e54590aadad4bc18a329
 W
 'server/src/main/java/helpers/Piece.java,6\f\6fe326f674b324f8460e700cb9c7554a245c2953
-V
-&server/src/main/java/helpers/User.java,2\c\2cc140238591e579c527ce43a966a4d8367989ba
 ^
 .server/src/main/java/server/StrategoLogin.java,4\0\402a9015fa4ee2731a56d7eeadd9f497218583a5
 A
@@ -79,8 +77,6 @@ _
 -server/src/main/java/server/LoginService.java,a\6\a6b9888b4ccc6748b897326f89215467f5208b3b
 ^
 .server/src/main/java/server/LoginResponse.java,b\f\bf73e5c08340a50cf340098e07f9483e0f8a5c1d
-Y
-)server/src/main/java/server/LoginDTO.java,1\5\150d6b01467e9f892166cc66f71157e1bce131d9
 _
 /server/src/main/java/server/ServerEndPoint.java,6\0\608bd67339c8fce30249d08b8a53d0776debf326
 b

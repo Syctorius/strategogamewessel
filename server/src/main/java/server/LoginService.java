@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Properties;
 
-@Path("/user")
+@Path("/users")
 public class LoginService {
 
     public LoginService() {
@@ -37,14 +37,14 @@ public class LoginService {
             }
         }
         if (response ) return Response.status(200).entity(ResponseHelper.getSuccessResponse(true)).build();
-        return Response.status(200).entity(ResponseHelper.getSuccessResponse(false)).build();
+        return Response.status(400).entity(ResponseHelper.getSuccessResponse(false)).build();
 
 
 
     }
 
     @GET
-    @Path("/all")
+    @Path("/all") //remove
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
@@ -75,7 +75,7 @@ public class LoginService {
             StrategoLogin.getInstance().addUser(user.getUsername(),user.getPassword());
             return Response.status(200).entity(ResponseHelper.getSuccessResponse(true)).build();
         }
-        return Response.status(200).entity(ResponseHelper.getSuccessResponse(false)).build();
+        return Response.status(400).entity(ResponseHelper.getSuccessResponse(false)).build();
 
 
 
@@ -92,6 +92,6 @@ public class LoginService {
 
         // Define response
         //return Response.status(200).entity(ResponseHelper.getSingleUserResponse(user)).build();
-        return Response.status(200).entity(ResponseHelper.getSuccessResponse(false)).build();
+        return Response.status(400).entity(ResponseHelper.getSuccessResponse(false)).build();
     }
 }
