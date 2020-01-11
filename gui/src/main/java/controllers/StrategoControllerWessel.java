@@ -22,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import messageenum.MessageType;
+import messagefactory.DefaultFactory;
 import messages.*;
 import websocketshared.ClientEndPoint;
 import websocketshared.WebSocketGui;
@@ -134,7 +135,7 @@ public class StrategoControllerWessel implements Initializable {
     Image SCOUT2;
     Image UNKNOWN1;
     Image UNKNOWN2;
-
+private DefaultFactory defaultFactory = new DefaultFactory();
 
     private ArrayList<Rank> emptyranklist = new ArrayList<>();
     public StrategoControllerWessel(String text) {
@@ -366,12 +367,12 @@ public class StrategoControllerWessel implements Initializable {
 
     public void placeAutomatically(MouseEvent mouseEvent) {
         Gson gson = new Gson();
-        clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(new PlaceAllUnitsMessage(this.teamColor))));
+        clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.PLACEALL,this.teamColor))));
     }
 
     public void removeAll(MouseEvent mouseEvent) {
         Gson gson = new Gson();
-        clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(new RemoveAllUnitsMessage(this.teamColor))));
+        clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.REMOVEALL,this.teamColor))));
     }
 
     public void removeUnit(MouseEvent mouseEvent) {

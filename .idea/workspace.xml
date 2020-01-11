@@ -2,24 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/messages/src/main/java/messagefactory/DefaultFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/messages/src/main/java/messagefactory/PlaceUnitFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/5/150d6b01467e9f892166cc66f71157e1bce131d9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cc140238591e579c527ce43a966a4d8367989ba" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/56196d6525242c2f641822240a7192d761b56fe4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/restclient/RestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/restclient/RestClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/BoardGenerationMultiThreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/BoardGenerationMultiThreading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/MultiThreadingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/MultiThreadingField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/src/main/java/messages/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/messages/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/src/main/java/messages/PlaceAllUnitsMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/messages/PlaceAllUnitsMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/src/main/java/messages/RemoveAllUnitsMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/messages/RemoveAllUnitsMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/src/main/java/messages/ResetUiMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/messages/ResetUiMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/messages/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerMessageToClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/StrategoLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/StrategoLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/StrategoGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/StrategoGameTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -225,6 +221,7 @@
       <workItem from="1577632944290" duration="27120000" />
       <workItem from="1577879778274" duration="96162000" />
       <workItem from="1578484471067" duration="5109000" />
+      <workItem from="1578769166809" duration="3609000" />
     </task>
     <servers />
   </component>

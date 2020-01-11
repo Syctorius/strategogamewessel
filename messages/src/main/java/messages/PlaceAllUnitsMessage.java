@@ -1,6 +1,6 @@
 package messages;
 
-public class PlaceAllUnitsMessage {
+public class PlaceAllUnitsMessage extends Message {
     private int teamcolor;
 
     public PlaceAllUnitsMessage(int teamcolor) {

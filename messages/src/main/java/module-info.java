@@ -3,4 +3,5 @@
      opens messages;
      exports messages;
      exports messageenum;
+     exports messagefactory;
  }

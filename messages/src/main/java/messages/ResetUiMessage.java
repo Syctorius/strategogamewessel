@@ -1,6 +1,6 @@
 package messages;
 
-public class ResetUiMessage {
+public class ResetUiMessage extends Message {
     private int teamcolor;
 
     public ResetUiMessage(int teamcolor) {

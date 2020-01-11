@@ -1,6 +1,6 @@
 package messages;
 
-public class RemoveAllUnitsMessage {
+public class RemoveAllUnitsMessage extends Message {
     private int teamcolor;
 
     public RemoveAllUnitsMessage(int teamcolor) {

@@ -11,6 +11,8 @@ import helpers.StrategoGame;
 import interfaces.IGame;
 import interfaces.StrategoServer;
 import messageenum.MessageType;
+import messagefactory.DefaultFactory;
+import messagefactory.PlaceUnitFactory;
 import messages.*;
 
 import java.awt.Point;
@@ -34,6 +36,8 @@ public class ServerEndPoint implements StrategoServer {
     private static List<IGame> games = new ArrayList<>();
     // Map each property to list of sessions that are subscribed to that property
     private static final Map<Integer, List<Session>> strategoGames = new HashMap<>();
+    private DefaultFactory defaultFactory = new DefaultFactory();
+    private PlaceUnitFactory placeUnitFactory = new PlaceUnitFactory();
 
     private int gameId = 0;
     private Gson gson = new Gson();
@@ -122,7 +126,7 @@ public class ServerEndPoint implements StrategoServer {
         }.getType());
         int tempgameid = getKeyBasedOnSession(session);
         games.get(tempgameid).removeAllPieces(Integer.parseInt(session.getId()), removeall.getTeamcolor() == 1 ? Color.RED : Color.BLUE);
-        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(removeall.getTeamcolor()))), tempgameid);
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,removeall.getTeamcolor()))), tempgameid);
         //TODO Make this fully server side
     }
 
@@ -329,10 +333,10 @@ public class ServerEndPoint implements StrategoServer {
     public void placeAllPieces(List<Piece> pieces, List<Point> points, Color color, int gameId) {
         int teamcolor = color == Color.RED ? 1 : 2;
         if (!pieces.isEmpty()) {
-            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(new ResetUiMessage(teamcolor))), gameId);
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,teamcolor))), gameId);
         }
         while (!pieces.isEmpty()) {
-            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(new PlaceUnitMessage(points.get(0), teamcolor, pieces.get(0).getActualRank().toString()))), gameId);
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(placeUnitFactory.CreateMessage(MessageType.PLACEUNIT,points.get(0), teamcolor, pieces.get(0).getActualRank().toString()))), gameId);
             pieces.remove(0);
             points.remove(0);
         }

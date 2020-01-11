@@ -2,7 +2,7 @@ package messages;
 
 import messageenum.MessageType;
 
-public class Message {
+public  class Message {
 
     private MessageType messageType;
     private String result;
