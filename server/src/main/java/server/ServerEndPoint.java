@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import enums.Color;
 import enums.Rank;
+import helpers.CommunicatorServer;
 import helpers.Piece;
 import helpers.StrategoGame;
 import interfaces.IGame;
@@ -243,7 +244,7 @@ public class ServerEndPoint implements StrategoServer {
     private void initGame(Map.Entry<Integer, List<Session>> gameSession) {
 
 
-        games.add(new StrategoGame(gameSession.getKey() - 1, this, Integer.parseInt(gameSession.getValue().get(0).getId()), Integer.parseInt(gameSession.getValue().get(1).getId())));
+        games.add(new StrategoGame(gameSession.getKey() - 1, new CommunicatorServer(this), Integer.parseInt(gameSession.getValue().get(0).getId()), Integer.parseInt(gameSession.getValue().get(1).getId())));
         //TODO set id here
 
 

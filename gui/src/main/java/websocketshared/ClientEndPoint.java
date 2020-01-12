@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 
 import frontendenums.GameStatus;
 import frontendenums.Rank;
+import interfaces.ICommunicatorClient;
 import messages.*;
 
 import javax.websocket.*;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class ClientEndPoint {
 
     private Session session;
-
+    private ICommunicatorClient client = new CommunicatorClient();
     public ClientEndPoint(){
         try {
 
@@ -40,42 +41,42 @@ public class ClientEndPoint {
         switch ((message.getMessageType())) {
             case DELETE:
                 DeleteMessage deleteMessage = gson.fromJson(message.getResult(), new TypeToken<DeleteMessage>(){}.getType());
-                WebSocketGui.getGameController().deleteUnitAtPosition(deleteMessage.getCoords());
+                client.deleteUnitAtPosition(deleteMessage.getCoords());
                 break;
             case MATCHFOUND:
 
                 Integer teamcolor  = gson.fromJson(message.getResult(), new TypeToken<Integer>(){}.getType());
-                WebSocketGui.getGameController().matchFound(teamcolor);
-                WebSocketGui.getGameController().setGameStatus(GameStatus.SETUP);
+                client.matchFound(teamcolor);
+                client.setGameStatus(GameStatus.SETUP);
                 break;
             case MOVEMENT:
                 MovementMessage movementMessage = gson.fromJson(message.getResult(), new TypeToken<MovementMessage>(){}.getType());
-                WebSocketGui.getGameController().moveUnitToPosition(movementMessage.getOldCoords(),movementMessage.getNewCoords());
+                client.moveUnitToPosition(movementMessage.getOldCoords(),movementMessage.getNewCoords());
                 break;
             case PLACEUNIT:
                PlaceUnitMessage unit = gson.fromJson(message.getResult(), new TypeToken<PlaceUnitMessage>(){}.getType());
-                WebSocketGui.getGameController().placeUnit(unit.getCoordsToPlace().x,unit.getCoordsToPlace().y,unit.getRank());
+                client.placeUnit(unit.getCoordsToPlace().x,unit.getCoordsToPlace().y,unit.getRank());
                 break;
             case STARTPLAYINGPHASE:
-                WebSocketGui.getGameController().setGameStatus(GameStatus.PLAYING);
-                WebSocketGui.getGameController().disableButtons(true);
+                client.setGameStatus(GameStatus.PLAYING);
+                client.disableButtons(true);
 
                 break;
             case ENDGAME:
                 EndGameMessage endGameMessage = gson.fromJson(message.getResult(), new TypeToken<EndGameMessage>(){}.getType());
-                WebSocketGui.getGameController().endGame(endGameMessage.getTeamcolor());
+                client.endGame(endGameMessage.getTeamcolor());
                 break;
             case NOTYOURTURN:
 
-                WebSocketGui.getGameController().showNotYourTurn();
+                client.showNotYourTurn();
                 break;
             case PLACEUNITFOROPPONENT:
                 PlaceUnitMessage unitopponent = gson.fromJson(message.getResult(), new TypeToken<PlaceUnitMessage>(){}.getType());
-                WebSocketGui.getGameController().placeUnitForOpponent(unitopponent.getCoordsToPlace().x,unitopponent.getCoordsToPlace().y);
+                client.placeUnitForOpponent(unitopponent.getCoordsToPlace().x,unitopponent.getCoordsToPlace().y);
                 break;
             case RESETUI:
                 ResetUiMessage resetui = gson.fromJson(message.getResult(), new TypeToken<ResetUiMessage>(){}.getType());
-                WebSocketGui.getGameController().resetUI(resetui.getTeamcolor());
+                client.resetUI(resetui.getTeamcolor());
                 break;
             case UPDATEFREQUENCY:
                 UpdateFrequencyMessage updateFrequencyMessage  = gson.fromJson(message.getResult(), new TypeToken<UpdateFrequencyMessage>(){}.getType());
@@ -84,12 +85,12 @@ public class ClientEndPoint {
                 {
                  ranks.add(Rank.valueOf(s));
                 }
-                WebSocketGui.getGameController().updateFrequencyUI(ranks,updateFrequencyMessage.getColor());
+                client.updateFrequencyUI(ranks,updateFrequencyMessage.getColor());
                 break;
             case BATTLERESULT:
                 BattleResultMessage battleResultMessage  = gson.fromJson(message.getResult(), new TypeToken<BattleResultMessage>(){}.getType());
 
-                WebSocketGui.getGameController().logBattleResult(battleResultMessage.getAttackerRank(),battleResultMessage.getDefenderRank(),battleResultMessage.doesAttackerWin());
+                client.logBattleResult(battleResultMessage.getAttackerRank(),battleResultMessage.getDefenderRank(),battleResultMessage.doesAttackerWin());
                 break;
             default:
                 break;

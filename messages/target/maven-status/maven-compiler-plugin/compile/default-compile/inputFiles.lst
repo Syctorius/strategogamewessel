@@ -1,5 +1,6 @@
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\DeleteMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\RemoveAllUnitsMessage.java
+C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messagefactory\DefaultFactory.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\MovementMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\NotYourTurnMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\PlaceUnitMessage.java
@@ -10,6 +11,7 @@ C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\Mess
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\ResetUiMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\PlaceUnitForOpponentMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\UserReadyMessage.java
+C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messagefactory\PlaceUnitFactory.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messages\EndGameMessage.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\messageenum\MessageType.java
 C:\Users\wesse\Downloads\strategogamewessel\messages\src\main\java\module-info.java

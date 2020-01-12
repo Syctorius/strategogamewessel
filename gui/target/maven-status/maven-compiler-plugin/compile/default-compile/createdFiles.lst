@@ -12,6 +12,7 @@ websocketshared\ClientEndPoint$3.class
 controllers\RegisterController.class
 websocketshared\ClientEndPoint$7.class
 controllers\StrategoControllerWessel$Square.class
+websocketshared\CommunicatorClient.class
 frontendenums\Color.class
 websocketshared\ClientEndPoint$4.class
 module-info.class
@@ -19,6 +20,7 @@ controllers\StrategoControllerWessel.class
 frontendenums\MoveStatus.class
 interfaces\IUserLogic.class
 websocketshared\ClientEndPoint$1.class
+interfaces\ICommunicatorClient.class
 frontendenums\BattleOutcome.class
 websocketshared\WebSocketGui.class
 websocketshared\ClientEndPoint.class

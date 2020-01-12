@@ -1,6 +1,10 @@
+messagefactory\DefaultFactory$1.class
+messagefactory\PlaceUnitFactory$1.class
 messages\UpdateFrequencyMessage.class
 messageenum\MessageType.class
 messages\RemoveAllUnitsMessage.class
+messagefactory\DefaultFactory.class
+messagefactory\PlaceUnitFactory.class
 messages\UserReadyMessage.class
 messages\ResetUiMessage.class
 messages\MovementMessage.class

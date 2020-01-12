@@ -9,11 +9,11 @@ C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\server\LoginSer
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\module-info.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\server\ServerEndPoint.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\server\StrategoLogin.java
+C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\helpers\CommunicatorServer.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\helpers\MultiThreadingField.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\helpers\Piece.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\interfaces\StrategoServer.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\server\ResponseHelper.java
-C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\server\ServerMessageToClient.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\interfaces\IGameUI.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\interfaces\IGame.java
 C:\Users\wesse\Downloads\strategogamewessel\server\src\main\java\enums\MovementType.java

@@ -5,9 +5,11 @@ C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\Batt
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\WebSocketGui.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\Color.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\interfaces\IUserLogic.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\CommunicatorClient.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\StrategoControllerWessel.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\GameStatus.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\module-info.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\ClientEndPoint.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\interfaces\ICommunicatorClient.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\MoveStatus.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\Rank.java

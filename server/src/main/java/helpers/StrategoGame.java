@@ -277,27 +277,31 @@ board.removeAllPieces(color);
             // Horizontal move
             if (oldPos.x < newPos.x) {
                 // Move right
-                for (i = oldPos.x + 1; i <= newPos.x; ++i)
-                    if (checkForPiece(new Point(oldPos.y, i)) != null)
+                for (i = oldPos.x + 1; i <= newPos.x; ++i) {
+                    if (checkForPiece(new Point( i,oldPos.y)) != null)
                         return false;
+                }
             } else {
                 // Move left
-                for (i = oldPos.x - 1; i >= newPos.x; --i)
-                    if (checkForPiece(new Point(oldPos.y, i))!= null)
+
+                for (i = oldPos.x - 1; i >= newPos.x; --i) {
+                    if (checkForPiece(new Point(i,oldPos.y)) != null)
                         return false;
+                }
             }
         } else if (oldPos.x == newPos.x) {
             // Vertical move
             if (oldPos.y < newPos.y) {
                 // Move down
-                for (i = oldPos.y + 1; i <= newPos.y; ++i)
-                    if (checkForPiece(new Point(i, oldPos.x))!= null)
+                for (i = oldPos.y - 1; i >= newPos.y; --i)
+                    if (checkForPiece(new Point(oldPos.x,i) )!= null)
                         return false;
             } else {
                 // Move up
-                for (i = oldPos.y - 1; i >= newPos.y; --i)
-                    if (checkForPiece(new Point(i, oldPos.x) )!= null)
+                for (i = oldPos.y + 1; i <= newPos.y; ++i)
+                    if (checkForPiece(new Point(oldPos.x,i))!= null)
                         return false;
+
             }
         } else {
             // Not a valid rook move (neither horizontal nor vertical)

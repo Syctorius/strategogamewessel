@@ -8,8 +8,8 @@ server\ServerEndPoint$4.class
 server\LoginResponse.class
 helpers\StrategoGame$1.class
 module-info.class
-server\ServerMessageToClient.class
 interfaces\IGame.class
+helpers\CommunicatorServer.class
 helpers\BoardGenerationMultiThreading.class
 server\ServerEndPoint$1.class
 enums\BattleOutcome.class
