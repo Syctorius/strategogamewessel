@@ -4,7 +4,6 @@ import enums.Color;
 import enums.Rank;
 
 import java.awt.*;
-import java.util.Collections;
 
 public interface IGame {
 
@@ -91,7 +90,7 @@ public interface IGame {
      */
     public void removeAllPieces(int playerNr, Color color);
 
-    public void movePiece(Point oldPos, Point newPos);
+    public void movePiece(Point oldPos, Point newPos, int i);
 
     boolean haveBothPlayersPlacedAllUnits();
 

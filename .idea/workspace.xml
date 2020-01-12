@@ -2,57 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/interfaces/ICommunicatorClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/CommunicatorClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/helpers/CommunicatorServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel$Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/controllers/StrategoControllerWessel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/restclient/RestClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/restclient/RestClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/classes/websocketshared/ClientEndPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/gui-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/gui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/classes/messages/PlaceAllUnitsMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/classes/messages/PlaceAllUnitsMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/classes/messages/RemoveAllUnitsMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/classes/messages/RemoveAllUnitsMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/classes/messages/ResetUiMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/classes/messages/ResetUiMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/target/messages-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/messages/target/messages-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/controllers/StrategoControllerWessel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/interfaces/IGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/interfaces/IGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/BoardGenerationMultiThreading.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/BoardGenerationMultiThreading.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/MultiThreadingField.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/MultiThreadingField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/interfaces/IGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/interfaces/IGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ServerEndPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ServerMessageToClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/StrategoLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/StrategoLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/test-classes/StrategoGameTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/StrategoGameTests.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +216,7 @@
       <workItem from="1577632944290" duration="27120000" />
       <workItem from="1577879778274" duration="96162000" />
       <workItem from="1578484471067" duration="5109000" />
-      <workItem from="1578769166809" duration="10328000" />
+      <workItem from="1578769166809" duration="12395000" />
     </task>
     <servers />
   </component>
@@ -293,18 +251,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
-          <line>178</line>
+          <line>177</line>
           <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
-          <line>286</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
-          <line>279</line>
-          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

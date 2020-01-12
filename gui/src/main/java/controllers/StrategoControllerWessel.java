@@ -328,7 +328,7 @@ private DefaultFactory defaultFactory = new DefaultFactory();
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
-        showMessage("You are now in the"+ gameStatus.name() +"Phase");
+        showMessage("You are now in the "+ gameStatus.name().toLowerCase() +" Phase");
     }
 
     private void showMessage(final String message) {

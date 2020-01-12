@@ -6,7 +6,6 @@ import enums.GameStatus;
 import enums.Rank;
 import interfaces.IGame;
 import interfaces.StrategoServer;
-import server.ServerEndPoint;
 import user.User;
 
 import java.awt.*;
@@ -193,22 +192,43 @@ board.removeAllPieces(color);
 
 
     @Override
-    public void movePiece(Point oldPos, Point newPos) {
+    public void movePiece(Point oldPos, Point newPos, int i) {
         Piece myPiece = checkForPiece(oldPos);
         Piece enemyPiece = checkForPiece(newPos);
         if (oldPos.getLocation() != newPos.getLocation()) {
             if (myPiece != null) {
-                if (myPiece.getColor() == turnColor) {
+                if (correctPlayerTurn(myPiece,i)) {
                     if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
                         sortMovement(oldPos, newPos, myPiece, enemyPiece);
                         updateFrequencyUI();
                         switchTurn();
                     }
-                } else {
-                    application.sendMessageNotYourTurn("It's not your turn ", turnColor == Color.BLUE ? bluePlayerId : redPlayerId, this.key);
                 }
             }
         }
+    }
+
+    private boolean correctPlayerTurn(Piece myPiece, int id)
+    {
+        return turnColor == Color.RED ? getCorrectPlayerTurn(myPiece, id, redPlayerId) : getCorrectPlayerTurn(myPiece, id, bluePlayerId);
+
+    }
+
+    private boolean getCorrectPlayerTurn(Piece myPiece, int i, int playerId) {
+        if (myPiece.getColor() == turnColor) {
+            if(i == playerId)
+            {
+                return true;
+            }
+            else {
+                application.sendMessageNotYourTurn("That's not your piece", playerId, this.key);
+            }
+        }
+        else
+        {
+            application.sendMessageNotYourTurn("It's not your turn ", playerId, this.key);
+        }
+        return false;
     }
 
     private void updateFrequencyUI() {

@@ -141,7 +141,7 @@ public class ServerEndPoint implements StrategoServer {
     private void handleMovement(Session session, Gson gson, Message wbMessage) {
         MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken<MovementMessage>() {
         }.getType());
-        games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords());
+        games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords(),Integer.parseInt(session.getId()));
     }
 
     private void handlePlaceUnit(Session session, Gson gson, Message wbMessage) {
