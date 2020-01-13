@@ -1,0 +1,4 @@
+
+Œsquid:S1319	"pThe type of the "ranks" object should be an interface such as "List" rather than the implementation "ArrayList".(¶êÌãúÿÿÿÿ
+‡squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¾œë
+Tsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

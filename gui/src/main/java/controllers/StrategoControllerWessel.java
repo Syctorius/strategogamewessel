@@ -84,7 +84,7 @@ public class StrategoControllerWessel implements Initializable {
     private boolean singleplayer = false;
     private int teamColor = 1;
     int maxFlag = 1;
-    int maxSpy =  1;
+    int maxSpy = 1;
     int maxGeneral = 1;
     int maxMarshal = 1;
     int maxBomb = 6;
@@ -135,21 +135,22 @@ public class StrategoControllerWessel implements Initializable {
     Image SCOUT2;
     Image UNKNOWN1;
     Image UNKNOWN2;
-private DefaultFactory defaultFactory = new DefaultFactory();
+    private DefaultFactory defaultFactory = new DefaultFactory();
 
     private ArrayList<Rank> emptyranklist = new ArrayList<>();
+
     public StrategoControllerWessel(String text) {
         Platform.runLater(() -> {
             lblUsername.setText(text);
         });
     }
+
     public StrategoControllerWessel() {
     }
 
     private void setFrequencies(ArrayList<Rank> list, Rank r) {
 
-        switch (r)
-        {
+        switch (r) {
             case SCOUT:
                 Platform.runLater(() -> {
                     lblScoutCount.setText("" + Collections.frequency(list, r) + " / " + maxScout);
@@ -185,9 +186,10 @@ private DefaultFactory defaultFactory = new DefaultFactory();
                     lblMinerCount.setText("" + Collections.frequency(list, r) + " / " + maxMiner);
                 });
                 break;
-            case MARSHAL:  Platform.runLater(() -> {
-                lblMarshalCount.setText("" + Collections.frequency(list, r) + " / " + maxMarshal);
-            });
+            case MARSHAL:
+                Platform.runLater(() -> {
+                    lblMarshalCount.setText("" + Collections.frequency(list, r) + " / " + maxMarshal);
+                });
                 break;
             case GENERAL:
                 Platform.runLater(() -> {
@@ -215,15 +217,15 @@ private DefaultFactory defaultFactory = new DefaultFactory();
 
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         initBoard(squareArray, Gridplayingfield);
         initImages();
         disableButtons(true);
-        for(Rank rank : Rank.values())
-        {
-            setFrequencies(emptyranklist,rank);
+        for (Rank rank : Rank.values()) {
+            setFrequencies(emptyranklist, rank);
         }
         WebSocketGui.setGameController(this);
         clientEndPoint = new ClientEndPoint();
@@ -297,7 +299,7 @@ private DefaultFactory defaultFactory = new DefaultFactory();
         Square oldpos = (Square) getNodeByRowColumnIndex(oldCoords.x, oldCoords.y, Gridplayingfield);
         oldpos.unit = false;
         Square newpos = (Square) getNodeByRowColumnIndex(newCoords.x, newCoords.y, Gridplayingfield);
-        newpos.unit =true;
+        newpos.unit = true;
         oldpos.setStyle(fxbackgroundcolor + oldpos.color);
         newpos.ImageView.setImage(oldpos.ImageView.getImage());
         newpos.ImageView.setFitWidth(65.6);
@@ -308,19 +310,19 @@ private DefaultFactory defaultFactory = new DefaultFactory();
         oldpos.ImageView.setImage(null);
     }
 
-    public void updateFrequencyUI(ArrayList<Rank> ranks, int teamColor)
-    {
-        if(this.teamColor == teamColor) {
+    public void updateFrequencyUI(ArrayList<Rank> ranks, int teamColor) {
+        if (this.teamColor == teamColor) {
             for (Rank r : Rank.values()) {
                 setFrequencies(ranks, r);
             }
         }
     }
+
     public void matchFound(Integer teamcolor) {
         Platform.runLater(() -> {
-                    this.teamColor = teamcolor;
-                    circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
-                });
+            this.teamColor = teamcolor;
+            circleTeamColor.setStyle(teamcolor == 1 ? "-fx-fill:red" : "-fx-fill:blue");
+        });
         disableButtons(false);
 
         showMessage("A match has been found.");
@@ -328,7 +330,7 @@ private DefaultFactory defaultFactory = new DefaultFactory();
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
-        showMessage("You are now in the "+ gameStatus.name().toLowerCase() +" Phase");
+        showMessage("You are now in the " + gameStatus.name().toLowerCase() + " Phase");
     }
 
     private void showMessage(final String message) {
@@ -341,9 +343,9 @@ private DefaultFactory defaultFactory = new DefaultFactory();
 
         });
     }
-    public void showNotYourTurn()
-    {
-            showMessage("It's not your turn");
+
+    public void showNotYourTurn() {
+        showMessage("It's not your turn");
 
     }
 
@@ -367,12 +369,12 @@ private DefaultFactory defaultFactory = new DefaultFactory();
 
     public void placeAutomatically(MouseEvent mouseEvent) {
         Gson gson = new Gson();
-        clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.PLACEALL,this.teamColor))));
+        clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.PLACEALL, this.teamColor))));
     }
 
     public void removeAll(MouseEvent mouseEvent) {
         Gson gson = new Gson();
-        clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.REMOVEALL,this.teamColor))));
+        clientEndPoint.sendMessage(new Message(MessageType.REMOVEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.REMOVEALL, this.teamColor))));
     }
 
     public void removeUnit(MouseEvent mouseEvent) {
@@ -416,32 +418,41 @@ private DefaultFactory defaultFactory = new DefaultFactory();
     private void initBoard(Square[][] grid, GridPane board) {
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 10; x++) {
-                init(grid, board, y, x, 2);
+                init(grid, board, y, x, 2,"lime");
 
             }
         }
 
+
+        ArrayList<Integer> standardWater = new ArrayList<>() {
+        };
+        Collections.addAll(standardWater, 2, 3, 6, 7);
         for (int y = 4; y < 6; y++) {
             for (int x = 0; x < 10; x++) {
-                init(grid, board, y, x, 0);
-            }
 
+                if (standardWater.contains(x)) {
+                    init(grid, board, y, x, 0,"blue");
+                } else {
+                    init(grid, board, y, x, 0,"lime");
+                }
+
+
+            }
         }
         for (int y = 6; y < 10; y++) {
             for (int x = 0; x < 10; x++) {
-                init(grid, board, y, x, 1);
+                init(grid, board, y, x, 1,"lime");
 
             }
         }
     }
-public void resetUI(int color)
 
-{
+    public void resetUI(int color) {
 
 
         for (Node stackPane : Gridplayingfield.getChildrenUnmodifiable()) {
             try {
-                if(((Square) stackPane).teamcolor == color) {
+                if (((Square) stackPane).teamcolor == color) {
                     stackPane.setStyle("-fx-background-color: lime; -fx-border-color: black");
                     ((Square) stackPane).ImageView.setImage(null);
                     ((Square) stackPane).unit = false;
@@ -451,17 +462,19 @@ public void resetUI(int color)
             }
         }
 
-}
-    private void init(Square[][] grid, GridPane board, int y, int x, int i) {
+    }
+
+    private void init(Square[][] grid, GridPane board, int y, int x, int i, String color) {
         Square s = new Square();
         ImageView image = new ImageView();
 
         s.ImageView = image;
         s.getChildren().add(image);
-        s.setStyle("-fx-background-color: lime;  -fx-border-color: black");
+        s.setStyle("-fx-background-color:" +color+  ";" +" -fx-border-color: black");
         s.addEventHandler(MouseEvent.MOUSE_PRESSED,
                 this::handleOnMouseClicked);
         s.teamcolor = i;
+        s.color = color;
         grid[x][y] = s;
 
 
@@ -509,7 +522,7 @@ public void resetUI(int color)
                 if (moveStatus == moveStatus.PIECE_SELECTED) {
                     Gson gson = new Gson();
                     //Send message to server move;
-                    clientEndPoint.sendMessage((new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(new Point(GridPane.getColumnIndex(Tempsquare), GridPane.getRowIndex(Tempsquare)),new Point(GridPane.getColumnIndex(toPlaceSquare), GridPane.getRowIndex(toPlaceSquare)))))));
+                    clientEndPoint.sendMessage((new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(new Point(GridPane.getColumnIndex(Tempsquare), GridPane.getRowIndex(Tempsquare)), new Point(GridPane.getColumnIndex(toPlaceSquare), GridPane.getRowIndex(toPlaceSquare)))))));
 
                     moveStatus = moveStatus.NONE_SELECTED;
 
@@ -677,14 +690,14 @@ public void resetUI(int color)
             setSquareImageForPlacing(placeLocation);
         }
     }
-    public void placeUnit(int x, int y,String rank) {
+
+    public void placeUnit(int x, int y, String rank) {
         int opponentTeamColor = teamColor == 1 ? 2 : 1; // can remove
         if (canUnitBePlaced(x, y, teamColor)) {
             Square placeLocation = (Square) getNodeByRowColumnIndex(x, y, Gridplayingfield);
             placeLocation.ImageView.setImage(getImage(rank + teamColor));
             setSquareImageForPlacing(placeLocation);
-        }
-        else if (canUnitBePlaced(x, y, opponentTeamColor)) {
+        } else if (canUnitBePlaced(x, y, opponentTeamColor)) {
             Square placeLocation = (Square) getNodeByRowColumnIndex(x, y, Gridplayingfield);
             placeLocation.ImageView.setImage(getImage("UNKNOWN" + opponentTeamColor));
             setSquareImageForPlacing(placeLocation);

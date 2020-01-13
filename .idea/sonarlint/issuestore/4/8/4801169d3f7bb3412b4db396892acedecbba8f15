@@ -1,0 +1,20 @@
+
+Œ"squid:ClassVariableVisibilityCheck"^Make tfRegisterPassword a static final constant or non-public and provide accessors if needed.(şİöà
+˜"squid:ClassVariableVisibilityCheck"eMake tfRegisterConfirmPassword a static final constant or non-public and provide accessors if needed.(Ü’³Äşÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"[Make btnRegisterUser a static final constant or non-public and provide accessors if needed.(¤ÿŸéùÿÿÿÿ
+Tsquid:S2589'"8Remove this expression which always evaluates to "false"(ğ‹ª­ûÿÿÿÿ
+Tsquid:S2589'"8Remove this expression which always evaluates to "false"(ğ‹ª­ûÿÿÿÿ
+?squid:S1148h"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+fsquid:S00100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¼Œõ
+Isquid:S1172#"2Remove this unused method parameter "actionEvent".(ì¼Œõ
+hsquid:S1871."LThis branch's code block is the same as the block for the branch on line 39.(óûÓÉÿÿÿÿÿ
+–squid:S2159'"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(ğ‹ª­ûÿÿÿÿ
+–squid:S2159'"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(ğ‹ª­ûÿÿÿÿ
+ksquid:S00100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¨ üÿÿÿÿ
+ksquid:S00100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ÑŞôúÿÿÿÿ
+ksquid:S00100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª ÊÇÿÿÿÿÿ
+ksquid:S00100Q"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šŒÑøÿÿÿÿ
+esquid:S00100Y"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ•’V
+jsquid:S1602^"SRemove useless curly braces around statement and then remove useless return keyword(‰´ˆü
+ksquid:S00100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Áº×ıÿÿÿÿ
+bsquid:CommentedOutCodeLineq"<This block of commented-out lines of code should be removed.(šŞöå

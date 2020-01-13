@@ -18,7 +18,7 @@ public class Board {
     private ArrayList<Piece> toPlacePieces = new ArrayList<>();
     private ArrayList<Point> toPlacePiecesCoords = new ArrayList<>();
     //ArrayList<Piece> trayOfPieces = new ArrayList<>();
-    Tile[][] tilesInGame;
+   private Tile[][] tilesInGame;
 
     private List<Integer> positions = new ArrayList<>();
     private List<Rank> ranks = new ArrayList<>();
@@ -214,5 +214,9 @@ public class Board {
         }
         positions = new ArrayList<>();
 
+    }
+
+    public Tile[][] getTilesInGame() {
+        return tilesInGame;
     }
 }

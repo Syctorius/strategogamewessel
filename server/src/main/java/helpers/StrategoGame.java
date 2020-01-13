@@ -1,9 +1,7 @@
 package helpers;
 
-import enums.BattleOutcome;
+import enums.*;
 import enums.Color;
-import enums.GameStatus;
-import enums.Rank;
 import interfaces.IGame;
 import interfaces.StrategoServer;
 import user.User;
@@ -195,7 +193,7 @@ board.removeAllPieces(color);
     public void movePiece(Point oldPos, Point newPos, int i) {
         Piece myPiece = checkForPiece(oldPos);
         Piece enemyPiece = checkForPiece(newPos);
-        if (oldPos.getLocation() != newPos.getLocation()) {
+        if (oldPos.getLocation() != newPos.getLocation() && getTileType(newPos) != TileType.WATER) {
             if (myPiece != null) {
                 if (correctPlayerTurn(myPiece,i)) {
                     if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
@@ -206,6 +204,10 @@ board.removeAllPieces(color);
                 }
             }
         }
+    }
+
+    private TileType getTileType(Point newPos) {
+       return board.getTilesInGame()[newPos.y][newPos.x].getType();
     }
 
     private boolean correctPlayerTurn(Piece myPiece, int id)
@@ -298,9 +300,10 @@ board.removeAllPieces(color);
             if (oldPos.x < newPos.x) {
                 // Move right
                 for (i = oldPos.x + 1; i <= newPos.x; ++i) {
-                    if (checkForPiece(new Point( i,oldPos.y)) != null)
+                    if (checkForPiece(new Point( i,oldPos.y)) != null )
                         return false;
                 }
+
             } else {
                 // Move left
 
@@ -374,7 +377,7 @@ board.removeAllPieces(color);
     }
 
     private Piece checkForPiece(Point position) throws NullPointerException {
-        return board.tilesInGame[position.y][position.x].getPiece();
+        return board.getTilesInGame()[position.y][position.x].getPiece();
     }
 
 
