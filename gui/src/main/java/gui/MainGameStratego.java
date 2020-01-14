@@ -1,5 +1,6 @@
 package gui;
 
+import controllers.LoginController;
 import controllers.RegisterController;
 import controllers.StrategoControllerWessel;
 import javafx.application.Application;
@@ -20,10 +21,8 @@ public class MainGameStratego extends Application {
 
 
         Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
-    fxmlLoader.setControllerFactory(c ->{
-        return new RegisterController(new RestClient()) ;
-    });
+FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
+    fxmlLoader.setControllerFactory(c -> new LoginController(new RestClient()));
     Parent root = fxmlLoader.load();
         primaryStage.setTitle("Test");
         primaryStage.setScene(new Scene(root, screen.getWidth(), screen.getHeight()));

@@ -7,9 +7,13 @@ import frontendenums.Rank;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,14 +24,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import messageenum.MessageType;
 import messagefactory.DefaultFactory;
 import messages.*;
+import restclient.RestClient;
 import websocketshared.ClientEndPoint;
 import websocketshared.WebSocketGui;
 
 import java.awt.*;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -310,12 +317,12 @@ public class StrategoControllerWessel implements Initializable {
         oldpos.ImageView.setImage(null);
     }
 
-    public void updateFrequencyUI(ArrayList<Rank> ranks, int teamColor) {
-        if (this.teamColor == teamColor) {
+    public void updateFrequencyUI(ArrayList<Rank> ranks) {
+
             for (Rank r : Rank.values()) {
                 setFrequencies(ranks, r);
             }
-        }
+
     }
 
     public void matchFound(Integer teamcolor) {
@@ -363,10 +370,36 @@ public class StrategoControllerWessel implements Initializable {
 
     public void endGame(Integer teamcolor2) {
         showMessage(teamcolor2 == 1 ? "The red player has captured the blue flag, Game Over" : "The blue player has captured the red flag, Game Over");
-        //Close application redirect or something
+        //Close application redirect or
+        clientEndPoint.sendMessage(new Message(MessageType.UNREGISTERFROMGAME,null));
+        BackToLoginAction();
+
 
     }
-
+    public void BackToLoginAction() {
+        Platform.runLater(() -> {
+            Stage currentStage = (Stage) lblBombCount.getScene().getWindow();
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
+                fxmlLoader.setControllerFactory(c -> {
+                    return new LoginController(new RestClient());
+                });
+                String title = "ss";
+                loadFxml(fxmlLoader, title);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            currentStage.close();
+        });
+    }
+    private void loadFxml(FXMLLoader fxmlLoader, String title) throws IOException {
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 450, 450));
+        stage.setMaximized(true);
+        stage.show();
+    }
     public void placeAutomatically(MouseEvent mouseEvent) {
         Gson gson = new Gson();
         clientEndPoint.sendMessage(new Message(MessageType.PLACEALL, gson.toJson(defaultFactory.CreateMessage(MessageType.PLACEALL, this.teamColor))));
@@ -394,7 +427,8 @@ public class StrategoControllerWessel implements Initializable {
         defenderImage.setFitWidth(width);
         defenderImage.setFitHeight(height);
         defenderImage.setStyle(whiteborder);
-        swordImage.setImage(doesAttackerWin ? new Image("attackerwins.png") : attackerRank == defenderRank ? new Image("battletie.png") : new Image("defenderwins.png"));
+        swordImage.setImage(doesAttackerWin ? new Image("attackerwins.png") : new Image("defenderwins.png"));
+        if (attackerRank == defenderRank) swordImage.setImage(new Image("battletie.png"));
         swordImage.setFitWidth(width);
         swordImage.setFitHeight(height);
         swordImage.setStyle(whiteborder);

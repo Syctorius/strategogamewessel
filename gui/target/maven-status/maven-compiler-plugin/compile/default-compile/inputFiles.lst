@@ -8,6 +8,7 @@ C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\interfaces\IUserLo
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\CommunicatorClient.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\StrategoControllerWessel.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\frontendenums\GameStatus.java
+C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\controllers\LoginController.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\module-info.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\websocketshared\ClientEndPoint.java
 C:\Users\wesse\Downloads\strategogamewessel\gui\src\main\java\interfaces\ICommunicatorClient.java

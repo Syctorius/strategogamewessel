@@ -2,22 +2,16 @@ package user;
 
 import dtos.LoginDTO;
 
-public class User  {
+import java.io.Serializable;
+
+
+public class User implements Serializable {
     public User()
     {
 
     }
-    public User(int id, String username) {
-        userId = id;
-        this.username = username;
-    }
-    public User(int id, String username, String password) {
-        userId = id;
-        this.username = username;
-        this.password = password;
-    }
 
-    private int userId;
+
     private String username;
     private String password;
     private boolean ready;
@@ -25,14 +19,6 @@ public class User  {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int id) {
-        userId = id;
     }
 
     public String getUsername() {
@@ -49,9 +35,10 @@ public class User  {
     public void setUsername(String username) {
         this.username = username;
     }
+    public void setPassword(String password){this.password = password;}
 
     public LoginDTO createDTO () {
-        return new LoginDTO(userId, username, password);
+        return new LoginDTO(username, password);
     }
 
 }

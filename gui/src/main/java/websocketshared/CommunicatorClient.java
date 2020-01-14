@@ -59,8 +59,8 @@ public class CommunicatorClient implements ICommunicatorClient {
     }
 
     @Override
-    public void updateFrequencyUI(ArrayList<Rank> ranks, int color) {
-        WebSocketGui.getGameController().updateFrequencyUI(ranks,color);
+    public void updateFrequencyUI(ArrayList<Rank> ranks) {
+        WebSocketGui.getGameController().updateFrequencyUI(ranks);
     }
 
     @Override

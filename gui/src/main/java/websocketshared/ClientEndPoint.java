@@ -85,7 +85,7 @@ public class ClientEndPoint {
                 {
                  ranks.add(Rank.valueOf(s));
                 }
-                client.updateFrequencyUI(ranks,updateFrequencyMessage.getColor());
+                client.updateFrequencyUI(ranks);
                 break;
             case BATTLERESULT:
                 BattleResultMessage battleResultMessage  = gson.fromJson(message.getResult(), new TypeToken<BattleResultMessage>(){}.getType());

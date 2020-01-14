@@ -2,6 +2,7 @@ controllers\StrategoControllerWessel$2.class
 websocketshared\ClientEndPoint$2.class
 frontendenums\GameStatus.class
 websocketshared\ClientEndPoint$5.class
+controllers\LoginController.class
 websocketshared\ClientEndPoint$9.class
 gui\MainGameStratego.class
 restclient\RestClient.class

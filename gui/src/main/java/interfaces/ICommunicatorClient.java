@@ -27,7 +27,7 @@ public interface ICommunicatorClient {
 
     void resetUI(int teamcolor);
 
-    void updateFrequencyUI(ArrayList<Rank> ranks, int color);
+    void updateFrequencyUI(ArrayList<Rank> ranks);
     void logBattleResult(String attackerRank,String defenderRank,boolean doesAttackerWin);
 
 }

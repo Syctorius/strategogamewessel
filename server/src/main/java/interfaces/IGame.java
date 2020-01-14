@@ -38,21 +38,7 @@ public interface IGame {
      */
 
 
-    public void registerPlayer(String name, String password, boolean singlePlayerMode);
 
-    /**
-     * // The username and password cannot be null,
-     * // there can't be two players when singleplayermode is enabled.
-     * // The name has to exist in our current db.
-     * // the username and password can not be empty.
-     * // the username has to match the username listed in the db.
-     * *     else -> the application throws @throws IllegalArgumentException
-     *
-     * @param name
-     * @param password
-     * @param singlePlayerMode
-     * @return
-     */
 
     public boolean loginPlayer(String name, String password, boolean singlePlayerMode);
 

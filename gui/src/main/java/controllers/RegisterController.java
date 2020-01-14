@@ -94,12 +94,7 @@ public class RegisterController {
                 fxmlLoader.setControllerFactory(c -> {
                     return new StrategoControllerWessel(tfRegisterUsername.getText());
                 });
-                Parent root = fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setTitle("Lobby list");
-                stage.setScene(new Scene(root, 450, 450));
-                stage.setMaximized(true);
-                stage.show();
+                loadFxml(fxmlLoader, "game");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -110,21 +105,26 @@ public class RegisterController {
 
     public void BackToLoginAction(ActionEvent actionEvent) {
 
-      /*  Stage currentStage = (Stage) tfRegisterConfirmPassword.getScene().getWindow();
+       Stage currentStage = (Stage) tfRegisterConfirmPassword.getScene().getWindow();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
             fxmlLoader.setControllerFactory(c -> {
-                return new Controller((IUserLogic) Factory.createInstance(new CreateUserLiveInstance()));
+                return new LoginController(userLogic);
             });
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("login");
-            stage.setScene(new Scene(root, 450, 450));
-            stage.setMaximized(true);
-            stage.show();
+            String title= "";
+            loadFxml(fxmlLoader, title);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        currentStage.close();*/
+        currentStage.close();
+    }
+
+    private void loadFxml(FXMLLoader fxmlLoader, String title) throws IOException {
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 450, 450));
+        stage.setMaximized(true);
+        stage.show();
     }
 }

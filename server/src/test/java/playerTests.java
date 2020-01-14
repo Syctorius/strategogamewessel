@@ -23,7 +23,7 @@ public class playerTests {
         boolean singlePlayerMode = true;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
     @Test() // expected=IllegalArgumentException.class
@@ -35,7 +35,7 @@ public class playerTests {
         boolean singlePlayerMode = true;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
 
@@ -46,7 +46,7 @@ public class playerTests {
         boolean singlePlayerMode = true;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
 
@@ -57,7 +57,7 @@ public class playerTests {
         boolean singlePlayerMode = true;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
 
@@ -68,7 +68,7 @@ public class playerTests {
         boolean singlePlayerMode = true;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
 
@@ -82,10 +82,9 @@ public class playerTests {
 
         boolean singlePlayerMode = true;
 
-        game.registerPlayer(name, password, singlePlayerMode);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name2, password2, singlePlayerMode);
+
         });
     }
 
@@ -95,7 +94,7 @@ public class playerTests {
         String password = "password";
         boolean singlePlayerMode = true;
 
-        game.registerPlayer(name, password, singlePlayerMode);
+
 
         Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
     }
@@ -110,8 +109,7 @@ public class playerTests {
 
         boolean singlePlayerMode = false;
 
-        game.registerPlayer(name, password, singlePlayerMode);
-        game.registerPlayer(name2, password2, singlePlayerMode);
+
 
         Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
         Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
@@ -129,11 +127,10 @@ public class playerTests {
 
 
 
-        game.registerPlayer(name, password,singlePlayerMode);
-        game.registerPlayer(name2, password2,singlePlayerMode);
+
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer("test", "pswd", singlePlayerMode);
+
         });
     }
 
@@ -144,10 +141,10 @@ public class playerTests {
 
         boolean singlePlayerMode = false;
 
-        game.registerPlayer(name, password, singlePlayerMode);
+
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            game.registerPlayer(name, password, singlePlayerMode);
+
         });
     }
 

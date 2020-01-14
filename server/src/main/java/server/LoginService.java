@@ -29,11 +29,12 @@ public class LoginService {
 //        User user = new User();
         boolean response = false;
 
-
-        List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
-        for (User user1 : allUsers) {
-            if (user1.getUsername().equals(user.getUsername()) && user1.getPassword().equals(user.getPassword())) {
-                response = true;
+        if(user.getUsername()!= "" && user.getPassword() != "") {
+            List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
+            for (User user1 : allUsers) {
+                if (user1.getUsername().equals(user.getUsername()) && user1.getPassword().equals(user.getPassword())) {
+                    response = true;
+                }
             }
         }
         if (response ) return Response.status(200).entity(ResponseHelper.getSuccessResponse(true)).build();
@@ -42,9 +43,8 @@ public class LoginService {
 
 
     }
-
-    @GET
     @Path("/all") //remove
+    @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
@@ -63,12 +63,13 @@ public class LoginService {
 //        User user = new User();
         boolean response = true;
 
+        if(user.getUsername()!= "" && user.getPassword() != "") {
+            List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
+            for (User user1 : allUsers) {
+                if (user1.getUsername().equals(user.getUsername())) {
+                    response = false;
 
-        List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
-        for (User user1 : allUsers) {
-            if (user1.getUsername().equals(user.getUsername())) {
-                response = false;
-
+                }
             }
         }
         if (response ){

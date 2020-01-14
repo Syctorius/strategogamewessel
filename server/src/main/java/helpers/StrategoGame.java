@@ -103,52 +103,7 @@ return false;
         status = GameStatus.STOPPED;
     }
 
-    @Override
-    public void registerPlayer(String name, String password, boolean singlePlayerMode) {
-        this.singlePlayerMode = singlePlayerMode;
 
-        if (name == null || name == "") {
-            // application.showErrorMessage(user.getPlayerNr(), "Please fill in the name field.");
-            throw new IllegalArgumentException();
-        }
-        if (password == null || password == "") {
-            // application.showErrorMessage(user.getPlayerNr(), "Please fill in the password field.");
-            throw new IllegalArgumentException();
-        }
-
-
-        if (application == null) {
-            throw new IllegalArgumentException();
-        }
-
-        if (user.getUsername() == name) {
-            throw new IllegalArgumentException();
-        }
-
-        if (singlePlayerMode && user != null && opponent != null) {
-            //application.showErrorMessage(user.getPlayerNr(), "Unexpected error: Lobby size is 2.");
-            throw new IllegalArgumentException();
-        }
-
-
-        if (singlePlayerMode && user == null) {
-            user = new User(0, name);
-
-            opponent = new User(1, "AI");
-
-            this.application = application;
-
-            // application.setPlayerNumber(currentPlayer.getPlayerNr(), currentPlayer.getUsername());
-
-            return;
-        }
-        if (!singlePlayerMode && user == null || opponent == null) {
-            user = new User(0, name);
-
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
 
     @Override
     public boolean loginPlayer(String name, String password, boolean singlePlayerMode) {
@@ -158,8 +113,6 @@ return false;
 
     @Override
     public void placePiecesAutomatically(int playerNr, Color color) {
-        removeAllPieces(playerNr,color);
-
         // Board playerBoard = user.getBoard();
         this.board.PlacePiecesAutomatically(color);
         application.placeAllPieces(board.getToPlacePieces(),board.getToPlacePiecesCoords(), color,this.key);
@@ -190,12 +143,12 @@ board.removeAllPieces(color);
 
 
     @Override
-    public void movePiece(Point oldPos, Point newPos, int i) {
+    public void movePiece(Point oldPos, Point newPos, int id) {
         Piece myPiece = checkForPiece(oldPos);
         Piece enemyPiece = checkForPiece(newPos);
         if (oldPos.getLocation() != newPos.getLocation() && getTileType(newPos) != TileType.WATER) {
             if (myPiece != null) {
-                if (correctPlayerTurn(myPiece,i)) {
+                if (correctPlayerTurn(myPiece,id)) {
                     if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
                         sortMovement(oldPos, newPos, myPiece, enemyPiece);
                         updateFrequencyUI();
