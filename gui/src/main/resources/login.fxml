@@ -9,14 +9,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: gold;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Button fx:id="btnInloggen" layoutX="505.0" layoutY="460.0" mnemonicParsing="false" onAction="#login" prefHeight="90.0" prefWidth="615.0" style="-fx-background-color: ; -fx-background-insets: -1 0 0 0, 0 0 -1 0, 0; -fx-border-width: 0; -fx-background-radius: 0; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Login">
+      <Button fx:id="btnInloggen" layoutX="766.0" layoutY="401.0" mnemonicParsing="false" onAction="#login" prefHeight="68.0" prefWidth="205.0" style="-fx-background-color: orange; -fx-background-insets: -1 0 0 0, 0 0 -1 0, 0; -fx-border-width: 5px; -fx-background-radius: 0; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Login">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="btnToRegister" layoutX="505.0" layoutY="600.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="90.0" prefWidth="615.0" style="-fx-background-color: ; -fx-background-insets: -1 0 0 0, 0 0 -1 0, 0; -fx-border-width: 0; -fx-background-radius: 0; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registration">
+      <Button fx:id="btnToRegister" layoutX="766.0" layoutY="498.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="68.0" prefWidth="205.0" style="-fx-background-color: orange; -fx-background-insets: -1 0 0 0, 0 0 -1 0, 0; -fx-border-width: 0; -fx-background-radius: 0; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registration">
          <font>
             <Font size="30.0" />
          </font>
@@ -39,6 +39,11 @@
       <ImageView fitHeight="91.0" fitWidth="91.0" layoutX="537.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@lock.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="171.0" fitWidth="316.0" layoutX="705.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@stratego_trim.png" />
          </image>
       </ImageView>
 

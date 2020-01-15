@@ -17,16 +17,10 @@ Y
 )gui/src/main/java/frontendenums/Rank.java,a\f\af9697eeb22d62f862a633c2488109869f79418e
 [
 +gui/src/main/java/gui/MainGameStratego.java,f\a\fa5346ab79b06cb25a2c2c967bb1efcef2b73231
-\
-,server/src/test/java/BattleOutComeTests.java,6\f\6f181cf50cde033f8f335b342cfff0fc4550c084
 U
 %server/src/main/java/enums/Color.java,8\3\8309d9dd06d7552037ef4eb657d9645ad6c743c6
 Z
 *server/src/main/java/interfaces/IGame.java,9\2\92dad1387dc70317ab199b19f7e8c0685fbfd441
-U
-%server/src/test/java/playerTests.java,3\f\3f6dee5c1a34969e49097bf9a023c51c3096d456
-[
-+server/src/test/java/StrategoGameTests.java,f\0\f0568ef27b5efd2ae4140a6e9c57e8eb61fdb214
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 R
@@ -37,8 +31,6 @@ o
 ?server/src/main/java/helpers/BoardGenerationMultiThreading.java,5\4\54c9da02dfc5fd3e1ae2aa72b4bcf5eb90605268
 e
 5server/src/main/java/helpers/MultiThreadingField.java,7\7\77c0272682c179d1ea057449151ef766e897d3a1
-_
-/server/src/test/java/multiThreadedTestTest.java,b\b\bb8863d15bc3e4c60e8457b8cb4f6b14fc9dc36a
 T
 $server/src/main/java/enums/Tile.java,5\d\5d0893df31ec2594f7d1b9695675348dda00d2e8
 ]
@@ -49,8 +41,6 @@ T
 $server/src/main/java/enums/Rank.java,b\c\bcb9463c2ff84ee456457ee7eb009446091a5481
 W
 'server/src/main/java/helpers/Board.java,a\3\a3ade7a218ffdaf10eae93eba63914e0af969b94
-T
-$server/src/test/java/Boardtests.java,2\2\226d1c965d25f1f58dcf3b457342b0df50f6bec8
 k
 ;gui/src/main/java/controllers/StrategoControllerWessel.java,d\6\d628d9036bee660c8b0bc6b90a571db3e3152993
 ^
@@ -59,8 +49,6 @@ W
 'server/src/main/java/helpers/Piece.java,6\f\6fe326f674b324f8460e700cb9c7554a245c2953
 ^
 .server/src/main/java/server/StrategoLogin.java,4\0\402a9015fa4ee2731a56d7eeadd9f497218583a5
-A
-server/server.iml,3\f\3f335f11ae5914540a6aba5f5129f694b55a8d87
 F
 strategogamewessel.iml,3\f\3f35fe65c8b4eca8670ac3ef61287cb01799f9fc
 ;

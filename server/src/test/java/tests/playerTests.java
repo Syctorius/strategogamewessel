@@ -1,3 +1,5 @@
+package tests;
+
 import enums.GameStatus;
 import helpers.StrategoGame;
 import org.junit.jupiter.api.Assertions;

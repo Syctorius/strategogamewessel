@@ -15,7 +15,7 @@
    <children>
       <TitledPane fx:id="paneCreateAccount" animated="false" layoutX="495.0" layoutY="48.0" prefHeight="688.0" prefWidth="713.0" text="Create Account">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: gold;">
                <children>
                   <Label layoutX="301.0" layoutY="98.0" text="Username:">
                      <font>
@@ -47,7 +47,7 @@
                         <Font size="24.0" />
                      </font>
                   </PasswordField>
-                  <Button fx:id="btnRegisterUser" layoutX="236.0" layoutY="405.0" mnemonicParsing="false" onAction="#Register" prefHeight="50.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #30638E;" text="Register" textFill="WHITE">
+                  <Button fx:id="btnRegisterUser" layoutX="236.0" layoutY="405.0" mnemonicParsing="false" onAction="#Register" prefHeight="50.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: orange;" text="Register" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

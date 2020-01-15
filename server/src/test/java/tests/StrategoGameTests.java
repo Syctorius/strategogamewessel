@@ -1,3 +1,5 @@
+package tests;
+
 import enums.Color;
 import enums.GameStatus;
 import helpers.StrategoGame;

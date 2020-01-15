@@ -201,14 +201,7 @@ public class Board {
                 positions.add(i);
             } else {
                 // if pieces have been placed already don't add them again.
-                Piece piece =  getPieceOnPosition(getAX(i), getY(i));
-
-                hashMap.put(positions.get(positions.indexOf(i)), getPieceOnPosition((getAX(i)), getY(i)).getActualRank());
-                positions.remove(positions.indexOf(i));
-
-                ranks.remove(getPieceOnPosition((getAX(i)), getY(i)).getActualRank());
-                removeFromPiecesList(piece, piece.getColor());
-
+                addReOcurringPositionsToHashmap(positions, ranks, hashMap, i);
 
 
             }
@@ -220,6 +213,16 @@ public class Board {
             positions.add(gameSession.getKey());
             ranks.add(gameSession.getValue());
         }
+    }
+
+    private void addReOcurringPositionsToHashmap(List<Integer> positions, ArrayList<Rank> ranks, HashMap<Integer, Rank> hashMap, int i) {
+        Piece piece =  getPieceOnPosition(getAX(i), getY(i));
+
+        hashMap.put(positions.get(positions.indexOf(i)), getPieceOnPosition((getAX(i)), getY(i)).getActualRank());
+        positions.remove(positions.indexOf(i));
+
+        ranks.remove(getPieceOnPosition((getAX(i)), getY(i)).getActualRank());
+        removeFromPiecesList(piece, piece.getColor());
     }
 
     private int getY(int i) {
@@ -242,15 +245,19 @@ public class Board {
             int y = calculateY(positions);
             if (isInBounds(x, y, color)) {
                 tilesInGame[y][x].setPiece(pieceToPlace);
-                toPlacePieces.add(pieceToPlace);
-                addToPiecesList(pieceToPlace, color);
-                toPlacePiecesCoords.add(new Point(x, y));
+                addToToPlacePieces(color, pieceToPlace, x, y);
             }
             ranks.remove(0);
             positions.remove(0);
 
 
         }
+    }
+
+    private void addToToPlacePieces(Color color, Piece pieceToPlace, int x, int y) {
+        toPlacePieces.add(pieceToPlace);
+        addToPiecesList(pieceToPlace, color);
+        toPlacePiecesCoords.add(new Point(x, y));
     }
 
     private void removeAllFromPiecesList(Color color) {

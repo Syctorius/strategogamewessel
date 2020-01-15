@@ -15,7 +15,6 @@ module server {
     requires dto;
 
     opens server;
-    opens messages;
     exports server;
 
 

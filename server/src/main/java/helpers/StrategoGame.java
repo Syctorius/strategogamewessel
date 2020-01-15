@@ -18,9 +18,10 @@ public class StrategoGame implements IGame {
     private static StrategoServer application;
     private static Boolean singlePlayerMode;
     private Integer key;
-    private ArrayList<Rank> allCheckableRanks = new ArrayList<Rank>(Arrays.asList(Rank.FLAG,Rank.BOMB,Rank.CAPTAIN,Rank.COLONEL,Rank.GENERAL,Rank.LIEUTENANT,Rank.MAJOR,Rank.MARSHAL,Rank.MINER,Rank.SCOUT,Rank.SERGEANT,Rank.SPY));
+    private ArrayList<Rank> allCheckableRanks = new ArrayList<Rank>(Arrays.asList(Rank.FLAG, Rank.BOMB, Rank.CAPTAIN, Rank.COLONEL, Rank.GENERAL, Rank.LIEUTENANT, Rank.MAJOR, Rank.MARSHAL, Rank.MINER, Rank.SCOUT, Rank.SERGEANT, Rank.SPY));
     private int redPlayerId;
     private int bluePlayerId;
+
     public StrategoGame(User user, User opponent, StrategoServer serverEndPoint) {
         this.user = user;
         this.opponent = opponent;
@@ -84,7 +85,7 @@ public class StrategoGame implements IGame {
                 return Collections.frequency(list, r) == 3;
 
         }
-return false;
+        return false;
     }
 
     @Override
@@ -104,7 +105,6 @@ return false;
     }
 
 
-
     @Override
     public boolean loginPlayer(String name, String password, boolean singlePlayerMode) {
         return false;
@@ -115,7 +115,7 @@ return false;
     public void placePiecesAutomatically(int playerNr, Color color) {
         // Board playerBoard = user.getBoard();
         this.board.PlacePiecesAutomatically(color);
-        application.placeAllPieces(board.getToPlacePieces(),board.getToPlacePiecesCoords(), color,this.key);
+        application.placeAllPieces(board.getToPlacePieces(), board.getToPlacePiecesCoords(), color, this.key);
         updateFrequencyUI();
     }
 
@@ -136,10 +136,9 @@ return false;
 
     @Override
     public void removeAllPieces(int playerNr, Color color) {
-board.removeAllPieces(color);
+        board.removeAllPieces(color);
         updateFrequencyUI();
     }
-
 
 
     @Override
@@ -148,7 +147,7 @@ board.removeAllPieces(color);
         Piece enemyPiece = checkForPiece(newPos);
         if (oldPos.getLocation() != newPos.getLocation() && getTileType(newPos) != TileType.WATER) {
             if (myPiece != null) {
-                if (correctPlayerTurn(myPiece,id)) {
+                if (correctPlayerTurn(myPiece, id)) {
                     if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
                         sortMovement(oldPos, newPos, myPiece, enemyPiece);
                         updateFrequencyUI();
@@ -160,41 +159,35 @@ board.removeAllPieces(color);
     }
 
     private TileType getTileType(Point newPos) {
-       return board.getTilesInGame()[newPos.y][newPos.x].getType();
+        return board.getTilesInGame()[newPos.y][newPos.x].getType();
     }
 
-    private boolean correctPlayerTurn(Piece myPiece, int id)
-    {
+    private boolean correctPlayerTurn(Piece myPiece, int id) {
         return turnColor == Color.RED ? getCorrectPlayerTurn(myPiece, id, redPlayerId) : getCorrectPlayerTurn(myPiece, id, bluePlayerId);
 
     }
 
     private boolean getCorrectPlayerTurn(Piece myPiece, int i, int playerId) {
         if (myPiece.getColor() == turnColor) {
-            if(i == playerId)
-            {
+            if (i == playerId) {
                 return true;
-            }
-            else {
+            } else {
                 application.sendMessageNotYourTurn("That's not your piece", playerId, this.key);
             }
-        }
-        else
-        {
+        } else {
             application.sendMessageNotYourTurn("It's not your turn ", playerId, this.key);
         }
         return false;
     }
 
     private void updateFrequencyUI() {
-        if(status == GameStatus.PLAYING) {
+        if (status == GameStatus.PLAYING) {
             if (turnColor == Color.BLUE) {
                 application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
             } else {
                 application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
             }
-        }
-        else {
+        } else {
             application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
             application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
         }
@@ -240,20 +233,55 @@ board.removeAllPieces(color);
 
     private boolean canRegularPieceMoveToRange(Point oldPos, Point newPos) {
 
-        return Math.abs(oldPos.x) + Math.abs(oldPos.y) + 1 == Math.abs(newPos.x) + Math.abs(newPos.y) || Math.abs(oldPos.x) + Math.abs(oldPos.y) - 1 == Math.abs(newPos.x) + Math.abs(newPos.y);
+        if (oldPos.y == newPos.y) {
+            // Horizontal move
+            if (oldPos.x < newPos.x) {
+                // Move right
+
+                if (oldPos.x + 1 != newPos.x) {
+
+                    return false;
+                }
+
+            } else {
+                // Move left
+
+                if (oldPos.x - 1 != newPos.x) {
+
+                    return false;
+                }
+            }
+        } else if (oldPos.x == newPos.x) {
+            // Vertical move
+            if (oldPos.y < newPos.y) {
+                // Move down
+                if (oldPos.y - 1 != newPos.y)
+                        return false;
+            } else {
+                // Move up
+               if(oldPos.y + 1 != newPos.y)
+
+                        return false;
+
+            }
+        } else {
+            // Not a valid  move (neither horizontal nor vertical)
+            return false;
+        }
+        return true;
 
 
     }
 
     private boolean canScoutMoveToRange(Point oldPos, Point newPos) {
-    int i;
+        int i;
 
         if (oldPos.y == newPos.y) {
             // Horizontal move
             if (oldPos.x < newPos.x) {
                 // Move right
                 for (i = oldPos.x + 1; i <= newPos.x; ++i) {
-                    if (checkForPiece(new Point( i,oldPos.y)) != null )
+                    if (checkForPiece(new Point(i, oldPos.y)) != null)
                         return false;
                 }
 
@@ -261,7 +289,7 @@ board.removeAllPieces(color);
                 // Move left
 
                 for (i = oldPos.x - 1; i >= newPos.x; --i) {
-                    if (checkForPiece(new Point(i,oldPos.y)) != null)
+                    if (checkForPiece(new Point(i, oldPos.y)) != null)
                         return false;
                 }
             }
@@ -270,21 +298,20 @@ board.removeAllPieces(color);
             if (oldPos.y < newPos.y) {
                 // Move down
                 for (i = oldPos.y - 1; i >= newPos.y; --i)
-                    if (checkForPiece(new Point(oldPos.x,i) )!= null)
+                    if (checkForPiece(new Point(oldPos.x, i)) != null)
                         return false;
             } else {
                 // Move up
                 for (i = oldPos.y + 1; i <= newPos.y; ++i)
-                    if (checkForPiece(new Point(oldPos.x,i))!= null)
+                    if (checkForPiece(new Point(oldPos.x, i)) != null)
                         return false;
 
             }
         } else {
-            // Not a valid rook move (neither horizontal nor vertical)
+            // Not a valid Scout move (neither horizontal nor vertical)
             return false;
         }
         return true;
-
 
 
     }
@@ -294,7 +321,7 @@ board.removeAllPieces(color);
             case GAMEDONE:
                 endGame();
                 //SEND MESSAGE to end game.
-                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),true,this.key);
+                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), true, this.key);
                 application.endGame(myPiece.getColor(), this.key);
 
                 break;
@@ -304,14 +331,14 @@ board.removeAllPieces(color);
 
                 movePiece(myPiece, oldPos, newPos);
                 application.moveUnit(oldPos, newPos, this.key);
-                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),true,this.key);
+                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), true, this.key);
                 updateFrequencyUI();
 
                 break;
             case LOSE:
                 board.removePiece(oldPos);
                 application.deleteUnit(oldPos, this.key);
-                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),false,this.key);
+                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), false, this.key);
                 updateFrequencyUI();
                 //GUI.REMOVEPIECE
                 break;
@@ -320,7 +347,7 @@ board.removeAllPieces(color);
                 board.removePiece(newPos);
                 application.deleteUnit(oldPos, this.key);
                 application.deleteUnit(newPos, this.key);
-                application.logBattleResult(myPiece.getActualRank(),enemyPiece.getActualRank(),false,this.key);
+                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), false, this.key);
                 updateFrequencyUI();
                 //GUI.REMOVEPIECES
                 break;
@@ -336,7 +363,7 @@ board.removeAllPieces(color);
 
     @Override
     public boolean haveBothPlayersPlacedAllUnits() {
-        return areAllPiecesPlaced(board.getBluePieces()) &&  areAllPiecesPlaced(board.getRedPieces());
+        return areAllPiecesPlaced(board.getBluePieces()) && areAllPiecesPlaced(board.getRedPieces());
     }
 
     @Override
@@ -345,11 +372,6 @@ board.removeAllPieces(color);
         updateFrequencyUI();
 
     }
-
-
-
-
-
 
 
 }

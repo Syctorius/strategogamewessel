@@ -1,5 +1,6 @@
-playerTests.class
-BattleOutComeTests.class
-Boardtests.class
-multiThreadedTest.class
-StrategoGameTests.class
+tests\BattleOutComeTests.class
+tests\StrategoGameTests.class
+tests\Boardtests.class
+tests\playerTests.class
+mock\MockServer.class
+tests\multiThreadedTest.class
