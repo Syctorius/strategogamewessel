@@ -35,6 +35,13 @@ public class StrategoGame implements IGame {
         this.redPlayerId = redPlayerId;
         this.bluePlayerId = bluePlayerId;
     }
+    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId,Board board) {
+        this.key = key;
+        this.application = serverEndPoint;
+        this.board = board;
+        this.redPlayerId = redPlayerId;
+        this.bluePlayerId = bluePlayerId;
+    }
 
     public StrategoGame(Integer key, StrategoServer serverEndPoint) {
         this.key = key;

@@ -63,7 +63,8 @@ public class Board {
     }
 
     private boolean isInBounds(int x, int y, Color color) {
-        return true;
+        return x >= 0  && x <= 9 && y >= 0 && x <= 9;
+
     /*    if(color == Color.RED) {
            return  (x > 0 && y > 0 && x < redWidth && y < redLength);
         }
@@ -292,7 +293,9 @@ public class Board {
     }
 
     public void setPiece(Piece myPiece, Point newPos) {
-        tilesInGame[newPos.y][newPos.x].setPiece(myPiece);
+
+            tilesInGame[newPos.y][newPos.x].setPiece(myPiece);
+
     }
 
     public synchronized void removeAllPieces(Color color) {
