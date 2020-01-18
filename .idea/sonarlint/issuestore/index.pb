@@ -111,3 +111,17 @@ d
 4server/src/main/java/helpers/CommunicatorServer.java,f\f\ff633880283a7c1d8e7dc02cc0f77e729c9c8221
 e
 5gui/src/main/java/controllers/RegisterController.java,4\8\4801169d3f7bb3412b4db396892acedecbba8f15
+c
+3server/src/main/java/interfaces/StrategoServer.java,e\4\e4febcc9cfcb3d4a391061cffed4b0a8f9346e99
+Y
+)server/src/test/java/mock/MockServer.java,b\0\b065b7b5235cb1128b062d069ad948c9c1d90547
+e
+5server/src/test/java/tests/multiThreadedTestTest.java,1\3\134fed1b85aa8872430d379643edf84276c50e9a
+Z
+*server/src/test/java/tests/Boardtests.java,4\f\4fe2ae4f262eedc53c4453130e1c6eb5a5cb9164
+b
+2server/src/test/java/tests/BattleOutComeTests.java,a\6\a6130a8b9e301e966c6c2a2845ffb8f726397fe7
+[
++server/src/test/java/tests/playerTests.java,0\8\08882be8bc0dbcc201102fd9d4dbd462d6cc7df7
+a
+1server/src/test/java/tests/StrategoGameTests.java,f\7\f79071e65023255e3c770d852eaf67d0890f09dc

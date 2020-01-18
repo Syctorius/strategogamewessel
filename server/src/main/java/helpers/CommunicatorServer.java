@@ -2,15 +2,18 @@ package helpers;
 
 import enums.Color;
 import enums.Rank;
+import interfaces.IServerEndpoint;
 import interfaces.StrategoServer;
 
+import javax.websocket.server.ServerEndpoint;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommunicatorServer implements StrategoServer {
-    StrategoServer st;
+    IServerEndpoint st;
 
-    public CommunicatorServer(StrategoServer st) {
+    public CommunicatorServer(IServerEndpoint st) {
         this.st = st;
 
     }
@@ -27,7 +30,8 @@ public class CommunicatorServer implements StrategoServer {
 
     @Override
     public void endGame(Color color, int gameId) {
-        st.endGame(color, gameId);
+        int teamcolor = color == Color.RED ? 1 : 2;
+        st.endGame(teamcolor, gameId);
     }
 
     @Override
@@ -38,18 +42,29 @@ public class CommunicatorServer implements StrategoServer {
 
     @Override
     public void placeAllPieces(List<Piece> pieces, List<Point> points, Color color, int gameId) {
-        st.placeAllPieces(pieces, points, color, gameId);
+        int teamcolor = color == Color.RED ? 1 : 2;
+        ArrayList<String> stringpieces = new ArrayList<>();
+        for(Piece piece : pieces)
+        {
+            stringpieces.add(piece.getActualRank().toString());
+        }
+        st.placeAllPieces(stringpieces, points, teamcolor, gameId);
 
     }
 
     @Override
     public void updateFrequencyUI(List<Rank> ranks, int gameId, int playerId) {
-        st.updateFrequencyUI(ranks, gameId, playerId);
+        ArrayList<String> stringRanks = new ArrayList<>();
+        for(Rank rank : ranks)
+        {
+            stringRanks.add(rank.toString());
+        }
+        st.updateFrequencyUI(stringRanks, gameId, playerId);
 
     }
 
     @Override
     public void logBattleResult(Rank attackRank, Rank defenderRank, boolean winsFight, int gameId) {
-        st.logBattleResult(attackRank, defenderRank, winsFight, gameId);
+        st.logBattleResult(attackRank.toString(), defenderRank.toString(), winsFight, gameId);
     }
 }

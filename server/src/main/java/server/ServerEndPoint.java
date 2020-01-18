@@ -10,6 +10,7 @@ import helpers.CommunicatorServer;
 import helpers.Piece;
 import helpers.StrategoGame;
 import interfaces.IGame;
+import interfaces.IServerEndpoint;
 import interfaces.StrategoServer;
 import messageenum.MessageType;
 import messagefactory.DefaultFactory;
@@ -31,7 +32,7 @@ import javax.websocket.server.ServerEndpoint;
 
 
 @ServerEndpoint(value = "/stratego")
-public class ServerEndPoint implements StrategoServer {
+public class ServerEndPoint implements IServerEndpoint {
     // All sessions
     private static final List<Session> connectedPlayers = new ArrayList<>();
     private static List<IGame> games = new ArrayList<>();
@@ -276,7 +277,18 @@ public class ServerEndPoint implements StrategoServer {
 
 
     }
+    private void sendMessageWithMessageTypeToBothUsersInGame(Message message, int gameId) {
 
+
+        for (Session s : strategoGames.get(gameId+1)) {
+            s.getAsyncRemote().sendText(gson.toJson(message));
+        }
+
+
+    }
+    private Session getSessionBasedOnPlayerIdAndGameId(int playerId, int gameId) {
+        return strategoGames.get(gameId+1).stream().filter(s -> Integer.parseInt(s.getId()) == playerId).findFirst().orElse(null);
+    }
     @Override
     public void moveUnit(Point oldPos, Point newPos, int gameId) {
         sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(oldPos, newPos))), gameId);
@@ -291,19 +303,11 @@ public class ServerEndPoint implements StrategoServer {
 
     }
 
-    private void sendMessageWithMessageTypeToBothUsersInGame(Message message, int gameId) {
 
-
-        for (Session s : strategoGames.get(gameId+1)) {
-            s.getAsyncRemote().sendText(gson.toJson(message));
-        }
-
-
-    }
 
     @Override
-    public void endGame(Color teamcolor, int gameId) {
-        int color = teamcolor == Color.RED ? 1 : 2;
+    public void endGame(int color, int gameId) {
+
         // unregisterFromGame();
         sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.ENDGAME, gson.toJson(new EndGameMessage(color))), gameId);
     }
@@ -316,6 +320,21 @@ public class ServerEndPoint implements StrategoServer {
         // TODO Not Needed Message, fix by working with playerids.
     }
 
+    @Override
+    public void placeAllPieces(ArrayList<String> ranks, List<Point> points, int color, int gameId) {
+        if (!ranks.isEmpty()) {
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,color))), gameId);
+        }
+        while (!ranks.isEmpty()) {
+            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(placeUnitFactory.CreateMessage(MessageType.PLACEUNIT,points.get(0), color, ranks.get(0)))), gameId);
+            ranks.remove(0);
+            points.remove(0);
+        }
+    }
+
+
+
+
     private void sendMessageToUserInGameWithPlayerId(int playerId, int gameId, MessageType mt, String result) {
         try {
             getSessionBasedOnPlayerIdAndGameId(playerId, gameId).getBasicRemote().sendText(gson.toJson(new Message(mt, result)));
@@ -326,36 +345,21 @@ public class ServerEndPoint implements StrategoServer {
         }
     }
 
-    private Session getSessionBasedOnPlayerIdAndGameId(int playerId, int gameId) {
-        return strategoGames.get(gameId+1).stream().filter(s -> Integer.parseInt(s.getId()) == playerId).findFirst().orElse(null);
-    }
+
+
+
 
     @Override
-    public void placeAllPieces(List<Piece> pieces, List<Point> points, Color color, int gameId) {
-        int teamcolor = color == Color.RED ? 1 : 2;
-        if (!pieces.isEmpty()) {
-            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,teamcolor))), gameId);
-        }
-        while (!pieces.isEmpty()) {
-            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(placeUnitFactory.CreateMessage(MessageType.PLACEUNIT,points.get(0), teamcolor, pieces.get(0).getActualRank().toString()))), gameId);
-            pieces.remove(0);
-            points.remove(0);
-        }
-    }
+    public void updateFrequencyUI(ArrayList<String> ranks, int gameId, int playerId) {
 
-    @Override
-    public void updateFrequencyUI(List<Rank> ranks, int gameId, int playerId) {
-        ArrayList<String> ranksasstring = new ArrayList<>();
 
-        for (Rank r : ranks) {
-            ranksasstring.add(r.toString());
-        }
-        sendMessageToUserInGameWithPlayerId(playerId, gameId, MessageType.UPDATEFREQUENCY, gson.toJson(new UpdateFrequencyMessage(ranksasstring, playerId)));
+
+        sendMessageToUserInGameWithPlayerId(playerId, gameId, MessageType.UPDATEFREQUENCY, gson.toJson(new UpdateFrequencyMessage(ranks, playerId)));
         // TODO Not Needed Message, fix by working with playerids.
     }
 
     @Override
-    public void logBattleResult(Rank attackRank, Rank defenderRank, boolean winsFight, int gameId) {
-        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.BATTLERESULT, gson.toJson(new BattleResultMessage(attackRank.toString(), defenderRank.toString(), winsFight))), gameId);
+    public void logBattleResult(String attackRank, String defenderRank, boolean winsFight, int gameId) {
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.BATTLERESULT, gson.toJson(new BattleResultMessage(attackRank, defenderRank, winsFight))), gameId);
     }
 }

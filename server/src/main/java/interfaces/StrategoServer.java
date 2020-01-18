@@ -58,7 +58,8 @@ public interface StrategoServer {
     void updateFrequencyUI(List<Rank> ranks, int gameId, int playerId);
 
     /**
-     *
+     * Send the battle result to the UI
+     * may be null, gameId and playerId cannot be null
      * @param attackRank
      * @param defenderRank
      * @param winsFight

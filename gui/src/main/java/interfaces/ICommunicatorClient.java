@@ -19,15 +19,15 @@ public interface ICommunicatorClient {
 
     void disableButtons(boolean isEnabled);
 
-    void endGame(int teamcolor);
+    void endGame(int teamColor);
 
     void showNotYourTurn();
 
     void placeUnitForOpponent(int x, int y);
 
-    void resetUI(int teamcolor);
+    void resetUI(int teamColor);
 
-    void updateFrequencyUI(ArrayList<Rank> ranks);
+    void updateFrequencyUI(ArrayList<String> ranks);
     void logBattleResult(String attackerRank,String defenderRank,boolean doesAttackerWin);
 
 }

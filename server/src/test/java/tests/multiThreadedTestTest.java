@@ -93,4 +93,27 @@ class multiThreadedTest {
         //Assert
         assertEquals(TileType.REDLAND,tilesInGame[8][0].getType());
     }
+    @Test
+    public void testTiming()
+    {
+
+        //Arrange
+        Tile[][] tilesInGame;
+        int width = 10;
+        int length = 10;
+        BoardGenerationMultiThreading bgmt = new BoardGenerationMultiThreading();
+
+        //Act
+        long startTime = System.nanoTime();
+        tilesInGame = bgmt.createField(width, length);
+        long endTime = System.nanoTime();
+        while(tilesInGame[6][9] == null)
+        {
+
+        }
+        long duration = (endTime - startTime)/1000000;  //divide by 1000000 to get milliseconds.
+
+        //Assert
+        assertEquals(true, duration < 100 );
+    }
 }

@@ -1,11 +1,11 @@
 
-dsquid:S2142/"FEither re-interrupt this method or rethrow the "InterruptedException".(δ Ή€8ΗΠατ-
-Fsquid:S1148@"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
-Fsquid:S11482"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
-gsquid:CallToDeprecatedMethod;"8Remove this use of "configureContext"; it is deprecated.(Β‚³8ΗΠατ-
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψ‡λ―8ΗΠατ-
-ssquid:S1450"URemove the "server" field and declare it as a local variable in the relevant methods.(ΑΊÒή8ΗΠατ-
-bsquid:S21471"DCombine this catch with the one at line 47, which has the same body.(”ύΎ8ΗΠατ-
-Fsquid:S1148S"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
 Tsquid:S2696;"6Make the enclosing method "static" or remove this set.(Β‚³8ΗΠατ-
+Fsquid:S11482"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
+bsquid:S21471"DCombine this catch with the one at line 47, which has the same body.(”ύΎ8ΗΠατ-
+ssquid:S1450"URemove the "server" field and declare it as a local variable in the relevant methods.(ΑΊÒή8ΗΠατ-
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψ‡λ―8ΗΠατ-
+gsquid:CallToDeprecatedMethod;"8Remove this use of "configureContext"; it is deprecated.(Β‚³8ΗΠατ-
 Fsquid:S11480"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
+Fsquid:S1148@"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
+Fsquid:S1148S"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ΗΠατ-
+dsquid:S2142/"FEither re-interrupt this method or rethrow the "InterruptedException".(δ Ή€8ΗΠατ-

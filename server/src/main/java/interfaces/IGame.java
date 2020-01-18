@@ -11,19 +11,19 @@ public interface IGame {
     /**
      * StartGame Starts a new game and inits the board, Sets gameStatus to Setup
      */
-    public void startGamePlanningPhase();
+    void startGamePlanningPhase();
 
     /**
      * Sets gameStatus to playing, If SinglePlayer calls placePiecesAutomatically, if Multiplayer, gets opponents Pieces.
      */
 
-    public void startGamePlayingPhase();
+    void startGamePlayingPhase();
 
     /**
      * EndGame clears the board, calls the UI to show the result of the game, GameStatus must be set to stopped, the application can not be null,
      */
 
-    public void endGame();
+    void endGame();
 
     /**
      * // The username and password cannot be null,
@@ -38,9 +38,7 @@ public interface IGame {
      */
 
 
-
-
-    public boolean loginPlayer(String name, String password, boolean singlePlayerMode);
+    boolean loginPlayer(String name, String password, boolean singlePlayerMode);
 
 
     /**
@@ -51,7 +49,7 @@ public interface IGame {
      *
      * @param playerNr
      */
-    public void placePiecesAutomatically(int playerNr, Color color);
+    void placePiecesAutomatically(int playerNr, Color color);
 
 
     /**
@@ -67,16 +65,16 @@ public interface IGame {
      * @param Y
      * @param color
      */
-    public boolean placePiece(int playerNr, Rank pieceType, int X, int Y, Color color);
+    boolean placePiece(int playerNr, Rank pieceType, int X, int Y, Color color);
 
     /**
      * Remove all pieces that are placed.
      *
      * @param playerNr
      */
-    public void removeAllPieces(int playerNr, Color color);
+    void removeAllPieces(int playerNr, Color color);
 
-    public void movePiece(Point oldPos, Point newPos, int i);
+    void movePiece(Point oldPos, Point newPos, int i);
 
     boolean haveBothPlayersPlacedAllUnits();
 

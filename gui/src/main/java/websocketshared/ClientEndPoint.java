@@ -80,12 +80,8 @@ public class ClientEndPoint {
                 break;
             case UPDATEFREQUENCY:
                 UpdateFrequencyMessage updateFrequencyMessage  = gson.fromJson(message.getResult(), new TypeToken<UpdateFrequencyMessage>(){}.getType());
-                ArrayList<Rank> ranks = new ArrayList<>();
-                for (String s : updateFrequencyMessage.getRanks())
-                {
-                 ranks.add(Rank.valueOf(s));
-                }
-                client.updateFrequencyUI(ranks);
+
+                client.updateFrequencyUI(updateFrequencyMessage.getRanks());
                 break;
             case BATTLERESULT:
                 BattleResultMessage battleResultMessage  = gson.fromJson(message.getResult(), new TypeToken<BattleResultMessage>(){}.getType());

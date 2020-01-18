@@ -2,16 +2,14 @@ package helpers;
 
 import enums.BattleOutcome;
 import enums.Color;
-import enums.MovementType;
 import enums.Rank;
 
 public class Piece {
 
-    private Rank unknownRank;
+
     private Rank actualRank;
-    private Boolean isRevealed;
+
     private Color color;
-    private MovementType movementType;
 
 
     public Piece(Rank actualRank) {
@@ -23,7 +21,10 @@ public class Piece {
     }
 
     public Rank getActualRank() {
-        return actualRank;
+        if(this != null) {
+            return actualRank;
+        }
+        return null;
     }
 
     public Color getColor() {

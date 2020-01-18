@@ -3,26 +3,36 @@ package tests;
 import enums.Color;
 import enums.GameStatus;
 import enums.Rank;
+import enums.Tile;
 import helpers.Board;
+import helpers.BoardGenerationMultiThreading;
 import helpers.Piece;
 import helpers.StrategoGame;
 import junit.framework.Assert;
 import mock.MockServer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StrategoGameTests {
     static StrategoGame game;
-    static Board board = new Board(10,10);
+    static Board board;
 
     @BeforeAll
-    public static void init() {
+    static void init() {
+        board = new Board(10, 10);
         game = new StrategoGame(0, new MockServer(), 0, 1,board);
-    }
 
+    }
+    @BeforeEach
+    void clear(){
+
+        board.removeAllPieces(Color.BLUE);
+        board.removeAllPieces(Color.RED);
+    }
     @Test
     public void GameSetupStatusTest() {
         //Arrange
@@ -86,7 +96,7 @@ public class StrategoGameTests {
         //Act
         game.placePiece(0, rank,x,y,c);
         //Assert
-        assertEquals(rank,board.getBluePieces());
+        assertEquals(rank,board.getTilesInGame()[y][x].getPiece().getActualRank());
     }
 @Test
     public void removeAllInCorrect() {
@@ -148,14 +158,29 @@ public class StrategoGameTests {
         //Act
 
         game.startGamePlanningPhase();
-        game.placePiece(0, rank,x,y,c);
+        game.placePiece(1, rank,x,y,c);
         //Assert
-        game.placePiecesAutomatically(2,Color.BLUE);
+        game.placePiecesAutomatically(1,c);
         Assert.assertEquals(false,game.haveBothPlayersPlacedAllUnits());
 
 
 
 
+    }
+    @Test
+    public void testTiming()
+    {
+        Color c = Color.BLUE;
+        long startTime = System.nanoTime();
+        game.placePiecesAutomatically(2,c);
+
+
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime)/1000000;  //divide by 1000000 to get milliseconds.
+
+        //Assert
+        assertEquals(true, duration < 100 );
     }
 
 }

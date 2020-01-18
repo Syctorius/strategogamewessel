@@ -6,7 +6,6 @@ import helpers.Board;
 import helpers.Piece;
 import helpers.StrategoGame;
 import interfaces.IGame;
-import interfaces.StrategoServer;
 import junit.framework.Assert;
 import mock.MockServer;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,10 +21,14 @@ public class Boardtests {
     static Board board;
     static IGame game;
 
-    @BeforeEach
-    public void init() {
+    @BeforeAll
+    static void init() {
         board = new Board(10, 10);
         game = new StrategoGame(0, new MockServer(), 0, 1,board);
+
+    }
+    @BeforeEach void clear(){
+
         board.removeAllPieces(Color.BLUE);
         board.removeAllPieces(Color.RED);
     }
@@ -54,7 +57,7 @@ public class Boardtests {
         Rank rank = Rank.SPY;
         Piece pieceToPlace = new Piece(rank, c);
         board.removePiece(new Point(x, y));
-        assertNull(board.getTilesInGame()[x][y]);
+        assertNull(board.getTilesInGame()[y][x].getPiece());
     }
 
     @Test

@@ -39,8 +39,8 @@ public class CommunicatorClient implements ICommunicatorClient {
     }
 
     @Override
-    public void endGame(int teamcolor) {
-        WebSocketGui.getGameController().endGame(teamcolor);
+    public void endGame(int teamColor) {
+        WebSocketGui.getGameController().endGame(teamColor);
     }
 
     @Override
@@ -54,12 +54,17 @@ public class CommunicatorClient implements ICommunicatorClient {
     }
 
     @Override
-    public void resetUI(int teamcolor) {
-        WebSocketGui.getGameController().resetUI(teamcolor);
+    public void resetUI(int teamColor) {
+        WebSocketGui.getGameController().resetUI(teamColor);
     }
 
     @Override
-    public void updateFrequencyUI(ArrayList<Rank> ranks) {
+    public void updateFrequencyUI(ArrayList<String> ranksString) {
+        ArrayList<Rank> ranks = new ArrayList<>();
+        for (String s : ranksString)
+        {
+            ranks.add(Rank.valueOf(s));
+        }
         WebSocketGui.getGameController().updateFrequencyUI(ranks);
     }
 

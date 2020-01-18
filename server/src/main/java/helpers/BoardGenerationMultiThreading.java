@@ -14,7 +14,6 @@ public class BoardGenerationMultiThreading {
     int width;
     int length;
     Tile[][] tilesInGame;
-    TileType[][] tilesInThread;
     TileType tile = TileType.BLUELAND;
     MultiThreadingField threadBlue;
     MultiThreadingField threadRed;

@@ -2,18 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0625cc3c-0698-4170-822f-fd094d92a3ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/interfaces/IServerEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/067ec38f080c29680bc4e54590aadad4bc18a329" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/067ec38f080c29680bc4e54590aadad4bc18a329" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/2542024625846ed18ac6a4508bf3d527bca93e80" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/5/2542024625846ed18ac6a4508bf3d527bca93e80" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/608bd67339c8fce30249d08b8a53d0776debf326" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/608bd67339c8fce30249d08b8a53d0776debf326" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92dad1387dc70317ab199b19f7e8c0685fbfd441" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92dad1387dc70317ab199b19f7e8c0685fbfd441" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a3ade7a218ffdaf10eae93eba63914e0af969b94" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a3ade7a218ffdaf10eae93eba63914e0af969b94" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/beb69397d29114cd57ef3517be3888e070f17c06" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/beb69397d29114cd57ef3517be3888e070f17c06" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d628d9036bee660c8b0bc6b90a571db3e3152993" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d628d9036bee660c8b0bc6b90a571db3e3152993" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/interfaces/ICommunicatorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/interfaces/ICommunicatorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/ClientEndPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/websocketshared/CommunicatorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/websocketshared/CommunicatorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/enums/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/enums/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/BoardGenerationMultiThreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/BoardGenerationMultiThreading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/CommunicatorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/CommunicatorServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/helpers/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/helpers/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/interfaces/IGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/interfaces/IGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/interfaces/StrategoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/interfaces/StrategoServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ServerEndPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/tests/Boardtests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/tests/Boardtests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/test/java/tests/StrategoGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/tests/StrategoGameTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/StrategoGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/tests/multiThreadedTestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/tests/multiThreadedTestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/enums/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/enums/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/BoardGenerationMultiThreading.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/BoardGenerationMultiThreading.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/helpers/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/helpers/Piece.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/test-classes/tests/Boardtests.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/tests/Boardtests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/test-classes/tests/StrategoGameTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/tests/StrategoGameTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/test-classes/tests/multiThreadedTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/tests/multiThreadedTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +65,8 @@
       <list>
         <option value="XSLT Stylesheet" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -131,37 +150,26 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in server">
-    <configuration name="MainGameStratego" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.MainGameStratego" />
-      <module name="gui" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.Service" />
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.StrategoGameTests.testTiming">
     <configuration name="All in server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Boardtests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.Boardtests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,7 +190,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="multiThreadedTest.TestpoorMultithreading3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StrategoGameTests.testTiming" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.StrategoGameTests" />
+      <option name="METHOD_NAME" value="testTiming" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="multiThreadedTest.testTiming" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -192,26 +216,26 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.multiThreadedTest" />
-      <option name="METHOD_NAME" value="TestpoorMultithreading3" />
+      <option name="METHOD_NAME" value="testTiming" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.multiThreadedTest.TestpoorMultithreading3" />
-      <item itemvalue="Application.Service" />
-      <item itemvalue="Application.MainGameStratego" />
       <item itemvalue="JUnit.StrategoGameTests.placePieceTest" />
       <item itemvalue="JUnit.All in server" />
+      <item itemvalue="JUnit.Boardtests" />
+      <item itemvalue="JUnit.multiThreadedTest.testTiming" />
+      <item itemvalue="JUnit.StrategoGameTests.testTiming" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StrategoGameTests.testTiming" />
+        <item itemvalue="JUnit.multiThreadedTest.testTiming" />
+        <item itemvalue="JUnit.Boardtests" />
         <item itemvalue="JUnit.All in server" />
         <item itemvalue="JUnit.StrategoGameTests.placePieceTest" />
-        <item itemvalue="Application.MainGameStratego" />
-        <item itemvalue="Application.Service" />
-        <item itemvalue="JUnit.multiThreadedTest.TestpoorMultithreading3" />
       </list>
     </recent_temporary>
   </component>
@@ -254,6 +278,7 @@
       <workItem from="1578903089329" duration="7000" />
       <workItem from="1578919590051" duration="49382000" />
       <workItem from="1579088380382" duration="5714000" />
+      <workItem from="1579350113987" duration="6511000" />
     </task>
     <servers />
   </component>
@@ -278,10 +303,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579079020544" />
-    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1579079524626">
+    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1579357392055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1579079524626" />
+    <state x="574" y="125" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1579357392055" />
     <state x="449" y="142" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579078209227">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -290,46 +315,50 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="272" width="403" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1579085557944" />
-    <state width="438" height="466" key="DebuggerActiveHint" timestamp="1579030868062">
+    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579358010486">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="438" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1579030868062" />
+    <state x="370" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1579358010486" />
+    <state width="438" height="466" key="DebuggerActiveHint" timestamp="1579352954869">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="438" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1579352954869" />
     <state x="520" y="112" key="FileChooserDialogImpl" timestamp="1579078875623">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="520" y="112" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579078875623" />
-    <state width="1493" height="328" key="GridCell.Tab.0.bottom" timestamp="1579347418988">
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom" timestamp="1579353484124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="328" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579347418988" />
-    <state width="1493" height="328" key="GridCell.Tab.0.center" timestamp="1579347418988">
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579353484124" />
+    <state width="1493" height="251" key="GridCell.Tab.0.center" timestamp="1579353484124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="328" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579347418988" />
-    <state width="1493" height="328" key="GridCell.Tab.0.left" timestamp="1579347418988">
+    <state width="1493" height="251" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579353484124" />
+    <state width="1493" height="251" key="GridCell.Tab.0.left" timestamp="1579353484124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="328" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579347418988" />
-    <state width="1493" height="328" key="GridCell.Tab.0.right" timestamp="1579347418988">
+    <state width="1493" height="251" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579353484124" />
+    <state width="1493" height="251" key="GridCell.Tab.0.right" timestamp="1579353484124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="328" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579347418988" />
-    <state width="1493" height="251" key="GridCell.Tab.1.bottom" timestamp="1579345609547">
+    <state width="1493" height="251" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579353484124" />
+    <state width="1493" height="251" key="GridCell.Tab.1.bottom" timestamp="1579353382001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579345609547" />
-    <state width="1493" height="251" key="GridCell.Tab.1.center" timestamp="1579345609547">
+    <state width="1493" height="251" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579353382001" />
+    <state width="1493" height="251" key="GridCell.Tab.1.center" timestamp="1579353382001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579345609547" />
-    <state width="1493" height="251" key="GridCell.Tab.1.left" timestamp="1579345609547">
+    <state width="1493" height="251" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579353382001" />
+    <state width="1493" height="251" key="GridCell.Tab.1.left" timestamp="1579353382001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579345609547" />
-    <state width="1493" height="251" key="GridCell.Tab.1.right" timestamp="1579345609547">
+    <state width="1493" height="251" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579353382001" />
+    <state width="1493" height="251" key="GridCell.Tab.1.right" timestamp="1579353382001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579345609547" />
+    <state width="1493" height="251" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579353382001" />
     <state x="349" y="148" key="IDE.errors.dialog" timestamp="1578991508640">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -350,17 +379,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="475" y="41" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1579027760064" />
-    <state x="425" y="190" width="672" height="677" key="run.anything.popup" timestamp="1579347368771">
+    <state x="425" y="190" width="672" height="677" key="run.anything.popup" timestamp="1579352943748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="190" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579347368771" />
+    <state x="425" y="190" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579352943748" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/test/java/tests/Boardtests.java</url>
-          <line>35</line>
+          <line>38</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -378,9 +407,29 @@
           <line>235</line>
           <option name="timeStamp" value="175" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/StrategoGame.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/test/java/tests/StrategoGameTests.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/helpers/BoardGenerationMultiThreading.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/test/java/tests/StrategoGameTests.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/server/src/test/java/tests/Boardtests.java</url>
-          <line>136</line>
+          <line>139</line>
           <properties class="tests.Boardtests" method="removeAllInCorrect">
             <option name="EMULATED" value="true" />
           </properties>
