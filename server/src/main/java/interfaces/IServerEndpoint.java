@@ -3,6 +3,8 @@ package interfaces;
 import enums.Color;
 import enums.Rank;
 import helpers.Piece;
+import messages.Message;
+import messages.PlaceUnitForOpponentMessage;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -68,4 +70,5 @@ public interface IServerEndpoint {
         void logBattleResult(String attackRank, String defenderRank,boolean winsFight, int gameId );
 
 
+    void placePiece(Integer key, PlaceUnitForOpponentMessage createMessage);
 }

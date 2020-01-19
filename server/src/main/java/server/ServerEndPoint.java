@@ -119,7 +119,7 @@ public class ServerEndPoint implements IServerEndpoint {
                 default:
                     System.out.println("[WebSocket ERROR: cannot process Json message " + jsonMessage);
                     break;
-            }
+           }
         }
     }
 
@@ -148,10 +148,10 @@ public class ServerEndPoint implements IServerEndpoint {
     private void handlePlaceUnit(Session session, Gson gson, Message wbMessage) {
         PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken<PlaceUnitMessage>() {
         }.getType());
-        if (games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE)) {
-            sendOperationToBoth(session, wbMessage.getResult(), MessageType.PLACEUNITFOROPPONENT);
-        }
-        //TODO Make this fully serversided.
+        games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE);
+
+
+
     }
 
     private void handleDelete(Session session, Gson gson, Message wbMessage) {
@@ -361,5 +361,10 @@ public class ServerEndPoint implements IServerEndpoint {
     @Override
     public void logBattleResult(String attackRank, String defenderRank, boolean winsFight, int gameId) {
         sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.BATTLERESULT, gson.toJson(new BattleResultMessage(attackRank, defenderRank, winsFight))), gameId);
+    }
+
+    @Override
+    public void placePiece(Integer key, PlaceUnitForOpponentMessage createMessage) {
+        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNITFOROPPONENT,gson.toJson(createMessage)),gameId);
     }
 }

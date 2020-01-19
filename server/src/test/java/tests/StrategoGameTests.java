@@ -132,20 +132,7 @@ public class StrategoGameTests {
         Assert.assertEquals(false,game.haveBothPlayersPlacedAllUnits());
 
     }
-    @Test
-    public void placeNotSuccessfulTest() {
-        //Arrange
-        int x = 3223;
-        int y = 3223;
-        Color c = Color.BLUE;
-        Rank rank = Rank.SPY;
-        Piece pieceToPlace = new Piece(rank,c);
-        //Act
-        //Assert
-        assertEquals(false,game.placePiece(0,rank,x,y,c));
 
-
-    }
     @Test
     public void placePiecesIncorrect() {
         //Arrange

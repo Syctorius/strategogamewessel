@@ -4,7 +4,6 @@ import enums.Color;
 import enums.Rank;
 import helpers.Piece;
 
-import javax.swing.text.Position;
 import java.awt.Point;
 import java.util.List;
 
@@ -67,4 +66,5 @@ public interface StrategoServer {
      */
     void logBattleResult(Rank attackRank, Rank defenderRank,boolean winsFight, int gameId );
 
+    void placePiece(Integer key, Rank rank, int x, int y, Color color);
 }

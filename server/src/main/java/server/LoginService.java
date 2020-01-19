@@ -43,7 +43,7 @@ public class LoginService {
 
 
     }
-    @Path("/all") //remove
+    @Path("") //remove
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -88,11 +88,15 @@ public class LoginService {
     public Response getUserWithUsername(@PathParam("username") String userName) {
 
 
-        // Get all pets from the store with given owner name
-        //User user = SeaBattleLogin.getInstance().getUser(userName);
+        User user = StrategoLogin.getInstance().getUser(userName);
 
         // Define response
-        //return Response.status(200).entity(ResponseHelper.getSingleUserResponse(user)).build();
-        return Response.status(400).entity(ResponseHelper.getSuccessResponse(false)).build();
+        if(user == new User()) {
+
+            return Response.status(400).entity(ResponseHelper.getSuccessResponse(false)).build();
+        }
+        else {
+            return Response.status(200).entity(ResponseHelper.getSingleUserResponse(user)).build();
+        }
     }
 }

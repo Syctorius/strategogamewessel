@@ -38,7 +38,6 @@ public interface IGame {
      */
 
 
-    boolean loginPlayer(String name, String password, boolean singlePlayerMode);
 
 
     /**
@@ -65,7 +64,7 @@ public interface IGame {
      * @param Y
      * @param color
      */
-    boolean placePiece(int playerNr, Rank pieceType, int X, int Y, Color color);
+    void placePiece(int playerNr, Rank pieceType, int X, int Y, Color color);
 
     /**
      * Remove all pieces that are placed.

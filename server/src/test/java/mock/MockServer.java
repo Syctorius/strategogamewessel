@@ -44,4 +44,9 @@ public class MockServer implements StrategoServer {
     public void logBattleResult(Rank attackRank, Rank defenderRank, boolean winsFight, int gameId) {
         System.out.println("" +attackRank+"wins ="+winsFight+"VS" +defenderRank +gameId);
     }
+
+    @Override
+    public void placePiece(Integer key, Rank rank, int x, int y, Color color) {
+
+    }
 }

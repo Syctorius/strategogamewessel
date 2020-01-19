@@ -1,6 +1,7 @@
 datastorage\Persistence.class
 algorithm\AIPlayer.class
 helpers\StrategoGame.class
+interfaces\IServerEndpoint.class
 server\ServerEndPoint$2.class
 enums\MovementType.class
 server\ServerEndPoint$5.class

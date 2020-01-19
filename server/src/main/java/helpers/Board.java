@@ -161,7 +161,7 @@ public class Board {
 
     public synchronized void PlacePiecesAutomatically(Color color) {
         Random r = new Random();
-
+        toPlacePieces.clear(); // split into
         if (color == Color.RED) {
             fillListWithRankAndRankCount(redRanks);
             fillBoard(color, r, 60, 100,redPositions,redRanks);

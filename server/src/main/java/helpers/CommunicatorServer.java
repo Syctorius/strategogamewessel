@@ -4,14 +4,18 @@ import enums.Color;
 import enums.Rank;
 import interfaces.IServerEndpoint;
 import interfaces.StrategoServer;
+import messageenum.MessageType;
+import messagefactory.PlaceUnitFactory;
+import messages.PlaceAllUnitsMessage;
+import messages.PlaceUnitForOpponentMessage;
 
-import javax.websocket.server.ServerEndpoint;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommunicatorServer implements StrategoServer {
     IServerEndpoint st;
+    PlaceUnitFactory placeUnitFactory = new PlaceUnitFactory();
 
     public CommunicatorServer(IServerEndpoint st) {
         this.st = st;
@@ -44,8 +48,7 @@ public class CommunicatorServer implements StrategoServer {
     public void placeAllPieces(List<Piece> pieces, List<Point> points, Color color, int gameId) {
         int teamcolor = color == Color.RED ? 1 : 2;
         ArrayList<String> stringpieces = new ArrayList<>();
-        for(Piece piece : pieces)
-        {
+        for (Piece piece : pieces) {
             stringpieces.add(piece.getActualRank().toString());
         }
         st.placeAllPieces(stringpieces, points, teamcolor, gameId);
@@ -55,8 +58,7 @@ public class CommunicatorServer implements StrategoServer {
     @Override
     public void updateFrequencyUI(List<Rank> ranks, int gameId, int playerId) {
         ArrayList<String> stringRanks = new ArrayList<>();
-        for(Rank rank : ranks)
-        {
+        for (Rank rank : ranks) {
             stringRanks.add(rank.toString());
         }
         st.updateFrequencyUI(stringRanks, gameId, playerId);
@@ -66,5 +68,11 @@ public class CommunicatorServer implements StrategoServer {
     @Override
     public void logBattleResult(Rank attackRank, Rank defenderRank, boolean winsFight, int gameId) {
         st.logBattleResult(attackRank.toString(), defenderRank.toString(), winsFight, gameId);
+    }
+
+    @Override
+    public void placePiece(Integer key, Rank rank, int x, int y, Color color) {
+        int teamcolor = color == Color.RED ? 1 : 2;
+        st.placePiece(key, (PlaceUnitForOpponentMessage) placeUnitFactory.CreateMessage(MessageType.PLACEUNITFOROPPONENT,new Point(x,y),teamcolor,rank.toString()));
     }
 }

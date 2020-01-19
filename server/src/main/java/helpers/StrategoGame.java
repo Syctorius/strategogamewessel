@@ -35,7 +35,8 @@ public class StrategoGame implements IGame {
         this.redPlayerId = redPlayerId;
         this.bluePlayerId = bluePlayerId;
     }
-    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId,Board board) {
+
+    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId, Board board) {
         this.key = key;
         this.application = serverEndPoint;
         this.board = board;
@@ -112,14 +113,11 @@ public class StrategoGame implements IGame {
     }
 
 
-    @Override
-    public boolean loginPlayer(String name, String password, boolean singlePlayerMode) {
-        return false;
-    }
+
 
 
     @Override
-    public void placePiecesAutomatically(int playerNr, Color color) {
+    public synchronized void placePiecesAutomatically(int playerNr, Color color) {
         // Board playerBoard = user.getBoard();
         this.board.PlacePiecesAutomatically(color);
         application.placeAllPieces(board.getToPlacePieces(), board.getToPlacePiecesCoords(), color, this.key);
@@ -128,16 +126,15 @@ public class StrategoGame implements IGame {
 
 
     @Override
-    public boolean placePiece(int playerNr, Rank rank, int X, int Y, Color color) {
+    public void placePiece(int playerNr, Rank rank, int X, int Y, Color color) {
 
         Piece pieceToPlace = new Piece(rank, color);
 
-        if (board.PlacePiece(pieceToPlace, X, Y, color)) {
+        if(board.PlacePiece(pieceToPlace, X, Y, color))
+        {
+            application.placePiece(this.key, rank, X, Y, color);
             updateFrequencyUI();
-            return true;
-
         }
-        return false;
 
     }
 
@@ -170,34 +167,35 @@ public class StrategoGame implements IGame {
     }
 
     private boolean correctPlayerTurn(Piece myPiece, int id) {
-        return turnColor == Color.RED ? getCorrectPlayerTurn(myPiece, id, redPlayerId) : getCorrectPlayerTurn(myPiece, id, bluePlayerId);
+        return getCorrectPlayerTurn(myPiece, id);
 
     }
 
-    private boolean getCorrectPlayerTurn(Piece myPiece, int i, int playerId) {
-        if (myPiece.getColor() == turnColor) {
-            if (i == playerId) {
+    private Color getColorBasedOnId(int id) {
+        return id == bluePlayerId ? Color.BLUE : Color.RED;
+    }
+
+    private boolean getCorrectPlayerTurn(Piece myPiece, int id) {
+        Color color = getColorBasedOnId(id);
+        if (myPiece.getColor() == color) {
+            if (turnColor == color) {
                 return true;
             } else {
-                application.sendMessageNotYourTurn("That's not your piece", playerId, this.key);
+                application.sendMessageNotYourTurn("it's not your turn", id, this.key);
             }
-        } else {
-            application.sendMessageNotYourTurn("It's not your turn ", playerId, this.key);
+        }
+        else {
+            application.sendMessageNotYourTurn("That's not your Piece ", id, this.key);
         }
         return false;
     }
 
     private void updateFrequencyUI() {
-        if (status == GameStatus.PLAYING) {
-            if (turnColor == Color.BLUE) {
-                application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
-            } else {
-                application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
-            }
-        } else {
-            application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
-            application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
-        }
+
+        application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);
+
+        application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);
+
     }
 
     private void switchTurn() {
@@ -219,10 +217,10 @@ public class StrategoGame implements IGame {
     }
 
     private void movePiece(Piece myPiece, Point oldPos, Point newPos) {
-        if (canPieceMoveToRange(myPiece, oldPos, newPos)) {
-            board.setPiece(null, oldPos);
-            board.setPiece(myPiece, newPos);
-        }
+
+        board.setPiece(null, oldPos);
+        board.setPiece(myPiece, newPos);
+
     }
 
     private boolean canPieceMoveToRange(Piece myPiece, Point oldPos, Point newPos) {
@@ -262,13 +260,13 @@ public class StrategoGame implements IGame {
             // Vertical move
             if (oldPos.y < newPos.y) {
                 // Move down
-                if (oldPos.y - 1 != newPos.y)
-                        return false;
+                if (oldPos.y + 1 != newPos.y)
+                    return false;
             } else {
                 // Move up
-               if(oldPos.y + 1 != newPos.y)
+                if (oldPos.y - 1 != newPos.y)
 
-                        return false;
+                    return false;
 
             }
         } else {
