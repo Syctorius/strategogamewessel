@@ -63,7 +63,7 @@ public class Board {
     }
 
     private boolean isInBounds(int x, int y, Color color) {
-        return x >= 0  && x <= 9 && y >= 0 && x <= 9;
+        return x >= 0  && x <= 9 && y >= 0 && y <= 9;
 
     /*    if(color == Color.RED) {
            return  (x > 0 && y > 0 && x < redWidth && y < redLength);
@@ -78,6 +78,11 @@ public class Board {
 
     public boolean PlacePiece(Piece pieceToPlace, int x, int y, Color color) {
         if (isInBounds(x,y,color)) {
+          if(getPieceOnPosition(x,y) != null)
+          {
+              removePiece(new Point(x,y));
+          }
+
             // check for unit on position?
             //  redPieces.remove(pieceToPlace);
             setPiece(pieceToPlace, new Point(x, y));

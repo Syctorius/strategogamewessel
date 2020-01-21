@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class StrategoLogin {
     // The users are stored in a map with key userId and value User-object
-    private final Map<Integer, User> users;
+    private Map<Integer, User> users;
 
     // Id for the next user to be added to the list
     private int nextUserId;
@@ -101,4 +101,7 @@ public class StrategoLogin {
     }
 
 
+    public void useMockData() {
+        users = new HashMap<>();
+    }
 }

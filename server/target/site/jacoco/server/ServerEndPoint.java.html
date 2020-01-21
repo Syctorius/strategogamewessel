@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServerEndPoint.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">server</a> &gt; <span class="el_source">ServerEndPoint.java</span></div><h1>ServerEndPoint.java</h1><pre class="source lang-java linenums">package server;
+
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import enums.Color;
+import enums.Rank;
+import helpers.CommunicatorServer;
+import helpers.Piece;
+import helpers.StrategoGame;
+import interfaces.IGame;
+import interfaces.IServerEndpoint;
+import interfaces.StrategoServer;
+import messageenum.MessageType;
+import messagefactory.DefaultFactory;
+import messagefactory.PlaceUnitFactory;
+import messages.*;
+
+import java.awt.Point;
+
+
+import java.io.IOException;
+import java.util.*;
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
+
+
+@ServerEndpoint(value = &quot;/stratego&quot;)
+<span class="nc" id="L35">public class ServerEndPoint implements IServerEndpoint {</span>
+    // All sessions
+<span class="nc" id="L37">    private static final List&lt;Session&gt; connectedPlayers = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L38">    private static List&lt;IGame&gt; games = new ArrayList&lt;&gt;();</span>
+    // Map each property to list of sessions that are subscribed to that property
+<span class="nc" id="L40">    private static final Map&lt;Integer, List&lt;Session&gt;&gt; strategoGames = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L41">    private DefaultFactory defaultFactory = new DefaultFactory();</span>
+<span class="nc" id="L42">    private PlaceUnitFactory placeUnitFactory = new PlaceUnitFactory();</span>
+
+<span class="nc" id="L44">    private int gameId = 0;</span>
+<span class="nc" id="L45">    private Gson gson = new Gson();</span>
+
+    @OnOpen
+    public void onConnect(Session session) {
+<span class="nc" id="L49">        System.out.println(&quot;[WebSocket Connected] SessionID: &quot; + session.getId());</span>
+
+<span class="nc" id="L51">        connectedPlayers.add(session);</span>
+<span class="nc" id="L52">        System.out.println(&quot;[#sessions]: &quot; + connectedPlayers.size());</span>
+<span class="nc" id="L53">    }</span>
+
+    @OnMessage
+    public void onText(String message, Session session) {
+<span class="nc" id="L57">        System.out.println(&quot;[WebSocket Session ID] : &quot; + session.getId() + &quot; [Received] : &quot; + message);</span>
+<span class="nc" id="L58">        handleMessageFromClient(message, session);</span>
+<span class="nc" id="L59">    }</span>
+
+    @OnClose
+    public void onClose(CloseReason reason, Session session) {
+<span class="nc" id="L63">        System.out.println(&quot;[WebSocket Session ID] : &quot; + session.getId() + &quot; [Socket Closed]: &quot; + reason);</span>
+<span class="nc" id="L64">        connectedPlayers.remove(session);</span>
+<span class="nc" id="L65">    }</span>
+
+    @OnError
+    public void onError(Throwable cause, Session session) {
+<span class="nc" id="L69">        System.out.println(&quot;[WebSocket Session ID] : &quot; + session.getId() + &quot;[ERROR]: &quot;);</span>
+<span class="nc" id="L70">        cause.printStackTrace(System.err);</span>
+<span class="nc" id="L71">    }</span>
+
+    // Handle incoming message from client
+    private void handleMessageFromClient(String jsonMessage, Session session) {
+
+<span class="nc" id="L76">        Message wbMessage = null;</span>
+        try {
+<span class="nc" id="L78">            wbMessage = gson.fromJson(jsonMessage, Message.class);</span>
+<span class="nc" id="L79">        } catch (JsonSyntaxException ex) {</span>
+<span class="nc" id="L80">            System.out.println(&quot;[WebSocket ERROR: cannot parse Json message &quot; + jsonMessage);</span>
+<span class="nc" id="L81">            return;</span>
+<span class="nc" id="L82">        }</span>
+
+        // Operation defined in message
+
+
+        // Process message based on operation
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (null != wbMessage) {</span>
+<span class="nc bnc" id="L90" title="All 8 branches missed.">            switch (wbMessage.getMessageType()) {</span>
+                case USERREADY:
+                    // Find game
+
+<span class="nc" id="L94">                    handleReady(session);</span>
+<span class="nc" id="L95">                    break;</span>
+                case UNREGISTERFROMGAME:
+                    // Game done
+<span class="nc" id="L98">                    unregisterFromGame(session);</span>
+<span class="nc" id="L99">                    break;</span>
+                case DELETE:
+                    // Send game operation to client
+<span class="nc" id="L102">                    handleDelete(session, gson, wbMessage);</span>
+<span class="nc" id="L103">                    break;</span>
+
+                case PLACEUNIT:
+<span class="nc" id="L106">                    handlePlaceUnit(session, gson, wbMessage);</span>
+<span class="nc" id="L107">                    break;</span>
+                case MOVEMENT:
+
+<span class="nc" id="L110">                    handleMovement(session, gson, wbMessage);</span>
+<span class="nc" id="L111">                    break;</span>
+                case PLACEALL:
+<span class="nc" id="L113">                    handlePlaceAll(session, gson, wbMessage);</span>
+<span class="nc" id="L114">                    break;</span>
+                case REMOVEALL:
+<span class="nc" id="L116">                    handleRemoveAll(session, gson, wbMessage);</span>
+<span class="nc" id="L117">                    break;</span>
+
+                default:
+<span class="nc" id="L120">                    System.out.println(&quot;[WebSocket ERROR: cannot process Json message &quot; + jsonMessage);</span>
+                    break;
+           }
+        }
+<span class="nc" id="L124">    }</span>
+
+    private void handleRemoveAll(Session session, Gson gson, Message wbMessage) {
+<span class="nc" id="L127">        RemoveAllUnitsMessage removeall = gson.fromJson(wbMessage.getResult(), new TypeToken&lt;RemoveAllUnitsMessage&gt;() {</span>
+<span class="nc" id="L128">        }.getType());</span>
+<span class="nc" id="L129">        int tempgameid = getKeyBasedOnSession(session);</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        games.get(tempgameid).removeAllPieces(Integer.parseInt(session.getId()), removeall.getTeamcolor() == 1 ? Color.RED : Color.BLUE);</span>
+<span class="nc" id="L131">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,removeall.getTeamcolor()))), tempgameid);</span>
+        //TODO Make this fully server side
+<span class="nc" id="L133">    }</span>
+
+    private void handlePlaceAll(Session session, Gson gson, Message wbMessage) {
+<span class="nc" id="L136">        PlaceAllUnitsMessage placeAllUnitsMessage = gson.fromJson(wbMessage.getResult(), new TypeToken&lt;PlaceAllUnitsMessage&gt;() {</span>
+<span class="nc" id="L137">        }.getType());</span>
+
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        games.get(getKeyBasedOnSession(session)).placePiecesAutomatically(Integer.parseInt(session.getId()), placeAllUnitsMessage.getTeamcolor() == 1 ? Color.RED : Color.BLUE);</span>
+<span class="nc" id="L140">    }</span>
+
+    private void handleMovement(Session session, Gson gson, Message wbMessage) {
+<span class="nc" id="L143">        MovementMessage movementMessage = gson.fromJson(wbMessage.getResult(), new TypeToken&lt;MovementMessage&gt;() {</span>
+<span class="nc" id="L144">        }.getType());</span>
+<span class="nc" id="L145">        games.get(getKeyBasedOnSession(session)).movePiece(movementMessage.getOldCoords(), movementMessage.getNewCoords(),Integer.parseInt(session.getId()));</span>
+<span class="nc" id="L146">    }</span>
+
+    private void handlePlaceUnit(Session session, Gson gson, Message wbMessage) {
+<span class="nc" id="L149">        PlaceUnitMessage placeunit = gson.fromJson(wbMessage.getResult(), new TypeToken&lt;PlaceUnitMessage&gt;() {</span>
+<span class="nc" id="L150">        }.getType());</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        games.get(getKeyBasedOnSession(session)).placePiece(Integer.parseInt(session.getId()), Rank.valueOf(placeunit.getRank()), placeunit.getCoordsToPlace().x, placeunit.getCoordsToPlace().y, placeunit.getColor() == 1 ? Color.RED : Color.BLUE);</span>
+
+
+
+<span class="nc" id="L155">    }</span>
+
+    private void handleDelete(Session session, Gson gson, Message wbMessage) {
+<span class="nc bnc" id="L158" title="All 4 branches missed.">        if (wbMessage.getResult().equals(&quot;&quot;) || wbMessage.getResult() == (null)) return;</span>
+<span class="nc" id="L159">        DeleteMessage deleteMessage = gson.fromJson(wbMessage.getResult(), new TypeToken&lt;DeleteMessage&gt;() {</span>
+<span class="nc" id="L160">        }.getType());</span>
+<span class="nc" id="L161">        games.get(getKeyBasedOnSession(session)).removePiece(deleteMessage.getCoords());</span>
+<span class="nc" id="L162">        sendOperationToBoth(session, wbMessage.getResult(), MessageType.DELETE);</span>
+<span class="nc" id="L163">    }</span>
+
+    private void handleReady(Session session) {
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        if (!isUserInGame(session)) {</span>
+<span class="nc" id="L167">            findGameForUser(session);</span>
+        } else {
+<span class="nc" id="L169">            int gameid = getKeyBasedOnSession(session);</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            if (games.get(gameid).haveBothPlayersPlacedAllUnits()) {</span>
+<span class="nc" id="L171">                games.get(gameid).startGamePlayingPhase();</span>
+<span class="nc" id="L172">                sendOperationToBoth(session, null, MessageType.STARTPLAYINGPHASE);</span>
+            } else {
+                //send message to session yo both players haven't placed everything down boii.
+            }
+        }
+<span class="nc" id="L177">    }</span>
+
+    private int getKeyBasedOnSession(Session session) {
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            if (gameSession.getValue().contains(session)) {</span>
+<span class="nc" id="L182">                return gameSession.getKey() - 1;</span>
+            }
+<span class="nc" id="L184">        }</span>
+<span class="nc" id="L185">        return -1;</span>
+    }
+
+   /* private void sendOperationToOpponent(Session session, String content, MessageType mt) {
+        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {
+            if (gameSession.getValue().contains(session)) {
+                for (Session s : gameSession.getValue()) {
+                    if (s != session) {
+                        Message webSocketMessage = new Message(mt, content);
+                        s.getAsyncRemote().sendText(gson.toJson(webSocketMessage));
+                    }
+                }
+            }
+        }
+    }*/
+
+    private void sendOperationToBoth(Session session, String content, MessageType mt) {
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">            if (gameSession.getValue().contains(session)) {</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">                for (Session s : gameSession.getValue()) {</span>
+
+<span class="nc" id="L206">                    Message webSocketMessage = new Message(mt, content);</span>
+<span class="nc" id="L207">                    s.getAsyncRemote().sendText(gson.toJson(webSocketMessage));</span>
+
+<span class="nc" id="L209">                }</span>
+            }
+<span class="nc" id="L211">        }</span>
+<span class="nc" id="L212">    }</span>
+
+    private void unregisterFromGame(Session session) {
+<span class="nc" id="L215">        int toRemoveIndex = -1;</span>
+
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">            for (Session s : gameSession.getValue()) {</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">                if (s == session) {</span>
+
+<span class="nc" id="L221">                    toRemoveIndex = gameSession.getValue().indexOf(s);</span>
+<span class="nc" id="L222">                    System.out.println(&quot;Removed session: &quot; + session.getId() + &quot; from gameId: &quot; + (gameSession.getKey() - 1));</span>
+<span class="nc" id="L223">                    break;</span>
+                }
+<span class="nc" id="L225">            }</span>
+<span class="nc" id="L226">        }</span>
+<span class="nc" id="L227">        strategoGames.get(gameId).remove(toRemoveIndex);</span>
+<span class="nc" id="L228">    }//</span>
+
+    private void findGameForUser(Session session) {
+<span class="nc bnc" id="L231" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">            if (gameSession.getValue().size() &lt; 2) {  //er zit een speler in de lobby die wacht op een opponent</span>
+<span class="nc" id="L233">                gameSession.getValue().add(session);</span>
+<span class="nc" id="L234">                notifyGameFound(gameSession);</span>
+<span class="nc" id="L235">                initGame(gameSession);</span>
+<span class="nc" id="L236">                return;</span>
+            }
+<span class="nc" id="L238">        }</span>
+        //game not found, create new lobby
+<span class="nc" id="L240">        gameId++;</span>
+<span class="nc" id="L241">        strategoGames.put(gameId, new ArrayList&lt;&gt;());</span>
+<span class="nc" id="L242">        strategoGames.get(gameId).add(session);</span>
+<span class="nc" id="L243">    }</span>
+
+    private void initGame(Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession) {
+
+
+<span class="nc" id="L248">        games.add(new StrategoGame(gameSession.getKey() - 1, new CommunicatorServer(this), Integer.parseInt(gameSession.getValue().get(0).getId()), Integer.parseInt(gameSession.getValue().get(1).getId())));</span>
+        //TODO set id here
+
+
+<span class="nc" id="L252">        games.get(gameSession.getKey() - 1).startGamePlanningPhase();</span>
+<span class="nc" id="L253">    }</span>
+
+    private boolean isUserInGame(Session session) {
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession : strategoGames.entrySet()) {</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">            if (gameSession.getValue().contains(session)) {</span>
+<span class="nc" id="L258">                return true;</span>
+            }
+<span class="nc" id="L260">        }</span>
+<span class="nc" id="L261">        return false;</span>
+    }
+
+    private void notifyGameFound(Map.Entry&lt;Integer, List&lt;Session&gt;&gt; gameSession) {
+<span class="nc" id="L265">        int sessionvalue = 1;</span>
+
+<span class="nc bnc" id="L267" title="All 2 branches missed.">        for (Session s : gameSession.getValue()) {</span>
+
+
+<span class="nc" id="L270">            Message webSocketMessage = new Message(MessageType.MATCHFOUND, gson.toJson(sessionvalue));</span>
+<span class="nc" id="L271">            sessionvalue++;</span>
+<span class="nc" id="L272">            System.out.println(&quot;[WebSocket send ] &quot; + webSocketMessage + &quot; to:&quot; + s.getId());</span>
+<span class="nc" id="L273">            System.out.println(&quot;[WebSocket send ] &quot; + webSocketMessage + &quot; to:&quot; + s.getId());</span>
+
+<span class="nc" id="L275">            s.getAsyncRemote().sendText(gson.toJson(webSocketMessage));</span>
+<span class="nc" id="L276">        }</span>
+
+
+<span class="nc" id="L279">    }</span>
+    private void sendMessageWithMessageTypeToBothUsersInGame(Message message, int gameId) {
+
+
+<span class="nc bnc" id="L283" title="All 2 branches missed.">        for (Session s : strategoGames.get(gameId+1)) {</span>
+<span class="nc" id="L284">            s.getAsyncRemote().sendText(gson.toJson(message));</span>
+<span class="nc" id="L285">        }</span>
+
+
+<span class="nc" id="L288">    }</span>
+    private Session getSessionBasedOnPlayerIdAndGameId(int playerId, int gameId) {
+<span class="nc bnc" id="L290" title="All 2 branches missed.">        return strategoGames.get(gameId+1).stream().filter(s -&gt; Integer.parseInt(s.getId()) == playerId).findFirst().orElse(null);</span>
+    }
+    @Override
+    public void moveUnit(Point oldPos, Point newPos, int gameId) {
+<span class="nc" id="L294">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.MOVEMENT, gson.toJson(new MovementMessage(oldPos, newPos))), gameId);</span>
+
+<span class="nc" id="L296">    }</span>
+
+    @Override
+    public void deleteUnit(Point pos, int gameId) {
+
+<span class="nc" id="L301">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.DELETE, gson.toJson(new DeleteMessage(pos))), gameId);</span>
+
+
+<span class="nc" id="L304">    }</span>
+
+
+
+    @Override
+    public void endGame(int color, int gameId) {
+
+        // unregisterFromGame();
+<span class="nc" id="L312">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.ENDGAME, gson.toJson(new EndGameMessage(color))), gameId);</span>
+<span class="nc" id="L313">    }</span>
+
+    @Override
+    public void sendMessageNotYourTurn(String string, int playerId, int gameId) {
+
+
+<span class="nc" id="L319">        sendMessageToUserInGameWithPlayerId(playerId, gameId, MessageType.NOTYOURTURN, null);</span>
+        // TODO Not Needed Message, fix by working with playerids.
+<span class="nc" id="L321">    }</span>
+
+    @Override
+    public void placeAllPieces(ArrayList&lt;String&gt; ranks, List&lt;Point&gt; points, int color, int gameId) {
+<span class="nc bnc" id="L325" title="All 2 branches missed.">        if (!ranks.isEmpty()) {</span>
+<span class="nc" id="L326">            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.RESETUI, gson.toJson(defaultFactory.CreateMessage(MessageType.RESETUI,color))), gameId);</span>
+        }
+<span class="nc bnc" id="L328" title="All 2 branches missed.">        while (!ranks.isEmpty()) {</span>
+<span class="nc" id="L329">            sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNIT, gson.toJson(placeUnitFactory.CreateMessage(MessageType.PLACEUNIT,points.get(0), color, ranks.get(0)))), gameId);</span>
+<span class="nc" id="L330">            ranks.remove(0);</span>
+<span class="nc" id="L331">            points.remove(0);</span>
+        }
+<span class="nc" id="L333">    }</span>
+
+
+
+
+    private void sendMessageToUserInGameWithPlayerId(int playerId, int gameId, MessageType mt, String result) {
+        try {
+<span class="nc" id="L340">            getSessionBasedOnPlayerIdAndGameId(playerId, gameId).getBasicRemote().sendText(gson.toJson(new Message(mt, result)));</span>
+<span class="nc" id="L341">        } catch (IOException e) {</span>
+<span class="nc" id="L342">            e.printStackTrace();</span>
+<span class="nc" id="L343">        } catch (NullPointerException ignored) {</span>
+
+<span class="nc" id="L345">        }</span>
+<span class="nc" id="L346">    }</span>
+
+
+
+
+
+    @Override
+    public void updateFrequencyUI(ArrayList&lt;String&gt; ranks, int gameId, int playerId) {
+
+
+
+<span class="nc" id="L357">        sendMessageToUserInGameWithPlayerId(playerId, gameId, MessageType.UPDATEFREQUENCY, gson.toJson(new UpdateFrequencyMessage(ranks, playerId)));</span>
+        // TODO Not Needed Message, fix by working with playerids.
+<span class="nc" id="L359">    }</span>
+
+    @Override
+    public void logBattleResult(String attackRank, String defenderRank, boolean winsFight, int gameId) {
+<span class="nc" id="L363">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.BATTLERESULT, gson.toJson(new BattleResultMessage(attackRank, defenderRank, winsFight))), gameId);</span>
+<span class="nc" id="L364">    }</span>
+
+    @Override
+    public void placePiece(Integer key, PlaceUnitForOpponentMessage createMessage) {
+<span class="nc" id="L368">        sendMessageWithMessageTypeToBothUsersInGame(new Message(MessageType.PLACEUNITFOROPPONENT,gson.toJson(createMessage)),gameId);</span>
+<span class="nc" id="L369">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

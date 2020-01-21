@@ -1,12 +1,15 @@
 
+Wsquid:S4973B"9Use the "equals" method if value comparison was intended.(¹½ßÙ8şïéòû-
 jsquid:UselessImportCheck	":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8§¼ ñ-
 isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÖÇ¨Ñ8§¼ ñ-
-nsquid:CommentedOutCodeLine^"<This block of commented-out lines of code should be removed.(ïò®Êÿÿÿÿÿ8§¼ ñ-
+[squid:UselessImportCheck"0Remove this unused import 'java.io.InputStream'.(¹»º8§¼ ñ-
+Wsquid:S4973 "9Use the "equals" method if value comparison was intended.(¹½ßÙ8şïéòû-
 \squid:UselessImportCheck"1Remove this unused import 'java.util.Properties'.(¬µ²8§¼ ñ-
+¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¬×ßúÿÿÿÿ8§¼ ñ-
+Wsquid:S4973B"9Use the "equals" method if value comparison was intended.(¹½ßÙ8şïéòû-
+isquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(ÖÇ¨Ñ8§¼ ñ-
 `squid:UselessImportCheck
 "0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8§¼ ñ-
-[squid:UselessImportCheck"0Remove this unused import 'java.io.InputStream'.(¹»º8§¼ ñ-
-nsquid:CommentedOutCodeLine["<This block of commented-out lines of code should be removed.(‚è©—úÿÿÿÿ8§¼ ñ-
-isquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(ÖÇ¨Ñ8§¼ ñ-
+Zsquid:UselessImportCheck"*Remove this unused import 'dtos.LoginDTO'.(ŠÍš±ûÿÿÿÿ8şïéòû-
+Wsquid:S4973 "9Use the "equals" method if value comparison was intended.(¹½ßÙ8şïéòû-
 _squid:UselessImportCheck"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ8§¼ ñ-
-¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¬×ßúÿÿÿÿ8§¼ ñ-

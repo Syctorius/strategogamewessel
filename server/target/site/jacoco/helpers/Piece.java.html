@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Piece.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">helpers</a> &gt; <span class="el_source">Piece.java</span></div><h1>Piece.java</h1><pre class="source lang-java linenums">package helpers;
+
+import enums.BattleOutcome;
+import enums.Color;
+import enums.Rank;
+
+public class Piece {
+
+
+    private Rank actualRank;
+
+    private Color color;
+
+
+<span class="nc" id="L15">    public Piece(Rank actualRank) {</span>
+<span class="nc" id="L16">        this.actualRank = actualRank;</span>
+<span class="nc" id="L17">    }</span>
+
+<span class="nc" id="L19">    public Piece() {</span>
+
+<span class="nc" id="L21">    }</span>
+
+    public Rank getActualRank() {
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(this != null) {</span>
+<span class="nc" id="L25">            return actualRank;</span>
+        }
+<span class="nc" id="L27">        return null;</span>
+    }
+
+    public Color getColor() {
+<span class="nc" id="L31">        return color;</span>
+    }
+
+<span class="nc" id="L34">    public Piece(Rank actualRank, Color color) {</span>
+<span class="nc" id="L35">        this.actualRank = actualRank;</span>
+<span class="nc" id="L36">        this.color = color;</span>
+<span class="nc" id="L37">    }</span>
+
+    public BattleOutcome winFight(Piece defender) {
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(defender.actualRank == Rank.FLAG) return BattleOutcome.GAMEDONE;</span>
+<span class="nc bnc" id="L41" title="All 4 branches missed.">        if (this.actualRank == Rank.SPY &amp;&amp; defender.actualRank == Rank.MARSHAL) return BattleOutcome.WIN;</span>
+<span class="nc bnc" id="L42" title="All 4 branches missed.">        if (this.actualRank == Rank.MINER &amp;&amp; defender.actualRank == Rank.BOMB) return BattleOutcome.WIN;</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (actualRank.getLevelCode() == defender.actualRank.getLevelCode()) {</span>
+<span class="nc" id="L44">                return BattleOutcome.TIE;</span>
+            }
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if (actualRank.getLevelCode() &gt; defender.actualRank.getLevelCode()) {</span>
+<span class="nc" id="L47">            return BattleOutcome.WIN;</span>
+        }
+<span class="nc" id="L49">        return BattleOutcome.LOSE;</span>
+
+
+    }
+
+
+
+    public String toString() {
+<span class="nc" id="L57">        return actualRank.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

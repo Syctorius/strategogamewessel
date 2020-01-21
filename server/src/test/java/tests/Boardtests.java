@@ -28,7 +28,7 @@ public class Boardtests {
 
     }
     @BeforeEach void clear(){
-
+        game = new StrategoGame(0, new MockServer(), 0, 1,board);
         board.removeAllPieces(Color.BLUE);
         board.removeAllPieces(Color.RED);
     }

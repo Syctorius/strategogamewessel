@@ -1,0 +1,28 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+server,server,ServerEndPoint.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+server,server,ServerEndPoint.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+server,server,StrategoLogin,134,0,8,0,38,0,12,0,8,0
+server,server,ServerEndPoint.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+server,server,ServerEndPoint.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+server,server,ServerEndPoint.new TypeToken() {...},6,0,0,0,1,0,1,0,1,0
+server,server,Service,111,0,0,0,39,0,6,0,6,0
+server,server,ResponseHelper,101,0,2,0,29,0,8,0,7,0
+server,server,ServerEndPoint,881,0,58,0,160,0,64,0,32,0
+server,server,LoginService,167,0,30,0,35,0,22,0,7,0
+server,server,LoginResponse,17,0,0,0,7,0,5,0,5,0
+server,enums,Rank,184,0,0,0,21,0,4,0,4,0
+server,enums,Tile,23,0,0,0,10,0,5,0,5,0
+server,enums,Color,24,0,0,0,3,0,1,0,1,0
+server,enums,BattleOutcome,44,0,0,0,5,0,1,0,1,0
+server,enums,GameStatus,34,0,0,0,4,0,1,0,1,0
+server,enums,TileType,59,0,0,0,9,0,4,0,4,0
+server,enums,MovementType,34,0,0,0,4,0,1,0,1,0
+server,helpers,MultiThreadingField,147,0,16,0,27,0,12,0,4,0
+server,helpers,Board,793,0,67,0,162,0,68,0,34,0
+server,helpers,StrategoGame,1037,0,102,0,155,0,87,0,31,0
+server,helpers,Piece,78,0,16,0,22,0,15,0,7,0
+server,helpers,CommunicatorServer,142,0,10,0,31,0,14,0,9,0
+server,helpers,BoardGenerationMultiThreading,131,0,6,0,26,0,9,0,6,0
+server,helpers,MultiThreadingField.new ArrayList() {...},6,0,0,0,1,0,1,0,1,0
+server,datastorage,Persistence,58,0,0,0,17,0,5,0,5,0
+server,algorithm,AIPlayer,56,0,2,0,16,0,6,0,5,0

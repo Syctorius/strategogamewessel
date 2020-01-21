@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AIPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">algorithm</a> &gt; <span class="el_source">AIPlayer.java</span></div><h1>AIPlayer.java</h1><pre class="source lang-java linenums">package algorithm;
+
+import enums.Color;
+import helpers.Board;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+public class AIPlayer {
+    int points;
+    Color color;
+    String type;
+
+
+<span class="nc" id="L15">    AIPlayer(Color color) {</span>
+<span class="nc" id="L16">        points = 0;</span>
+<span class="nc" id="L17">        this.color = color;</span>
+<span class="nc" id="L18">    }</span>
+
+<span class="nc" id="L20">    AIPlayer(AIPlayer origin) {</span>
+<span class="nc" id="L21">        points = origin.points;</span>
+<span class="nc" id="L22">        color = origin.color;</span>
+<span class="nc" id="L23">        type = origin.type;</span>
+<span class="nc" id="L24">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L28">        return color.toString();</span>
+    }
+    void playAI(Board board){
+
+<span class="nc" id="L32">    }</span>
+
+    Point playRandom(Board board) {
+<span class="nc" id="L35">        int random_index = (int) (Math.random() * 10); // getwidth</span>
+<span class="nc" id="L36">    ArrayList possibleMoves = board.getEmptyFields(color);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        while (random_index &gt; possibleMoves.size() - 1) {</span>
+<span class="nc" id="L38">            random_index = (int) (Math.random() * 10);</span>
+        }
+<span class="nc" id="L40">        return (Point) possibleMoves.get(random_index);</span>
+    }
+
+  /*  Field playAlpha(Board board, User enemy) {
+        Field move = board.getEmptyFields().get(0);
+        int best = Integer.MIN_VALUE;
+        for (Field field : board.getEmptyFields()) {
+            Board nextMove = new Board(board, field, this);
+            int moveValue = abeta(nextMove, Finals.DEPTH, true, enemy, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            if (moveValue &gt; best) {
+                best = moveValue;
+                move = field;
+            }
+            field.player = null;
+
+        }
+        return move;
+    }
+
+    int abeta(Board node, int depth, boolean maximizingPlayer, User enemy, int alpha, int beta) {
+        int points = this.points;
+        if (depth == 0 || node.getEmptyFields().size() == 1) {
+            return getFinalMovePoints(node, maximizingPlayer, enemy);
+        }
+
+        if (maximizingPlayer) {
+            Double bestValue = Double.NEGATIVE_INFINITY;
+            for (Field field : node.getEmptyFields()) {
+                Board nextMove = new Board(node, field, this);
+                PointsCalculator pc_max = new PointsCalculator(nextMove, field);
+                points += pc_max.calculatePoints();
+                int v = abeta(nextMove, depth - 1, false, enemy, alpha, beta);
+                bestValue = Math.max(bestValue, v);
+                field.player = null;
+
+                alpha = Math.max(alpha, bestValue.intValue());
+                if (beta &lt;= alpha) break;
+            }
+            return bestValue.intValue();
+        }
+
+        Double bestValue = Double.POSITIVE_INFINITY;
+        for (Field field : node.getEmptyFields()) {
+            Board nextMove = new Board(node, field, enemy);
+            PointsCalculator pc_min = new PointsCalculator(nextMove, field);
+            enemy.points += pc_min.calculatePoints();
+            int v = abeta(nextMove, depth - 1, true, enemy, alpha, beta);
+            bestValue = Math.min(bestValue, v);
+            field.player = null;
+
+            beta = Math.min(beta, bestValue.intValue());
+            if (beta &lt;= alpha) break;
+        }
+        return bestValue.intValue();
+    }
+
+    Field playMinmax(Board board, User enemy) {
+        Field move = board.getEmptyFields().get(0);
+        int best = Integer.MIN_VALUE;
+        for (Field field : board.getEmptyFields()) {
+            Board nextMove = new Board(board, field, this);
+            int moveValue = minmax(nextMove, Finals.DEPTH, true, enemy);
+            if (moveValue &gt; best) {
+                best = moveValue;
+                move = field;
+            }
+            field.player = null;
+
+        }
+        return move;
+    }
+
+    int minmax(Board node, int depth, boolean maximizingPlayer, User enemy) {
+        int points = this.points;
+        if (depth == 0 || node.getEmptyFields().size() == 1) {
+            return getFinalMovePoints(node, maximizingPlayer, enemy);
+        }
+
+        if (maximizingPlayer) {
+            Double bestValue = Double.NEGATIVE_INFINITY;
+            for (Field field : node.getEmptyFields()) {
+                Board nextMove = new Board(node, field, this);
+                PointsCalculator pc_max = new PointsCalculator(nextMove, field);
+                points += pc_max.calculatePoints();
+                int v = minmax(nextMove, depth - 1, false, enemy);
+                bestValue = Math.max(bestValue, v);
+                field.player = null;
+            }
+            return bestValue.intValue();
+        }
+
+        Double bestValue = Double.POSITIVE_INFINITY;
+        for (Field field : node.getEmptyFields()) {
+            Board nextMove = new Board(node, field, enemy);
+            PointsCalculator pc_min = new PointsCalculator(nextMove, field);
+            enemy.points += pc_min.calculatePoints();
+            int v = minmax(nextMove, depth - 1, true, enemy);
+            bestValue = Math.min(bestValue, v);
+            field.player = null;
+
+        }
+        return bestValue.intValue();
+    }
+
+    int getFinalMovePoints(Board node, boolean maximizingPlayer, User enemy) {
+        if (node.getEmptyFields().size() == 0)
+            return maximizingPlayer ? points : enemy.points;
+        PointsCalculator pc = new PointsCalculator(node, node.getEmptyFields().get(0));
+        return (maximizingPlayer ? points : enemy.points) + pc.calculatePoints();
+    }*/
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

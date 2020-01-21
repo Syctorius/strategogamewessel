@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoardGenerationMultiThreading.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">helpers</a> &gt; <span class="el_source">BoardGenerationMultiThreading.java</span></div><h1>BoardGenerationMultiThreading.java</h1><pre class="source lang-java linenums">package helpers;
+
+import enums.Tile;
+import enums.TileType;
+import interfaces.IGameUI;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+
+public class BoardGenerationMultiThreading {
+    IGameUI game;
+    int width;
+    int length;
+    Tile[][] tilesInGame;
+<span class="nc" id="L17">    TileType tile = TileType.BLUELAND;</span>
+    MultiThreadingField threadBlue;
+    MultiThreadingField threadRed;
+    MultiThreadingField threadNeutral;
+<span class="nc" id="L21">    private ExecutorService pool = Executors.newFixedThreadPool(3);</span>
+
+
+<span class="nc" id="L24">    public BoardGenerationMultiThreading() {</span>
+
+<span class="nc" id="L26">    }</span>
+
+    public Tile[][] createField(int width, int length) {
+<span class="nc" id="L29">        this.width = width;</span>
+<span class="nc" id="L30">        this.length = length;</span>
+<span class="nc" id="L31">        tilesInGame = new Tile[width][length];</span>
+<span class="nc" id="L32">        threadBlue = new MultiThreadingField(TileType.BLUELAND, width, length, this);</span>
+<span class="nc" id="L33">        threadNeutral = new MultiThreadingField(TileType.NEUTRAL, width, length, this);</span>
+<span class="nc" id="L34">        threadRed = new MultiThreadingField(TileType.REDLAND, width, length, this);</span>
+
+<span class="nc" id="L36">        CompletableFuture.supplyAsync(() -&gt; {</span>
+
+<span class="nc" id="L38">            threadBlue.run();</span>
+<span class="nc" id="L39">            return true;</span>
+        }, pool);
+<span class="nc" id="L41">       CompletableFuture.supplyAsync(() -&gt; {</span>
+<span class="nc" id="L42">            threadRed.run();</span>
+<span class="nc" id="L43">            return true;</span>
+        }, pool);
+<span class="nc" id="L45">       CompletableFuture.supplyAsync(() -&gt; {</span>
+<span class="nc" id="L46">            threadNeutral.run();</span>
+<span class="nc" id="L47">            return true;</span>
+        }, pool);
+
+
+<span class="nc" id="L51">        CompletableFuture.allOf().join();</span>
+
+<span class="nc" id="L53">        return tilesInGame;</span>
+
+
+    }
+
+
+    public synchronized void addTiles(Tile[][] tiles) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        for (int i = 0; i &lt; tilesInGame.length; ++i) {</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            for (int j = 0; j &lt; tilesInGame[i].length; ++j) {</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if (tilesInGame[i][j] == null) {</span>
+<span class="nc" id="L63">                    tilesInGame[i][j] = tiles[i][j];</span>
+                }
+            }
+        }
+
+
+<span class="nc" id="L69">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

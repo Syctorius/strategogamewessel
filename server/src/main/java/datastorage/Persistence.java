@@ -37,9 +37,11 @@ public class Persistence {
 
     private <T> T getFromFileAndDeserializeData(Class<T> cls, String path) throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(path);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        T object = cls.cast(ois.readObject());
-        ois.close();
+        T object;
+        try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+            object = cls.cast(ois.readObject());
+            ois.close();
+        }
         fis.close();
         return object;
     }

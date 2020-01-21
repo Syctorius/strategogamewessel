@@ -1,27 +1,27 @@
 
+Ssquid:S1066š"/Merge this if statement with the enclosing one.(×²–”ıÿÿÿÿ8¸½…Èú-
+Tsquid:S2209Ê"5Change this instance-reference to a static reference.(ÒÏØ¾8åÁ¹Âû-
+qsquid:S3776™"RRefactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.(õˆ¿¢8åÁ¹Âû-
+Ssquid:S1066›"/Merge this if statement with the enclosing one.(éñÙÚúÿÿÿÿ8åÁ¹Âû-
+vsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŞ›¹úÿÿÿÿ8åÁ¹Âû-
+Ksquid:S3010)"(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8€Â¸Âû-
+Xsquid:S22091"5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8åÁ¹Âû-
+qsquid:S3776ï"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ş§‡‹8åÁ¹Âû-
 |squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞìÉğÿÿÿÿÿ8„áç¯ù-
+"squid:SwitchLastCaseIsDefaultCheckJ"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏûŸğ8åÁ¹Âû-
+§%squid:RedundantThrowsDeclarationCheckì"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(ıÖÀ½øÿÿÿÿ8åÁ¹Âû-
 Ksquid:S3010"(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8„áç¯ù-
-Ssquid:S1066œ"/Merge this if statement with the enclosing one.(ğ¶ş‡øÿÿÿÿ8„áç¯ù-
-Xsquid:S2209("5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8€Â¸Âû-
-Ksquid:S3010""(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8„áç¯ù-
-Ksquid:S3010("(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8€Â¸Âû-
-Xsquid:S2209""5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8„áç¯ù-
-Qsquid:S1068"4Remove this unused "singlePlayerMode" private field.(îÄ"8öˆğšñ-
+nsquid:CommentedOutCodeLineA"<This block of commented-out lines of code should be removed.(Í€ëöûÿÿÿÿ8åÁ¹Âû-
+Ksquid:S30101"(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8åÁ¹Âû-
+squid:S1319E"oThe type of the "list" object should be an interface such as "List" rather than the implementation "ArrayList".(ô÷õ±8åÁ¹Âû-
 Xsquid:S2209"5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8„áç¯ù-
-Ssquid:S1066"/Merge this if statement with the enclosing one.(×²–”ıÿÿÿÿ8¸½…Èú-
-Ssquid:S1066"/Merge this if statement with the enclosing one.(éñÙÚúÿÿÿÿ8åÁ¹Âû-
-squid:S1319>"oThe type of the "list" object should be an interface such as "List" rather than the implementation "ArrayList".(˜§€ï8åÁ¹Âû-
-squid:S1319D"oThe type of the "list" object should be an interface such as "List" rather than the implementation "ArrayList".(ô÷õ±8åÁ¹Âû-
-qsquid:S00117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¾õ¾8åÁ¹Âû-
-qsquid:S00117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¾õ¾8åÁ¹Âû-
-Ksquid:S30100"(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8åÁ¹Âû-
-Xsquid:S22090"5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8åÁ¹Âû-
-"squid:SwitchLastCaseIsDefaultCheckI"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏûŸğ8åÁ¹Âû-
-ª%squid:RedundantThrowsDeclarationCheckn"rRemove the declaration of thrown exception 'java.lang.UnsupportedOperationException' which is a runtime exception.(­ƒÅ8åÁ¹Âû-
-Tsquid:S2209Ì"5Change this instance-reference to a static reference.(ÒÏØ¾8åÁ¹Âû-
-Tsquid:S2209Ì"5Change this instance-reference to a static reference.(ÒÏØ¾8åÁ¹Âû-
-qsquid:S3776ñ"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ş§‡‹8åÁ¹Âû-
-qsquid:S3776›"RRefactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.(õˆ¿¢8åÁ¹Âû-
-§%squid:RedundantThrowsDeclarationCheckî"iRemove the declaration of thrown exception 'java.lang.NullPointerException' which is a runtime exception.(ıÖÀ½øÿÿÿÿ8åÁ¹Âû-
-nsquid:CommentedOutCodeLine@"<This block of commented-out lines of code should be removed.(Í€ëöûÿÿÿÿ8åÁ¹Âû-
-nsquid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(¶’İËûÿÿÿÿ8åÁ¹Âû-
+Tsquid:S2209Ê"5Change this instance-reference to a static reference.(ÒÏØ¾8åÁ¹Âû-
+Qsquid:S1068"4Remove this unused "singlePlayerMode" private field.(îÄ"8öˆğšñ-
+ª%squid:RedundantThrowsDeclarationChecko"rRemove the declaration of thrown exception 'java.lang.UnsupportedOperationException' which is a runtime exception.(­ƒÅ8åÁ¹Âû-
+vsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŞ›¹úÿÿÿÿ8åÁ¹Âû-
+Ssquid:S1066™"/Merge this if statement with the enclosing one.(ğ¶ş‡øÿÿÿÿ8„áç¯ù-
+squid:S1319?"oThe type of the "list" object should be an interface such as "List" rather than the implementation "ArrayList".(˜§€ï8åÁ¹Âû-
+Xsquid:S2209""5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8„áç¯ù-
+Xsquid:S2209)"5Change this instance-reference to a static reference.(åùÛÙıÿÿÿÿ8€Â¸Âû-
+Ksquid:S3010""(Remove this assignment of "application".(åùÛÙıÿÿÿÿ8„áç¯ù-
+nsquid:CommentedOutCodeLiney"<This block of commented-out lines of code should be removed.(¶’İËûÿÿÿÿ8åÁ¹Âû-

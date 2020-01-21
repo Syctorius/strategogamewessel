@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">helpers</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">package helpers;
+
+import enums.Color;
+import enums.Rank;
+import enums.Tile;
+import enums.TileType;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+
+public class Board {
+    private int length;
+    private int width;
+    private ArrayList&lt;Rank&gt; bluePieces;
+    private ArrayList&lt;Rank&gt; redPieces;
+<span class="nc" id="L17">    private ArrayList&lt;Piece&gt; toPlacePieces = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L18">    private ArrayList&lt;Point&gt; toPlacePiecesCoords = new ArrayList&lt;&gt;();</span>
+    //ArrayList&lt;Piece&gt; trayOfPieces = new ArrayList&lt;&gt;();
+   private Tile[][] tilesInGame;
+
+
+<span class="nc" id="L23">    private ArrayList&lt;Rank&gt; redRanks = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L24">    private ArrayList&lt;Rank&gt; blueRanks = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L25">    private ArrayList&lt;Integer&gt; redPositions= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L26">    private ArrayList&lt;Integer&gt; bluePositions= new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L28">    public Board(int width, int length) {</span>
+<span class="nc" id="L29">        bluePieces = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L30">        redPieces = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L31">        BoardGenerationMultiThreading bgmt = new BoardGenerationMultiThreading();</span>
+<span class="nc" id="L32">        tilesInGame = bgmt.createField(width, length);</span>
+<span class="nc" id="L33">        this.length = length;</span>
+<span class="nc" id="L34">        this.width = width;</span>
+
+
+<span class="nc" id="L37">    }</span>
+
+    public ArrayList&lt;Piece&gt; getToPlacePieces() {
+<span class="nc" id="L40">        return toPlacePieces;</span>
+    }
+
+    public ArrayList&lt;Point&gt; getToPlacePiecesCoords() {
+<span class="nc" id="L44">        return toPlacePiecesCoords;</span>
+    }
+
+    public ArrayList&lt;Rank&gt; getBluePieces() {
+<span class="nc" id="L48">        return bluePieces;</span>
+    }
+
+    public ArrayList&lt;Rank&gt; getRedPieces() {
+<span class="nc" id="L52">        return redPieces;</span>
+    }
+
+    public boolean checkIfPieceCanBePlaced(int x, int y, Piece pieceToPlace) {
+<span class="nc bnc" id="L56" title="All 4 branches missed.">        return isInBounds(x, y, pieceToPlace.getColor()) &amp;&amp; getPieceOnPosition(x, y) == null;</span>
+    }
+
+    public Piece getPieceOnPosition(int posX, int posY) {
+
+<span class="nc" id="L61">        return tilesInGame[posY][posX].getPiece();</span>
+
+    }
+
+    private boolean isInBounds(int x, int y, Color color) {
+<span class="nc bnc" id="L66" title="All 8 branches missed.">        return x &gt;= 0  &amp;&amp; x &lt;= 9 &amp;&amp; y &gt;= 0 &amp;&amp; y &lt;= 9;</span>
+
+    /*    if(color == Color.RED) {
+           return  (x &gt; 0 &amp;&amp; y &gt; 0 &amp;&amp; x &lt; redWidth &amp;&amp; y &lt; redLength);
+        }
+        return  (x &gt; 0 &amp;&amp; y &gt; 0 &amp;&amp; x &lt; blueWidth &amp;&amp; y &lt; blueLength);*/
+
+
+    }
+
+
+
+
+    public boolean PlacePiece(Piece pieceToPlace, int x, int y, Color color) {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (isInBounds(x,y,color)) {</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">          if(getPieceOnPosition(x,y) != null)</span>
+          {
+<span class="nc" id="L83">              removePiece(new Point(x,y));</span>
+          }
+
+            // check for unit on position?
+            //  redPieces.remove(pieceToPlace);
+<span class="nc" id="L88">            setPiece(pieceToPlace, new Point(x, y));</span>
+<span class="nc" id="L89">            addToPiecesList(pieceToPlace, color);</span>
+<span class="nc" id="L90">            addToPointsList(x,y,color);</span>
+<span class="nc" id="L91">            return true;</span>
+        }
+
+<span class="nc" id="L94">        return false;</span>
+    }
+
+    private void addToPointsList(int x, int y,Color color) {
+<span class="nc bnc" id="L98" title="All 2 branches missed.">       if(color == Color.RED){</span>
+<span class="nc" id="L99">           redPositions.add(getConcatValue(x, y));</span>
+       }
+       else {
+<span class="nc" id="L102">           bluePositions.add(getConcatValue(x, y));</span>
+       }
+<span class="nc" id="L104">    }</span>
+
+    private int getConcatValue(int x, int y) {
+<span class="nc" id="L107">        return y * 10 + x;</span>
+    }
+
+    private void addToPiecesList(Piece pieceToPlace, Color color) {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">        if (color == Color.RED) {</span>
+<span class="nc" id="L112">            redPieces.add(pieceToPlace.getActualRank());</span>
+
+        } else {
+<span class="nc" id="L115">            bluePieces.add(pieceToPlace.getActualRank());</span>
+        }
+<span class="nc" id="L117">    }</span>
+
+    private void removeFromPiecesList(Piece pieceToPlace, Color color) {
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (color == Color.RED) {</span>
+<span class="nc" id="L121">            redPieces.remove(pieceToPlace.getActualRank());</span>
+
+        } else {
+<span class="nc" id="L124">            bluePieces.remove(pieceToPlace.getActualRank());</span>
+        }
+<span class="nc" id="L126">    }</span>
+
+    public void removePiece(Point point) {
+<span class="nc" id="L129">        Piece piece = getPieceOnPosition(point.x, point.y);</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        if(piece!= null) {</span>
+<span class="nc" id="L131">            Color color = piece.getColor();</span>
+<span class="nc" id="L132">            removeFromPiecesList(piece, color);</span>
+<span class="nc" id="L133">            removeFromRankList(piece.getActualRank(),point);</span>
+<span class="nc" id="L134">           removeFromPositionList(getConcatValue(point.x,point.y),color);</span>
+<span class="nc" id="L135">            setPiece(null, point);</span>
+        }
+<span class="nc" id="L137">    }</span>
+
+    private void removeFromPositionList(int concatValue,Color color) {
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        if(color.equals(Color.RED)) {</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">            if(redPositions.contains(concatValue)) {</span>
+<span class="nc" id="L142">                redPositions.remove(redPositions.indexOf(concatValue));</span>
+            }
+        }
+        else {
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if(bluePositions.contains(concatValue)) {</span>
+<span class="nc" id="L147">                bluePositions.remove(bluePositions.indexOf(concatValue));</span>
+            }
+        }
+
+<span class="nc" id="L151">    }</span>
+
+    private void removeFromRankList(Rank actualRank,Point point) {
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        if ((getConcatValue(point.x,point.y)) &gt;= 40) {</span>
+<span class="nc" id="L155">            redRanks.remove(actualRank);</span>
+        } else {
+<span class="nc" id="L157">            blueRanks.remove(actualRank);</span>
+        }
+<span class="nc" id="L159">    }</span>
+
+    private void addRankToList(Rank r, int times, List&lt;Rank&gt; ranks) {
+<span class="nc bnc" id="L162" title="All 2 branches missed.">        for (int i = 0; i &lt; times; i++) {</span>
+<span class="nc" id="L163">            ranks.add(r);</span>
+        }
+<span class="nc" id="L165">    }</span>
+
+    public synchronized void PlacePiecesAutomatically(Color color) {
+<span class="nc" id="L168">        Random r = new Random();</span>
+<span class="nc" id="L169">        toPlacePieces.clear(); // split into</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        if (color == Color.RED) {</span>
+<span class="nc" id="L171">            fillListWithRankAndRankCount(redRanks);</span>
+<span class="nc" id="L172">            fillBoard(color, r, 60, 100,redPositions,redRanks);</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        } else if (color == Color.BLUE) {</span>
+<span class="nc" id="L174">            fillListWithRankAndRankCount(blueRanks);</span>
+<span class="nc" id="L175">            fillBoard(color, r, 0, 40,bluePositions,blueRanks);</span>
+        }
+
+<span class="nc" id="L178">    }</span>
+
+    private void fillListWithRankAndRankCount(List&lt;Rank&gt; ranks) {
+<span class="nc" id="L181">        addRankToList(Rank.MINER, 5,ranks);</span>
+<span class="nc" id="L182">        addRankToList(Rank.FLAG, 1,ranks);</span>
+<span class="nc" id="L183">        addRankToList(Rank.SPY, 1,ranks);</span>
+<span class="nc" id="L184">        addRankToList(Rank.BOMB, 6,ranks);</span>
+<span class="nc" id="L185">        addRankToList(Rank.SCOUT, 8,ranks);</span>
+<span class="nc" id="L186">        addRankToList(Rank.SERGEANT, 4,ranks);</span>
+<span class="nc" id="L187">        addRankToList(Rank.LIEUTENANT, 4,ranks);</span>
+<span class="nc" id="L188">        addRankToList(Rank.CAPTAIN, 4,ranks);</span>
+<span class="nc" id="L189">        addRankToList(Rank.MAJOR, 3,ranks);</span>
+<span class="nc" id="L190">        addRankToList(Rank.COLONEL, 2,ranks);</span>
+<span class="nc" id="L191">        addRankToList(Rank.GENERAL, 1,ranks);</span>
+<span class="nc" id="L192">        addRankToList(Rank.MARSHAL, 1,ranks);</span>
+<span class="nc" id="L193">    }</span>
+
+    private void fillListWithPositions(int a, int b,List&lt;Integer&gt; positions) {
+
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        for (int i = a; i &lt; b; i++) {</span>
+
+<span class="nc" id="L199">                positions.add(i);</span>
+
+        }
+<span class="nc" id="L202">    }</span>
+    private void fillListWithPositionsPlaceAutomatically(int a, int b, List&lt;Integer&gt; positions, ArrayList&lt;Rank&gt; ranks) {
+<span class="nc" id="L204">        HashMap&lt;Integer,Rank&gt; hashMap = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        for (int i = a; i &lt; b; i++) {</span>
+<span class="nc bnc" id="L206" title="All 2 branches missed.">            if (!positions.contains(i)) {</span>
+<span class="nc" id="L207">                positions.add(i);</span>
+            } else {
+                // if pieces have been placed already don't add them again.
+<span class="nc" id="L210">                addReOcurringPositionsToHashmap(positions, ranks, hashMap, i);</span>
+
+
+            }
+
+        }
+<span class="nc" id="L216">        Collections.shuffle(positions);</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, Rank&gt; gameSession :hashMap.entrySet())</span>
+        {
+<span class="nc" id="L219">            positions.add(gameSession.getKey());</span>
+<span class="nc" id="L220">            ranks.add(gameSession.getValue());</span>
+<span class="nc" id="L221">        }</span>
+<span class="nc" id="L222">    }</span>
+
+    private void addReOcurringPositionsToHashmap(List&lt;Integer&gt; positions, ArrayList&lt;Rank&gt; ranks, HashMap&lt;Integer, Rank&gt; hashMap, int i) {
+<span class="nc" id="L225">        Piece piece =  getPieceOnPosition(getAX(i), getY(i));</span>
+
+<span class="nc" id="L227">        hashMap.put(positions.get(positions.indexOf(i)), getPieceOnPosition((getAX(i)), getY(i)).getActualRank());</span>
+<span class="nc" id="L228">        positions.remove(positions.indexOf(i));</span>
+
+<span class="nc" id="L230">        ranks.remove(getPieceOnPosition((getAX(i)), getY(i)).getActualRank());</span>
+<span class="nc" id="L231">        removeFromPiecesList(piece, piece.getColor());</span>
+<span class="nc" id="L232">    }</span>
+
+    private int getY(int i) {
+<span class="nc" id="L235">        return i / 10;</span>
+    }
+
+    private int getAX(int i) {
+<span class="nc" id="L239">        return i % 10;</span>
+    }
+
+
+    private synchronized void fillBoard(Color color, Random r, int a, int b, ArrayList&lt;Integer&gt; positions, ArrayList&lt;Rank&gt; ranks) {
+<span class="nc" id="L244">        fillListWithPositionsPlaceAutomatically(a, b,positions,ranks);</span>
+<span class="nc" id="L245">        removeAllFromPiecesList(color);</span>
+
+
+<span class="nc bnc" id="L248" title="All 4 branches missed.">        while (!positions.isEmpty() &amp;&amp; !ranks.isEmpty()) {</span>
+<span class="nc" id="L249">            Piece pieceToPlace = new Piece(ranks.get(0), color);</span>
+<span class="nc" id="L250">            int x = calculateX(positions);</span>
+<span class="nc" id="L251">            int y = calculateY(positions);</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">            if (isInBounds(x, y, color)) {</span>
+<span class="nc" id="L253">                tilesInGame[y][x].setPiece(pieceToPlace);</span>
+<span class="nc" id="L254">                addToToPlacePieces(color, pieceToPlace, x, y);</span>
+            }
+<span class="nc" id="L256">            ranks.remove(0);</span>
+<span class="nc" id="L257">            positions.remove(0);</span>
+
+
+<span class="nc" id="L260">        }</span>
+<span class="nc" id="L261">    }</span>
+
+    private void addToToPlacePieces(Color color, Piece pieceToPlace, int x, int y) {
+<span class="nc" id="L264">        toPlacePieces.add(pieceToPlace);</span>
+<span class="nc" id="L265">        addToPiecesList(pieceToPlace, color);</span>
+<span class="nc" id="L266">        toPlacePiecesCoords.add(new Point(x, y));</span>
+<span class="nc" id="L267">    }</span>
+
+    private void removeAllFromPiecesList(Color color) {
+<span class="nc bnc" id="L270" title="All 2 branches missed.">        if (color == Color.RED) {</span>
+<span class="nc" id="L271">            redPieces.clear();</span>
+
+        } else {
+<span class="nc" id="L274">            bluePieces.clear();</span>
+        }
+<span class="nc" id="L276">    }</span>
+
+    private int calculateY(List&lt;Integer&gt; positions) {
+<span class="nc" id="L279">        return (positions.get(0) / 10);</span>
+    }
+
+    private int calculateX(List&lt;Integer&gt; positions) {
+<span class="nc" id="L283">        return (getAX(positions.get(0)));</span>
+    }
+
+    public ArrayList&lt;Point&gt; getEmptyFields(Color color) {
+<span class="nc" id="L287">        ArrayList&lt;Point&gt; emptyFields = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L288" title="All 2 branches missed.">        for (int i = 0; i &lt; width; i++) {</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">            for (int j = 0; j &lt; length; j++) {</span>
+<span class="nc bnc" id="L290" title="All 4 branches missed.">                if (tilesInGame[i][j].getType() != TileType.WATER &amp;&amp; getPieceOnPosition(i, j).getColor() != color) {</span>
+<span class="nc" id="L291">                    Point p = new Point();</span>
+<span class="nc" id="L292">                    p.setLocation(i, j);</span>
+<span class="nc" id="L293">                    emptyFields.add(p);</span>
+                }
+            }
+        }
+<span class="nc" id="L297">        return emptyFields;</span>
+    }
+
+    public void setPiece(Piece myPiece, Point newPos) {
+
+<span class="nc" id="L302">            tilesInGame[newPos.y][newPos.x].setPiece(myPiece);</span>
+
+<span class="nc" id="L304">    }</span>
+
+    public synchronized void removeAllPieces(Color color) {
+<span class="nc bnc" id="L307" title="All 3 branches missed.">        switch (color) {</span>
+            case RED:
+<span class="nc" id="L309">                redPositions.clear();</span>
+<span class="nc" id="L310">                redPieces.clear();</span>
+<span class="nc" id="L311">                fillListWithPositions(60, 100,redPositions);</span>
+<span class="nc" id="L312">                removeAll(redPositions);</span>
+<span class="nc" id="L313">                redRanks.clear();</span>
+
+<span class="nc" id="L315">                break;</span>
+            case BLUE:
+<span class="nc" id="L317">                bluePieces.clear();</span>
+<span class="nc" id="L318">                bluePositions.clear();</span>
+<span class="nc" id="L319">                fillListWithPositions(0, 40,bluePositions);</span>
+<span class="nc" id="L320">                removeAll(bluePositions);</span>
+<span class="nc" id="L321">                redRanks.clear();</span>
+        }
+
+
+
+
+<span class="nc" id="L327">    }</span>
+
+    private void removeAll(List&lt;Integer&gt; positions) {
+<span class="nc bnc" id="L330" title="All 2 branches missed.">        while (!positions.isEmpty()) {</span>
+
+<span class="nc" id="L332">            int x = calculateX(positions);</span>
+<span class="nc" id="L333">            int y = calculateY(positions);</span>
+<span class="nc" id="L334">            tilesInGame[y][x].setPiece(null);</span>
+<span class="nc" id="L335">            positions.remove(0);</span>
+
+
+<span class="nc" id="L338">        }</span>
+<span class="nc" id="L339">        positions = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L340">    }</span>
+
+    public Tile[][] getTilesInGame() {
+<span class="nc" id="L343">        return tilesInGame;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

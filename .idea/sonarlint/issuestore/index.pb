@@ -125,3 +125,7 @@ b
 +server/src/test/java/tests/playerTests.java,0\8\08882be8bc0dbcc201102fd9d4dbd462d6cc7df7
 a
 1server/src/test/java/tests/StrategoGameTests.java,f\7\f79071e65023255e3c770d852eaf67d0890f09dc
+c
+3messages/src/main/java/messageenum/MessageType.java,3\f\3f9e95f85cb09acdc7c61aeb9c66c48a1d0a17e6
+b
+2gui/src/main/java/controllers/LoginController.java,9\9\9909e5c0f7c6bed128f4a9d33fd5431e603169f9

@@ -1,11 +1,13 @@
 
-[squid:S2147"DCombine this catch with the one at line 27, which has the same body.(ï­£Ä
-bsquid:S2147"DCombine this catch with the one at line 27, which has the same body.(óûìœ8³ÖÉÁô-
-Psquid:S1135"2Complete the task associated to this TODO comment.(ˆêÅØ8æšÉÁô-
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ˆêÅØ8æšÉÁô-
-:squid:S1148o"#Use a logger to log this exception.(Óùóÿ
 ?squid:S1148 "#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ˆêÅØ8æšÉÁô-
 ?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+:squid:S1148k"#Use a logger to log this exception.(Óùóÿ
+bsquid:S2147"DCombine this catch with the one at line 27, which has the same body.(óûìœ8³ÖÉÁô-
+[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÿÆÈû-
+Psquid:S1135"2Complete the task associated to this TODO comment.(ˆêÅØ8æšÉÁô-
+Zsquid:UselessImportCheck"/Remove this unused import 'frontendenums.Rank'.(“Ô‰8ÿÆÈû-
+Fsquid:S1148t"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³ÖÉÁô-
 _squid:S1075"ARefactor your code to get this URI from a customizable parameter.(ˆêÅØ8ş¶ÉÁô-
-Fsquid:S1148x"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8³ÖÉÁô-
+?squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+[squid:S2147"DCombine this catch with the one at line 27, which has the same body.(ï­£Ä

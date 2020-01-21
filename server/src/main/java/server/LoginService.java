@@ -19,6 +19,13 @@ public class LoginService {
     public LoginService() {
 
     }
+    public LoginService(boolean test) {
+        if(test == true)
+        {
+            StrategoLogin.getInstance().useMockData();
+        }
+
+    }
 
 
     @Path("/login")
@@ -29,7 +36,7 @@ public class LoginService {
 //        User user = new User();
         boolean response = false;
 
-        if(user.getUsername()!= "" && user.getPassword() != "") {
+        if(isNotEmpty(user)) {
             List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
             for (User user1 : allUsers) {
                 if (user1.getUsername().equals(user.getUsername()) && user1.getPassword().equals(user.getPassword())) {
@@ -63,7 +70,7 @@ public class LoginService {
 //        User user = new User();
         boolean response = true;
 
-        if(user.getUsername()!= "" && user.getPassword() != "") {
+        if(isNotEmpty(user)) {
             List<User> allUsers = StrategoLogin.getInstance().getAllUsers();
             for (User user1 : allUsers) {
                 if (user1.getUsername().equals(user.getUsername())) {
@@ -71,6 +78,9 @@ public class LoginService {
 
                 }
             }
+        }
+        else {
+            response = false;
         }
         if (response ){
             StrategoLogin.getInstance().addUser(user.getUsername(),user.getPassword());
@@ -81,6 +91,11 @@ public class LoginService {
 
 
     }
+
+    private boolean isNotEmpty(User user) {
+        return user.getUsername()!= "" && user.getPassword() != "" && user.getPassword() != null && user.getUsername() != null;
+    }
+
     @GET
     @Path("/{username}")
     @Consumes(MediaType.APPLICATION_JSON)

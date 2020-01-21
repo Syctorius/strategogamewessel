@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Persistence.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">datastorage</a> &gt; <span class="el_source">Persistence.java</span></div><h1>Persistence.java</h1><pre class="source lang-java linenums">package datastorage;
+
+
+import server.StrategoLogin;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+
+<span class="nc" id="L10">public class Persistence {</span>
+
+<span class="nc" id="L12">    private String saveDataLoc = &quot;C:\\Users\\wesse\\Downloads\\strategogamewessel\\server\\src\\main\\java\\datastorage\\strategologin.txt&quot;;</span>
+
+    public void serializeObject(Object o, String loc) throws IOException {
+
+<span class="nc" id="L16">        try (FileOutputStream fos = new FileOutputStream(loc); ObjectOutputStream oos = new ObjectOutputStream(fos)) {</span>
+
+<span class="nc" id="L18">            oos.writeObject(o);</span>
+
+<span class="nc" id="L20">        } catch (Exception ex) {</span>
+
+<span class="nc" id="L22">            ex.printStackTrace();</span>
+
+<span class="nc" id="L24">        }</span>
+<span class="nc" id="L25">    }</span>
+
+
+    public void saveData(Map webShop) throws IOException {
+<span class="nc" id="L29">        serializeObject(webShop, saveDataLoc);</span>
+<span class="nc" id="L30">    }</span>
+
+
+
+    public Map getSavedData() throws IOException, ClassNotFoundException {
+<span class="nc" id="L35">        return getFromFileAndDeserializeData(Map.class, saveDataLoc);</span>
+    }
+
+    private &lt;T&gt; T getFromFileAndDeserializeData(Class&lt;T&gt; cls, String path) throws IOException, ClassNotFoundException {
+<span class="nc" id="L39">        FileInputStream fis = new FileInputStream(path);</span>
+        T object;
+<span class="nc" id="L41">        try (ObjectInputStream ois = new ObjectInputStream(fis)) {</span>
+<span class="nc" id="L42">            object = cls.cast(ois.readObject());</span>
+<span class="nc" id="L43">            ois.close();</span>
+        }
+<span class="nc" id="L45">        fis.close();</span>
+<span class="nc" id="L46">        return object;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

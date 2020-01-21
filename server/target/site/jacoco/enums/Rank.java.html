@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rank.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">enums</a> &gt; <span class="el_source">Rank.java</span></div><h1>Rank.java</h1><pre class="source lang-java linenums">package enums;
+
+<span class="nc" id="L3">public enum Rank {</span>
+
+<span class="nc" id="L5">    BOMB(9999),  //calls constructor with value 9999</span>
+<span class="nc" id="L6">    MARSHAL(10),  //calls constructor with value 9</span>
+<span class="nc" id="L7">    GENERAL(9),   //calls constructor with value 8</span>
+<span class="nc" id="L8">    COLONEL(8),   //etc</span>
+<span class="nc" id="L9">    MAJOR(7),</span>
+<span class="nc" id="L10">    CAPTAIN(6),</span>
+<span class="nc" id="L11">    LIEUTENANT(5),</span>
+<span class="nc" id="L12">    SERGEANT(4),</span>
+<span class="nc" id="L13">    MINER(3),</span>
+<span class="nc" id="L14">    SCOUT(2),</span>
+<span class="nc" id="L15">    SPY(1),</span>
+<span class="nc" id="L16">    FLAG(0),</span>
+<span class="nc" id="L17">    UNKNOWN(null), // you don't know</span>
+    ; // semicolon needed when fields / methods follow
+
+
+<span class="nc" id="L21">    private Integer rankLevel = 0;</span>
+
+<span class="nc" id="L23">    Rank(Integer ranklevel) {</span>
+<span class="nc" id="L24">        this.rankLevel = ranklevel;</span>
+<span class="nc" id="L25">    }</span>
+     Rank()
+<span class="nc" id="L27">    {</span>
+
+<span class="nc" id="L29">    }</span>
+
+    public int getLevelCode() {
+<span class="nc" id="L32">        return this.rankLevel;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

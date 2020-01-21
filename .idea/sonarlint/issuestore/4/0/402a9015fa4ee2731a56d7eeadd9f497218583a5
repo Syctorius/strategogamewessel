@@ -1,0 +1,8 @@
+
+Fsquid:S1148!"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡ƒ€óû-
+bsquid:S2147""DCombine this catch with the one at line 32, which has the same body.(ï­£Ä8‡ƒ€óû-
+Fsquid:S1148["#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡ƒ€óû-
+asquid:UselessImportCheck"1Remove this unused import 'java.io.Serializable'.(èãîÂÿÿÿÿÿ8‡ƒ€óû-
+Fsquid:S1148#"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡ƒ€óû-
+Fsquid:S1148%"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‡ƒ€óû-
+bsquid:S2147$"DCombine this catch with the one at line 32, which has the same body.(ıàÑÎ8‡ƒ€óû-

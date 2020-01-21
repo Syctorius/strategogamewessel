@@ -5,28 +5,34 @@ import helpers.StrategoGame;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import server.LoginService;
+import user.User;
+
+import javax.ws.rs.core.Response;
 
 public class playerTests {
-   static StrategoGame game;
-   static StrategoGame game2;
+    private static LoginService loginService;
+
 
     @BeforeAll
     public static void init()
     {
-        game = new StrategoGame();
-        game2 = new StrategoGame();
+        loginService = new LoginService(true);
+        loginService.register(new User("wesss","wesss"));
     }
     @Test() // expected=IllegalArgumentException.class
     void testRegisterPlayerNameNull() {
 
         // Register player with parameter name null in single-player mode
+        //Arrange
         String name = null;
         String password = "password";
+        int responseStatus = 400;
         boolean singlePlayerMode = true;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        //Act
+       Response response =  loginService.register(new User(name,password));
+       //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
     }
     @Test() // expected=IllegalArgumentException.class
     void testRegisterPlayerNameEmpty() {
@@ -35,10 +41,10 @@ public class playerTests {
         String name = "";
         String password = "password";
         boolean singlePlayerMode = true;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        int responseStatus = 400;
+        Response response =  loginService.register(new User(name,password));
+        //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
     }
 
     @Test
@@ -46,10 +52,10 @@ public class playerTests {
         String name = "name";
         String password = null;
         boolean singlePlayerMode = true;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        int responseStatus = 400;
+        Response response =  loginService.register(new User(name,password));
+        //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
     }
 
     @Test
@@ -58,96 +64,71 @@ public class playerTests {
         String password = "";
         boolean singlePlayerMode = true;
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        int responseStatus = 400;
+        Response response =  loginService.register(new User(name,password));
+        //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
+    }
 
-        });
+
+    @Test
+    void successfulLogin(){
+        String name = "nameSuccess";
+        String password = "password";
+
+        int responseStatus = 200;
+        Response response =  loginService.register(new User(name,password));
+        //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
     }
 
     @Test
-    void testApplicationIsNull(){
-        String name = "name";
+    void testSinglePlayerBadLogin(){
+        String name = "nameSingle";
         String password = "password";
         boolean singlePlayerMode = true;
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        int responseStatus = 400;
+        Response response =  loginService.login(new User(name,password));
+        //Assert
+        Assertions.assertEquals(responseStatus,response.getStatus());
+     //   Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
     }
 
     @Test
-    void testNumberExceedsOneSinglePlayerMode(){
-        String name = "name";
+    void testRegisterAndLogin(){
+        String name = "namePie";
         String password = "password";
 
-        String name2 = "name2";
-        String password2 = "password2";
-
-        boolean singlePlayerMode = true;
-
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
-    }
-
-    @Test
-    void testSinglePlayerMode(){
-        String name = "name";
-        String password = "password";
-        boolean singlePlayerMode = true;
-
-
-
-        Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
-    }
-
-    @Test
-    void testMultiPlayerMode(){
-        String name = "name";
-        String password = "password";
-
-        String name2 = "name2";
-        String password2 = "password2";
 
         boolean singlePlayerMode = false;
 
+        int responseStatus = 200;
+        Response response =  loginService.register(new User(name,password));
+        Assertions.assertEquals(responseStatus,response.getStatus());
+         response =  loginService.login(new User(name,password));
+        Assertions.assertEquals(responseStatus,response.getStatus());
 
-
-        Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
-        Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
+       // Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
+      //  Assertions.assertEquals(GameStatus.SETUP,game.getStatus());
     }
 
-    @Test
-    void testNumberExceedsTwoMultiPlayerMode(){
-        String name = "name";
-        String password = "password";
 
-        String name2 = "name2";
-        String password2 = "password2";
-
-        boolean singlePlayerMode = false;
-
-
-
-
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
-    }
 
     @Test
     void testNameAlreadyRegistered(){
-        String name = "name";
+        String name = "namePie2";
         String password = "password";
+
 
         boolean singlePlayerMode = false;
 
-
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-
-        });
+        int responseStatus = 200;
+        Response response =  loginService.register(new User(name,password));
+        Assertions.assertEquals(responseStatus,response.getStatus());
+        response =  loginService.register(new User(name,password));
+        responseStatus = 400;
+        Assertions.assertEquals(responseStatus,response.getStatus());
     }
 
 }

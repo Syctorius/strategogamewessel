@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StrategoGame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">server</a> &gt; <a href="index.source.html" class="el_package">helpers</a> &gt; <span class="el_source">StrategoGame.java</span></div><h1>StrategoGame.java</h1><pre class="source lang-java linenums">package helpers;
+
+import enums.*;
+import enums.Color;
+import interfaces.IGame;
+import interfaces.StrategoServer;
+import user.User;
+
+import java.awt.*;
+import java.util.*;
+
+public class StrategoGame implements IGame {
+    GameStatus status;
+    User user;
+    User opponent;
+<span class="nc" id="L16">    Color turnColor = Color.RED;</span>
+    Board board;
+    private static StrategoServer application;
+    private static Boolean singlePlayerMode;
+    private Integer key;
+<span class="nc" id="L21">    private ArrayList&lt;Rank&gt; allCheckableRanks = new ArrayList&lt;Rank&gt;(Arrays.asList(Rank.FLAG, Rank.BOMB, Rank.CAPTAIN, Rank.COLONEL, Rank.GENERAL, Rank.LIEUTENANT, Rank.MAJOR, Rank.MARSHAL, Rank.MINER, Rank.SCOUT, Rank.SERGEANT, Rank.SPY));</span>
+    private int redPlayerId;
+    private int bluePlayerId;
+
+<span class="nc" id="L25">    public StrategoGame(User user, User opponent, StrategoServer serverEndPoint) {</span>
+<span class="nc" id="L26">        this.user = user;</span>
+<span class="nc" id="L27">        this.opponent = opponent;</span>
+<span class="nc" id="L28">        this.application = serverEndPoint;</span>
+<span class="nc" id="L29">    }</span>
+
+
+<span class="nc" id="L32">    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId) {</span>
+<span class="nc" id="L33">        this.key = key;</span>
+<span class="nc" id="L34">        this.application = serverEndPoint;</span>
+<span class="nc" id="L35">        this.redPlayerId = redPlayerId;</span>
+<span class="nc" id="L36">        this.bluePlayerId = bluePlayerId;</span>
+<span class="nc" id="L37">    }</span>
+
+<span class="nc" id="L39">    public StrategoGame(Integer key, StrategoServer serverEndPoint, int redPlayerId, int bluePlayerId, Board board) {</span>
+<span class="nc" id="L40">        this.key = key;</span>
+<span class="nc" id="L41">        this.application = serverEndPoint;</span>
+<span class="nc" id="L42">        this.board = board;</span>
+<span class="nc" id="L43">        this.redPlayerId = redPlayerId;</span>
+<span class="nc" id="L44">        this.bluePlayerId = bluePlayerId;</span>
+<span class="nc" id="L45">    }</span>
+
+<span class="nc" id="L47">    public StrategoGame(Integer key, StrategoServer serverEndPoint) {</span>
+<span class="nc" id="L48">        this.key = key;</span>
+<span class="nc" id="L49">        this.application = serverEndPoint;</span>
+<span class="nc" id="L50">    }</span>
+
+<span class="nc" id="L52">    public StrategoGame() {</span>
+
+<span class="nc" id="L54">    }</span>
+
+    // Starts the game
+
+
+    public GameStatus getStatus() {
+<span class="nc" id="L60">        return status;</span>
+    }
+
+    public boolean areAllPiecesPlaced(ArrayList&lt;Rank&gt; list) {
+<span class="nc bnc" id="L64" title="All 4 branches missed.">        return countFrequencies(list, allCheckableRanks.get(1)) &amp;&amp; allCheckableRanks.stream().allMatch(r -&gt; countFrequencies(list, r));</span>
+        // if everything is true;
+
+    }
+
+    public static boolean countFrequencies(ArrayList&lt;Rank&gt; list, Rank r) {
+
+        // hash set is created and elements of
+        // arraylist are insertd into it
+
+<span class="nc bnc" id="L74" title="All 8 branches missed.">        switch (r) {</span>
+            case FLAG:
+            case SPY:
+            case GENERAL:
+            case MARSHAL:
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                return Collections.frequency(list, r) == 1;</span>
+            case BOMB:
+<span class="nc bnc" id="L81" title="All 2 branches missed.">                return Collections.frequency(list, r) == 6;</span>
+            case MINER:
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                return Collections.frequency(list, r) == 5;</span>
+            case COLONEL:
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                return Collections.frequency(list, r) == 2;</span>
+            case SERGEANT:
+            case CAPTAIN:
+            case LIEUTENANT:
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                return Collections.frequency(list, r) == 4;</span>
+            case SCOUT:
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                return Collections.frequency(list, r) == 8;</span>
+            case MAJOR:
+<span class="nc bnc" id="L93" title="All 2 branches missed.">                return Collections.frequency(list, r) == 3;</span>
+
+        }
+<span class="nc" id="L96">        return false;</span>
+    }
+
+    @Override
+    public void startGamePlanningPhase() {
+<span class="nc" id="L101">        board = new Board(10, 10);</span>
+<span class="nc" id="L102">        this.status = GameStatus.SETUP;</span>
+<span class="nc" id="L103">    }</span>
+
+    @Override
+    public void startGamePlayingPhase() {
+<span class="nc" id="L107">        this.status = GameStatus.PLAYING;</span>
+
+<span class="nc" id="L109">    }</span>
+
+    public void endGame() throws UnsupportedOperationException {
+<span class="nc" id="L112">        status = GameStatus.STOPPED;</span>
+<span class="nc" id="L113">    }</span>
+
+
+
+
+
+    @Override
+    public synchronized void placePiecesAutomatically(int playerNr, Color color) {
+        // Board playerBoard = user.getBoard();
+<span class="nc" id="L122">        this.board.PlacePiecesAutomatically(color);</span>
+<span class="nc" id="L123">        application.placeAllPieces(board.getToPlacePieces(), board.getToPlacePiecesCoords(), color, this.key);</span>
+<span class="nc" id="L124">        updateFrequencyUI();</span>
+<span class="nc" id="L125">    }</span>
+
+
+    @Override
+    public void placePiece(int playerNr, Rank rank, int X, int Y, Color color) {
+
+<span class="nc" id="L131">        Piece pieceToPlace = new Piece(rank, color);</span>
+
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        if(board.PlacePiece(pieceToPlace, X, Y, color))</span>
+        {
+<span class="nc" id="L135">            application.placePiece(this.key, rank, X, Y, color);</span>
+<span class="nc" id="L136">            updateFrequencyUI();</span>
+        }
+
+<span class="nc" id="L139">    }</span>
+
+    @Override
+    public void removeAllPieces(int playerNr, Color color) {
+<span class="nc" id="L143">        board.removeAllPieces(color);</span>
+<span class="nc" id="L144">        updateFrequencyUI();</span>
+<span class="nc" id="L145">    }</span>
+
+
+    @Override
+    public void movePiece(Point oldPos, Point newPos, int id) {
+<span class="nc" id="L150">        Piece myPiece = checkForPiece(oldPos);</span>
+<span class="nc" id="L151">        Piece enemyPiece = checkForPiece(newPos);</span>
+<span class="nc bnc" id="L152" title="All 4 branches missed.">        if (oldPos.getLocation() != newPos.getLocation() &amp;&amp; getTileType(newPos) != TileType.WATER) {</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">            if (myPiece != null) {</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                if (correctPlayerTurn(myPiece, id)) {</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">                    if (canPieceMoveToRange(myPiece, oldPos, newPos)) {</span>
+<span class="nc" id="L156">                        sortMovement(oldPos, newPos, myPiece, enemyPiece);</span>
+<span class="nc" id="L157">                        updateFrequencyUI();</span>
+<span class="nc" id="L158">                        switchTurn();</span>
+                    }
+                }
+            }
+        }
+<span class="nc" id="L163">    }</span>
+
+    private TileType getTileType(Point newPos) {
+<span class="nc" id="L166">        return board.getTilesInGame()[newPos.y][newPos.x].getType();</span>
+    }
+
+    private boolean correctPlayerTurn(Piece myPiece, int id) {
+<span class="nc" id="L170">        return getCorrectPlayerTurn(myPiece, id);</span>
+
+    }
+
+    private Color getColorBasedOnId(int id) {
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        return id == bluePlayerId ? Color.BLUE : Color.RED;</span>
+    }
+
+    private boolean getCorrectPlayerTurn(Piece myPiece, int id) {
+<span class="nc" id="L179">        Color color = getColorBasedOnId(id);</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        if (myPiece.getColor() == color) {</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            if (turnColor == color) {</span>
+<span class="nc" id="L182">                return true;</span>
+            } else {
+<span class="nc" id="L184">                application.sendMessageNotYourTurn(&quot;it's not your turn&quot;, id, this.key);</span>
+            }
+        }
+        else {
+<span class="nc" id="L188">            application.sendMessageNotYourTurn(&quot;That's not your Piece &quot;, id, this.key);</span>
+        }
+<span class="nc" id="L190">        return false;</span>
+    }
+
+    private void updateFrequencyUI() {
+
+<span class="nc" id="L195">        application.updateFrequencyUI(board.getBluePieces(), this.key, bluePlayerId);</span>
+
+<span class="nc" id="L197">        application.updateFrequencyUI(board.getRedPieces(), this.key, redPlayerId);</span>
+
+<span class="nc" id="L199">    }</span>
+
+    private void switchTurn() {
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        turnColor = turnColor == Color.BLUE ? turnColor.RED : turnColor.BLUE;</span>
+<span class="nc" id="L203">    }</span>
+
+    private void sortMovement(Point oldPos, Point newPos, Piece myPiece, Piece enemyPiece) {
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (enemyPiece != null) {</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">            if (enemyPiece.getColor() != myPiece.getColor()) {</span>
+<span class="nc" id="L208">                settleFightResult(myPiece.winFight(enemyPiece), myPiece, oldPos, newPos, enemyPiece);</span>
+            } else {
+                //do nothing or send message idk.
+            }
+        } else {
+<span class="nc" id="L213">            movePiece(myPiece, oldPos, newPos);</span>
+<span class="nc" id="L214">            application.moveUnit(oldPos, newPos, this.key);</span>
+            //Move In UI
+        }
+<span class="nc" id="L217">    }</span>
+
+    private void movePiece(Piece myPiece, Point oldPos, Point newPos) {
+
+<span class="nc" id="L221">        board.setPiece(null, oldPos);</span>
+<span class="nc" id="L222">        board.setPiece(myPiece, newPos);</span>
+
+<span class="nc" id="L224">    }</span>
+
+    private boolean canPieceMoveToRange(Piece myPiece, Point oldPos, Point newPos) {
+<span class="nc bnc" id="L227" title="All 3 branches missed.">        switch (myPiece.getActualRank()) {</span>
+            case SCOUT:
+<span class="nc" id="L229">                return canScoutMoveToRange(oldPos, newPos);</span>
+            case BOMB:
+            case FLAG:
+<span class="nc" id="L232">                return false;</span>
+            default:
+<span class="nc" id="L234">                return canRegularPieceMoveToRange(oldPos, newPos);</span>
+        }
+
+    }
+
+    private boolean canRegularPieceMoveToRange(Point oldPos, Point newPos) {
+
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        if (oldPos.y == newPos.y) {</span>
+            // Horizontal move
+<span class="nc bnc" id="L243" title="All 2 branches missed.">            if (oldPos.x &lt; newPos.x) {</span>
+                // Move right
+
+<span class="nc bnc" id="L246" title="All 2 branches missed.">                if (oldPos.x + 1 != newPos.x) {</span>
+
+<span class="nc" id="L248">                    return false;</span>
+                }
+
+            } else {
+                // Move left
+
+<span class="nc bnc" id="L254" title="All 2 branches missed.">                if (oldPos.x - 1 != newPos.x) {</span>
+
+<span class="nc" id="L256">                    return false;</span>
+                }
+            }
+<span class="nc bnc" id="L259" title="All 2 branches missed.">        } else if (oldPos.x == newPos.x) {</span>
+            // Vertical move
+<span class="nc bnc" id="L261" title="All 2 branches missed.">            if (oldPos.y &lt; newPos.y) {</span>
+                // Move down
+<span class="nc bnc" id="L263" title="All 2 branches missed.">                if (oldPos.y + 1 != newPos.y)</span>
+<span class="nc" id="L264">                    return false;</span>
+            } else {
+                // Move up
+<span class="nc bnc" id="L267" title="All 2 branches missed.">                if (oldPos.y - 1 != newPos.y)</span>
+
+<span class="nc" id="L269">                    return false;</span>
+
+            }
+        } else {
+            // Not a valid  move (neither horizontal nor vertical)
+<span class="nc" id="L274">            return false;</span>
+        }
+<span class="nc" id="L276">        return true;</span>
+
+
+    }
+
+    private boolean canScoutMoveToRange(Point oldPos, Point newPos) {
+        int i;
+
+<span class="nc bnc" id="L284" title="All 2 branches missed.">        if (oldPos.y == newPos.y) {</span>
+            // Horizontal move
+<span class="nc bnc" id="L286" title="All 2 branches missed.">            if (oldPos.x &lt; newPos.x) {</span>
+                // Move right
+<span class="nc bnc" id="L288" title="All 2 branches missed.">                for (i = oldPos.x + 1; i &lt;= newPos.x; ++i) {</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">                    if (checkForPiece(new Point(i, oldPos.y)) != null)</span>
+<span class="nc" id="L290">                        return false;</span>
+                }
+
+            } else {
+                // Move left
+
+<span class="nc bnc" id="L296" title="All 2 branches missed.">                for (i = oldPos.x - 1; i &gt;= newPos.x; --i) {</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">                    if (checkForPiece(new Point(i, oldPos.y)) != null)</span>
+<span class="nc" id="L298">                        return false;</span>
+                }
+            }
+<span class="nc bnc" id="L301" title="All 2 branches missed.">        } else if (oldPos.x == newPos.x) {</span>
+            // Vertical move
+<span class="nc bnc" id="L303" title="All 2 branches missed.">            if (oldPos.y &lt; newPos.y) {</span>
+                // Move down
+<span class="nc bnc" id="L305" title="All 2 branches missed.">                for (i = oldPos.y - 1; i &gt;= newPos.y; --i)</span>
+<span class="nc bnc" id="L306" title="All 2 branches missed.">                    if (checkForPiece(new Point(oldPos.x, i)) != null)</span>
+<span class="nc" id="L307">                        return false;</span>
+            } else {
+                // Move up
+<span class="nc bnc" id="L310" title="All 2 branches missed.">                for (i = oldPos.y + 1; i &lt;= newPos.y; ++i)</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">                    if (checkForPiece(new Point(oldPos.x, i)) != null)</span>
+<span class="nc" id="L312">                        return false;</span>
+
+            }
+        } else {
+            // Not a valid Scout move (neither horizontal nor vertical)
+<span class="nc" id="L317">            return false;</span>
+        }
+<span class="nc" id="L319">        return true;</span>
+
+
+    }
+
+    private void settleFightResult(BattleOutcome winFight, Piece myPiece, Point oldPos, Point newPos, Piece enemyPiece) {
+<span class="nc bnc" id="L325" title="All 5 branches missed.">        switch (winFight) {</span>
+            case GAMEDONE:
+<span class="nc" id="L327">                endGame();</span>
+                //SEND MESSAGE to end game.
+<span class="nc" id="L329">                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), true, this.key);</span>
+<span class="nc" id="L330">                application.endGame(myPiece.getColor(), this.key);</span>
+
+<span class="nc" id="L332">                break;</span>
+            case WIN:
+<span class="nc" id="L334">                board.removePiece(newPos);</span>
+<span class="nc" id="L335">                application.deleteUnit(newPos, this.key);</span>
+
+<span class="nc" id="L337">                movePiece(myPiece, oldPos, newPos);</span>
+<span class="nc" id="L338">                application.moveUnit(oldPos, newPos, this.key);</span>
+<span class="nc" id="L339">                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), true, this.key);</span>
+<span class="nc" id="L340">                updateFrequencyUI();</span>
+
+<span class="nc" id="L342">                break;</span>
+            case LOSE:
+<span class="nc" id="L344">                board.removePiece(oldPos);</span>
+<span class="nc" id="L345">                application.deleteUnit(oldPos, this.key);</span>
+<span class="nc" id="L346">                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), false, this.key);</span>
+<span class="nc" id="L347">                updateFrequencyUI();</span>
+                //GUI.REMOVEPIECE
+<span class="nc" id="L349">                break;</span>
+            case TIE:
+<span class="nc" id="L351">                board.removePiece(oldPos);</span>
+<span class="nc" id="L352">                board.removePiece(newPos);</span>
+<span class="nc" id="L353">                application.deleteUnit(oldPos, this.key);</span>
+<span class="nc" id="L354">                application.deleteUnit(newPos, this.key);</span>
+<span class="nc" id="L355">                application.logBattleResult(myPiece.getActualRank(), enemyPiece.getActualRank(), false, this.key);</span>
+<span class="nc" id="L356">                updateFrequencyUI();</span>
+                //GUI.REMOVEPIECES
+                break;
+
+
+        }
+<span class="nc" id="L362">    }</span>
+
+    private Piece checkForPiece(Point position) throws NullPointerException {
+<span class="nc" id="L365">        return board.getTilesInGame()[position.y][position.x].getPiece();</span>
+    }
+
+
+    @Override
+    public boolean haveBothPlayersPlacedAllUnits() {
+<span class="nc bnc" id="L371" title="All 4 branches missed.">        return areAllPiecesPlaced(board.getBluePieces()) &amp;&amp; areAllPiecesPlaced(board.getRedPieces());</span>
+    }
+
+    @Override
+    public void removePiece(Point coords) {
+<span class="nc" id="L376">        board.removePiece(coords);</span>
+<span class="nc" id="L377">        updateFrequencyUI();</span>
+
+<span class="nc" id="L379">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
